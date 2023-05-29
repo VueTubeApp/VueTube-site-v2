@@ -54,3 +54,7 @@ All commands are run from the root of the project, from a terminal:
 | `yarn preview`         | Preview your build locally, before deploying    |
 | `yarn astro ...`       | Run CLI commands like `astro add`, `astro heck` |
 | `yarn astro -- --help` | Get help using the Astro CLI                    |
+
+
+<img width="612" alt="Screenshot 2023-05-29 at 12 58 56 AM" src="https://github.com/VueTubeApp/VueTube-site-v2/assets/31113245/c5360529-6fba-45ce-9d6f-ad71da8c5984">
+
