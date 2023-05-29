@@ -7,6 +7,9 @@ dependencies:
   '@astrojs/vue':
     specifier: ^2.2.0
     version: 2.2.0(@babel/core@7.22.1)(astro@2.5.0)(vite@4.3.9)(vue@3.2.30)
+  '@fontsource-variable/montserrat':
+    specifier: ^5.0.2
+    version: 5.0.2
   animejs:
     specifier: ^3.2.1
     version: 3.2.1
@@ -667,6 +670,10 @@ packages:
     requiresBuild: true
     dev: false
     optional: true
+
+  /@fontsource-variable/montserrat@5.0.2:
+    resolution: {integrity: sha512-m4DB9MWHIdTDD8tmgAGCOkyN1kDO6oup4fgyMbID8fDfnM1Jf0z1VRe8bJbdQIE9YXY9C0vAafI/ZCsuEaYUGw==}
+    dev: false
 
   /@jridgewell/gen-mapping@0.3.3:
     resolution: {integrity: sha512-HLhSWOLRi875zjjMG/r+Nv0oCW8umGb0BgEhyX3dDX3egwZtB8PqLnjz3yedt8R5StBrzcg4aBpnh8UA9D1BoQ==}
