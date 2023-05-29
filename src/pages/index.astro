@@ -2,4 +2,31 @@
 import Layout from "../layouts/Layout.astro";
 ---
 
-<Layout title="VueTube" />
+<Layout title="VueTube">
+  <section class="flex h-screen w-full max-w-screen-lg portrait:flex-col">
+    <!-- half and half -->
+    <div class="w-1/2"></div>
+    <div class="grid w-1/2 place-content-center">
+      <h1 class="mb-4 text-4xl font-black lg:text-6xl">
+        Video <br /> Watching, <br />
+        <span
+          class="bg-[url('https://media1.giphy.com/media/l378oRMuApI3a35Cg/giphy.gif')] bg-clip-text bg-center text-transparent invert"
+        >
+          Suprecharged
+        </span>
+      </h1>
+      <div class="flex">
+        <button
+          class="rounded-3xl border border-neutral-500 bg-white px-3 py-1 font-black uppercase text-black duration-150 hover:bg-black hover:text-white"
+        >
+          Download
+        </button>
+        <button
+          class="ml-2 rounded-3xl border border-neutral-500 px-3 py-1 font-black uppercase duration-150 hover:bg-black hover:text-white"
+        >
+          or don't
+        </button>
+      </div>
+    </div>
+  </section>
+</Layout>
