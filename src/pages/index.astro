@@ -4,7 +4,9 @@ import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="VueTube">
-  <section class="flex h-[100dvh] w-full max-w-screen-lg portrait:flex-col">
+  <section
+    class="z-10 flex h-[100dvh] w-full max-w-screen-lg portrait:flex-col"
+  >
     <!-- half and half -->
     <div
       class="w-1/2 bg-[url('https://media.discordapp.net/attachments/952985066424897574/1112627081617084416/image.png?width=762&height=1400')] bg-contain bg-center"
@@ -40,41 +42,17 @@ import Layout from "../layouts/Layout.astro";
   >
   </div>
   <section
-    class="top-[5.5rem] z-10 flex flex h-[200dvh] w-full flex-col portrait:flex-col"
+    class="top-[5.5rem] z-10 flex h-[200dvh] w-full flex-col items-center"
+    style="margin-top: calc(-100dvh + 10.5rem);"
   >
-    <p class="pl-0">text</p>
-    <p class="pl-1">text</p>
-    <p class="pl-2">text</p>
-    <p class="pl-4">text</p>
-    <p class="pl-5">text</p>
-    <p class="pl-6">text</p>
-    <p class="pl-7">text</p>
-    <p class="pl-8">text</p>
-    <p class="pl-9">text</p>
-    <p class="pl-10">text</p>
-    <p class="pl-11">text</p>
-    <p class="pl-12">text</p>
-    <p class="pl-14">text</p>
-    <p class="pl-16">text</p>
-    <p class="pl-20">text</p>
-    <p class="pl-24">text</p>
-    <p class="pl-28">text</p>
-    <p class="pl-32">text</p>
-    <p class="pl-36">text</p>
-    <p class="pl-40">text</p>
-    <p class="pl-44">text</p>
-    <p class="pl-48">text</p>
-    <p class="pl-52">text</p>
-    <p class="pl-56">text</p>
-    <p class="pl-60">text</p>
-    <p class="pl-64">text</p>
-    <p class="pl-72">text</p>
-    <p class="pl-80">text</p>
-    <p class="pl-96">
-      text &nbsp;text &nbsp;text &nbsp;text &nbsp;text &nbsp;text &nbsp;text
-      &nbsp;text &nbsp;text &nbsp;text &nbsp;text &nbsp;text &nbsp;text
-      &nbsp;text &nbsp;text &nbsp;text &nbsp;text &nbsp;
-    </p>
+    <div
+      class="h-[100dvh] w-full bg-[url('https://media.discordapp.net/attachments/952985066424897574/1112651039968088064/image.png?width=1468&height=1402')] bg-contain bg-center bg-no-repeat"
+    >
+    </div>
+    <div
+      class="h-[100dvh] w-[60vw] bg-[url('https://media.discordapp.net/attachments/952985066424897574/1112653454859571231/image.png?width=2382&height=1402')] bg-contain bg-center bg-no-repeat"
+    >
+    </div>
   </section>
 
   <footer
@@ -82,8 +60,11 @@ import Layout from "../layouts/Layout.astro";
     style="max-height: calc(100dvh - 15.5rem);"
   >
     <div class="h-[5rem] w-full rounded-b-[5rem] bg-neutral-800"></div>
-    <div class="relative grid h-96 w-full place-items-center bg-black">
-      footer.
+    <div class="sticky top-0 grid w-full place-items-center bg-black py-16">
+      <div
+        class="h-[40vh] w-full bg-[url('https://media.discordapp.net/attachments/952985066424897574/1112654424842707047/image.png?width=2592&height=1128')] bg-cover bg-top bg-no-repeat"
+      >
+      </div>
     </div>
   </footer>
 </Layout>
