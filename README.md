@@ -1,4 +1,4 @@
-# VueTube Site Redesign
+<summary dir=ltr ><summary align=center dir=rtl /><h1>VueTube Site Redesign</h1></summary>
 
 <p align="center">
     <a href="https://vuetube.app/">
@@ -15,7 +15,7 @@
     </picture>
   </a>
   </br></br>
-  <strong>This is the home of the redesign for <a href="https://vuetube.app">vuetube.app</a>. Powered by <a href="https://astro.build">Astro</a>, <a href="https://tailwindcss.com">Tailwind</a> and <a href="vuejs.org">Vue.js</a>.</strong>
+  <strong>This is the home of the redesign for <a href="https://vuetube.app">vuetube.app</a>. Powered by <a href="https://astro.build">Astro</a>, <a href="https://tailwindcss.com">Tailwind</a> and <a href="https://vuejs.org">Vue.js</a>.</strong>
 </p>
 
 ## 🚀 Project Structure
@@ -54,3 +54,7 @@ All commands are run from the root of the project, from a terminal:
 | `yarn preview`         | Preview your build locally, before deploying    |
 | `yarn astro ...`       | Run CLI commands like `astro add`, `astro heck` |
 | `yarn astro -- --help` | Get help using the Astro CLI                    |
+
+
+<img width="612" alt="Screenshot 2023-05-29 at 12 58 56 AM" src="https://github.com/VueTubeApp/VueTube-site-v2/assets/31113245/c5360529-6fba-45ce-9d6f-ad71da8c5984">
+
