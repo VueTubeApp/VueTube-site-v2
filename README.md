@@ -15,7 +15,7 @@
     </picture>
   </a>
   </br></br>
-  <strong>This is the home of the redesign for <a href="https://vuetube.app">vuetube.app</a>. Powered by <a href="https://astro.build">Astro</a>, <a href="https://tailwindcss.com">Tailwind</a> and <a href="vuejs.org">Vue.js</a>.</strong>
+  <strong>This is the home of the redesign for <a href="https://vuetube.app">vuetube.app</a>. Powered by <a href="https://astro.build">Astro</a>, <a href="https://tailwindcss.com">Tailwind</a> and <a href="https://vuejs.org">Vue.js</a>.</strong>
 </p>
 
 ## 🚀 Project Structure
