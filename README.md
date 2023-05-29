@@ -1,4 +1,4 @@
-# VueTube Site Redesign
+<summary dir=ltr ><summary align=center dir=rtl /><h1>VueTube Site Redesign</h1></summary>
 
 <p align="center">
     <a href="https://vuetube.app/">
