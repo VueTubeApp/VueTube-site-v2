@@ -1,4 +1,4 @@
-<h1 align="center">VueTube Site Redesign</h1>
+<h3 align=center>VueTube Site Redesign</h3>
 
 <p align="center">
     <a href="https://vuetube.app/">
