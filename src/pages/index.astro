@@ -5,14 +5,14 @@ import Layout from "../layouts/Layout.astro";
 
 <Layout title="VueTube">
   <section
-    class="z-10 flex h-[100dvh] w-full max-w-screen-lg portrait:flex-col"
+    class="z-10 flex h-[100dvh] w-full max-w-screen-lg portrait:flex-col-reverse"
   >
     <!-- half and half -->
     <div
-      class="w-1/2 bg-[url('https://media.discordapp.net/attachments/952985066424897574/1112627081617084416/image.png?width=762&height=1400')] bg-contain bg-center bg-no-repeat"
+      class="w-1/2 bg-[url('https://media.discordapp.net/attachments/952985066424897574/1112627081617084416/image.png?width=762&height=1400')] bg-contain bg-center bg-no-repeat portrait:h-[50vh] portrait:w-full"
     >
     </div>
-    <div class="grid w-1/2 place-content-center">
+    <div class="grid w-1/2 place-content-center portrait:h-1/2 portrait:w-full">
       <h1 class="mb-4 text-4xl font-black leading-10 lg:text-6xl">
         Video <br /> Watching, <br />
         <span
@@ -37,7 +37,7 @@ import Layout from "../layouts/Layout.astro";
     </div>
   </section>
   <div
-    class="sticky left-0 top-[5.5rem] h-[10rem] w-full rounded-t-[10rem] bg-neutral-800"
+    class="sticky left-0 top-[5.5rem] h-[10rem] w-full rounded-t-[5rem] bg-neutral-800 md:rounded-t-[10rem]"
     style="height: calc(100vh - 5.5rem)"
   >
   </div>

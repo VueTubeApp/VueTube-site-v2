@@ -27,13 +27,13 @@ const { title } = Astro.props;
       >
       </div> -->
       <a
-        class="fixed left-4 top-4 h-12 w-36 bg-[url('logo.svg')] bg-contain bg-center bg-no-repeat"
+        class="fixed left-4 top-4 hidden h-12 w-36 bg-[url('logo.svg')] bg-contain bg-center bg-no-repeat md:block"
         href="/"
       >
       </a>
 
       <nav
-        class="fixed left-1/2 top-0 flex -translate-x-1/2 gap-4 p-5 mix-blend-difference"
+        class="fixed left-1/2 top-0 hidden -translate-x-1/2 gap-4 p-5 mix-blend-difference md:flex"
       >
         <a
           class="block cursor-pointer rounded-2xl bg-neutral-500 bg-opacity-50 p-2 backdrop-blur-md"
