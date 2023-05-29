@@ -6,7 +6,10 @@ import Layout from "../layouts/Layout.astro";
 <Layout title="VueTube">
   <section class="flex h-screen w-full max-w-screen-lg portrait:flex-col">
     <!-- half and half -->
-    <div class="w-1/2"></div>
+    <div
+      class="w-1/2 bg-[url('https://media.discordapp.net/attachments/952985066424897574/1112627081617084416/image.png?width=762&height=1400')] bg-contain bg-center"
+    >
+    </div>
     <div class="grid w-1/2 place-content-center">
       <h1 class="mb-4 text-4xl font-black leading-10 lg:text-6xl">
         Video <br /> Watching, <br />
@@ -30,5 +33,9 @@ import Layout from "../layouts/Layout.astro";
         </button>
       </div>
     </div>
+  </section>
+  <section
+    class="flex h-screen w-full rounded-t-[10rem] bg-neutral-800 portrait:flex-col"
+  >
   </section>
 </Layout>
