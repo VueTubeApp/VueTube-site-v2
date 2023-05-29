@@ -4,7 +4,7 @@ import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="VueTube">
-  <section class="flex h-screen w-full max-w-screen-lg portrait:flex-col">
+  <section class="flex h-[100dvh] w-full max-w-screen-lg portrait:flex-col">
     <!-- half and half -->
     <div
       class="w-1/2 bg-[url('https://media.discordapp.net/attachments/952985066424897574/1112627081617084416/image.png?width=762&height=1400')] bg-contain bg-center"
@@ -14,7 +14,7 @@ import Layout from "../layouts/Layout.astro";
       <h1 class="mb-4 text-4xl font-black leading-10 lg:text-6xl">
         Video <br /> Watching, <br />
         <span
-          class="bg-[url('https://media1.giphy.com/media/l378oRMuApI3a35Cg/giphy.gif')] bg-clip-text bg-center text-transparent drop-shadow-xl hue-rotate-60 invert"
+          class="bg-[url('https://media1.giphy.com/media/l378oRMuApI3a35Cg/giphy.gif')] bg-clip-text bg-center text-transparent hue-rotate-90 invert"
         >
           Suprecharged
         </span>
@@ -34,8 +34,56 @@ import Layout from "../layouts/Layout.astro";
       </div>
     </div>
   </section>
-  <section
-    class="flex h-screen w-full rounded-t-[10rem] bg-neutral-800 portrait:flex-col"
+  <div
+    class="sticky left-0 top-[5.5rem] h-[10rem] w-full rounded-t-[10rem] bg-neutral-800"
+    style="height: calc(100vh - 5.5rem)"
   >
+  </div>
+  <section
+    class="top-[5.5rem] z-10 flex flex h-[200dvh] w-full flex-col portrait:flex-col"
+  >
+    <p class="pl-0">text</p>
+    <p class="pl-1">text</p>
+    <p class="pl-2">text</p>
+    <p class="pl-4">text</p>
+    <p class="pl-5">text</p>
+    <p class="pl-6">text</p>
+    <p class="pl-7">text</p>
+    <p class="pl-8">text</p>
+    <p class="pl-9">text</p>
+    <p class="pl-10">text</p>
+    <p class="pl-11">text</p>
+    <p class="pl-12">text</p>
+    <p class="pl-14">text</p>
+    <p class="pl-16">text</p>
+    <p class="pl-20">text</p>
+    <p class="pl-24">text</p>
+    <p class="pl-28">text</p>
+    <p class="pl-32">text</p>
+    <p class="pl-36">text</p>
+    <p class="pl-40">text</p>
+    <p class="pl-44">text</p>
+    <p class="pl-48">text</p>
+    <p class="pl-52">text</p>
+    <p class="pl-56">text</p>
+    <p class="pl-60">text</p>
+    <p class="pl-64">text</p>
+    <p class="pl-72">text</p>
+    <p class="pl-80">text</p>
+    <p class="pl-96">
+      text &nbsp;text &nbsp;text &nbsp;text &nbsp;text &nbsp;text &nbsp;text
+      &nbsp;text &nbsp;text &nbsp;text &nbsp;text &nbsp;text &nbsp;text
+      &nbsp;text &nbsp;text &nbsp;text &nbsp;text &nbsp;
+    </p>
   </section>
+
+  <footer
+    class="sticky top-[15.5rem] w-full bg-black"
+    style="max-height: calc(100dvh - 15.5rem);"
+  >
+    <div class="h-[5rem] w-full rounded-b-[5rem] bg-neutral-800"></div>
+    <div class="relative grid h-96 w-full place-items-center bg-black">
+      footer.
+    </div>
+  </footer>
 </Layout>
