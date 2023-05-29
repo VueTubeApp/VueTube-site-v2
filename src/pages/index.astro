@@ -1,17 +1,41 @@
 ---
+import { Icon } from "astro-iconify";
 import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="VueTube">
-  <nav
-    class="sticky m-4 rounded-xl border border-white border-opacity-50 bg-neutral-500 bg-opacity-50 p-4 backdrop-blur-md"
+  <section class="flex h-screen w-full max-w-screen-lg portrait:flex-col">
+    <!-- half and half -->
+    <div
+      class="w-1/2 bg-[url('https://media.discordapp.net/attachments/952985066424897574/1112627081617084416/image.png?width=762&height=1400')] bg-contain bg-center"
+    >
+    </div>
+    <div class="grid w-1/2 place-content-center">
+      <h1 class="mb-4 text-4xl font-black leading-10 lg:text-6xl">
+        Video <br /> Watching, <br />
+        <span
+          class="bg-[url('https://media1.giphy.com/media/l378oRMuApI3a35Cg/giphy.gif')] bg-clip-text bg-center text-transparent drop-shadow-xl hue-rotate-60 invert"
+        >
+          Suprecharged
+        </span>
+      </h1>
+      <div class="flex items-start">
+        <button
+          class="flex items-center rounded-2xl border border-neutral-500 bg-white px-3 py-1 font-black uppercase text-black duration-150 hover:bg-black hover:px-6 hover:text-white active:py-6 active:duration-75"
+        >
+          <Icon class="mr-4 h-6 w-6" name="mdi:download" />
+          Download
+        </button>
+        <button
+          class="ml-2 rounded-2xl border border-neutral-500 px-3 py-1 font-black duration-150 hover:bg-neutral-800 hover:text-white"
+        >
+          or don't ¯\_(ツ)_/¯
+        </button>
+      </div>
+    </div>
+  </section>
+  <section
+    class="flex h-screen w-full rounded-t-[10rem] bg-neutral-800 portrait:flex-col"
   >
-    VyooTyoob
-  </nav>
-
-  <!-- glow circle -->
-  <div
-    class="fixed left-1/2 top-0 -z-10 h-[100vw] w-[100vw] -translate-x-1/2 -translate-y-1/2 rounded-full bg-neutral-800 opacity-50 blur-[420px] portrait:h-[100vh] portrait:w-[100vh]"
-  >
-  </div>
+  </section>
 </Layout>
