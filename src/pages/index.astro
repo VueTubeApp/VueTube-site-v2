@@ -37,20 +37,20 @@ import Layout from "../layouts/Layout.astro";
     </div>
   </section>
   <div
-    class="sticky left-0 top-[5.5rem] h-[10rem] w-full rounded-t-[5rem] bg-neutral-800 md:rounded-t-[10rem]"
+    class="sticky left-0 top-[5.5rem] h-[10rem] w-full rounded-t-3xl bg-neutral-800 md:rounded-t-[10rem]"
     style="height: calc(100vh - 5.5rem)"
   >
   </div>
   <section
-    class="top-[5.5rem] z-10 flex h-[200dvh] w-full flex-col items-center"
+    class="top-[5.5rem] z-10 flex h-[200dvh] w-full flex-col items-center px-12"
     style="margin-top: calc(-100dvh + 10.5rem);"
   >
     <div
-      class="h-[100dvh] w-full bg-[url('https://media.discordapp.net/attachments/952985066424897574/1112651039968088064/image.png?width=1468&height=1402')] bg-contain bg-center bg-no-repeat"
+      class="h-[100dvh] w-full max-w-screen-lg bg-[url('https://media.discordapp.net/attachments/952985066424897574/1112651039968088064/image.png?width=1468&height=1402')] bg-contain bg-center bg-no-repeat"
     >
     </div>
     <div
-      class="h-[100dvh] w-[60vw] bg-[url('https://media.discordapp.net/attachments/952985066424897574/1112653454859571231/image.png?width=2382&height=1402')] bg-contain bg-center bg-no-repeat"
+      class="h-[100dvh] w-full max-w-screen-lg bg-[url('https://media.discordapp.net/attachments/952985066424897574/1112653454859571231/image.png?width=2382&height=1402')] bg-contain bg-center bg-no-repeat lg:w-[60vw]"
     >
     </div>
   </section>
@@ -59,8 +59,13 @@ import Layout from "../layouts/Layout.astro";
     class="sticky top-[15.5rem] w-full bg-black"
     style="max-height: calc(100dvh - 15.5rem);"
   >
-    <div class="h-[5rem] w-full rounded-b-[5rem] bg-neutral-800"></div>
-    <div class="sticky top-0 grid w-full place-items-center bg-black py-16">
+    <div
+      class="h-[5rem] w-full rounded-b-xl bg-neutral-800 md:rounded-b-[5rem]"
+    >
+    </div>
+    <div
+      class="sticky top-0 grid w-full place-items-center bg-black px-4 py-16"
+    >
       <div
         class="h-[40vh] w-full bg-[url('https://media.discordapp.net/attachments/952985066424897574/1112654424842707047/image.png?width=2592&height=1128')] bg-cover bg-top bg-no-repeat"
       >
