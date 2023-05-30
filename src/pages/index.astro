@@ -5,7 +5,7 @@ import Layout from "../layouts/Layout.astro";
 
 <Layout title="VueTube">
   <section
-    class="z-10 flex h-[100dvh] w-full max-w-screen-lg portrait:flex-col-reverse"
+    class="z-10 -mt-[5.5rem] flex h-[100dvh] w-full max-w-screen-lg portrait:flex-col-reverse"
   >
     <!-- half and half -->
     <div
@@ -54,8 +54,7 @@ import Layout from "../layouts/Layout.astro";
     >
     </div>
   </section>
-
-  <footer
+  <section
     class="sticky top-[15.5rem] w-full bg-black"
     style="max-height: calc(100dvh - 15.5rem);"
   >
@@ -63,13 +62,10 @@ import Layout from "../layouts/Layout.astro";
       class="h-[5rem] w-full rounded-b-xl bg-neutral-800 md:rounded-b-[5rem]"
     >
     </div>
-    <div
-      class="sticky top-0 grid w-full place-items-center bg-black px-4 py-16"
-    >
-      <div
-        class="h-[40vh] w-full bg-[url('https://media.discordapp.net/attachments/952985066424897574/1112654424842707047/image.png?width=2592&height=1128')] bg-cover bg-top bg-no-repeat"
-      >
-      </div>
-    </div>
-  </footer>
+  </section>
+
+  <!-- <section
+    class="z-10 flex h-[100dvh] w-full max-w-screen-lg bg-black portrait:flex-col-reverse"
+  >
+  </section> -->
 </Layout>
