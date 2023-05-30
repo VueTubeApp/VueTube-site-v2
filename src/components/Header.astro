@@ -28,26 +28,71 @@ import { Icon } from "astro-iconify";
     <a href="/about" class="block cursor-pointer p-2">About Us</a>
   </nav>
 
-  <div class="flex w-1/4 justify-end gap-4">
+  <div class="flex w-1/4 items-center justify-end gap-4">
     <a
-      class="block rounded-2xl p-2 duration-300 hover:scale-110 hover:bg-[#5865F2] hover:text-black active:scale-90"
+      class="grid h-10 w-10 place-items-center rounded-2xl duration-300 hover:scale-105 hover:bg-[#5865F2] active:scale-90 active:duration-0"
       href="https://vuetube.app/discord"
       target="_blank"
     >
       <Icon class="h-6 w-6" name="fa6-brands:discord" />
     </a>
     <a
-      class="block rounded-2xl p-2 duration-300 hover:scale-110 hover:bg-white hover:text-black active:scale-90"
+      class="grid h-10 w-10 place-items-center rounded-2xl duration-300 hover:scale-105 hover:bg-white hover:text-black active:scale-90 active:duration-0"
       href="https://github.com/VueTubeApp/"
       target="_blank"
     >
       <Icon class="h-6 w-6" name="fa6-brands:github" />
     </a>
     <button
-      class="flex items-center rounded-3xl border border-white bg-white px-4 py-2 font-black uppercase text-black duration-150 hover:scale-110 hover:rounded-2xl hover:border-neutral-500 hover:bg-black hover:text-white active:translate-y-1/2 active:scale-90 active:duration-75"
+      id="dl"
+      class="flex items-center overflow-hidden rounded-3xl border border-white bg-white px-4 py-2 font-black uppercase text-black duration-75 hover:scale-105 hover:border-neutral-500 hover:bg-black hover:text-white active:scale-100 active:rounded-2xl"
     >
       <Icon class="mr-4 h-6 w-6" name="mdi:download" />
       Download
     </button>
   </div>
 </header>
+
+<style>
+  #dl:hover > svg {
+    animation: download 0.5s linear 1;
+  }
+  @keyframes download {
+    0% {
+      translate: 0 0;
+    }
+    33% {
+      translate: 0 2rem;
+    }
+    34% {
+      translate: -5rem 2rem;
+    }
+    35% {
+      translate: -5rem -2rem;
+    }
+    36% {
+      translate: 0 -2rem;
+    }
+    66% {
+      translate: 0 2rem;
+    }
+    67% {
+      translate: -5rem 2rem;
+    }
+    68% {
+      translate: -5rem -2rem;
+    }
+    69% {
+      translate: 0 -2rem;
+    }
+    95% {
+      translate: 0 0.5rem;
+    }
+    100% {
+      translate: 0 0;
+    }
+  }
+  #dl > svg {
+    transition: all 150ms ease-in-out;
+  }
+</style>
