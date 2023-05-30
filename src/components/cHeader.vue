@@ -61,12 +61,12 @@ function hoverAnimate(e: Event) {
   anime({
     targets: (e.target as Element).querySelector("svg"),
     keyframes: [
-      { translateY: "0rem", easing: "easeOutExpo" },
-      { translateY: "2rem", easing: "easeOutExpo" },
+      { translateY: "0rem", easing: "easeInOutExpo" },
+      { translateY: "2rem", easing: "easeInOutExpo" },
       { translateY: "-2rem", easing: "steps(1)" },
-      { translateY: "2rem", easing: "easeOutExpo" },
+      { translateY: "2rem", easing: "easeInOutExpo" },
       { translateY: "-2rem", easing: "steps(1)" },
-      { translateY: "0rem", easing: "easeOutExpo" },
+      { translateY: "0rem", easing: "easeInOutExpo" },
     ],
     duration: 800,
   });
