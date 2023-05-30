@@ -1,5 +1,6 @@
 ---
-import { Icon } from "astro-iconify";
+import "@fontsource-variable/Montserrat";
+import Header from "../components/header.astro";
 export interface Props {
   title: string;
 }
@@ -24,52 +25,7 @@ const { title } = Astro.props;
     <title>{title}</title>
   </head>
   <body class="flex flex-col items-center">
-    <header
-      class="sticky top-0 z-50 h-[5.5rem] w-full overflow-hidden bg-transparent mix-blend-difference backdrop-blur-md"
-    >
-      <a
-        class="fixed left-4 top-4 hidden h-12 w-36 bg-[url('logo.svg')] bg-contain bg-center bg-no-repeat md:block"
-        href="/"
-      >
-      </a>
-
-      <nav
-        class="fixed left-1/2 top-0 hidden -translate-x-1/2 gap-4 p-5 md:flex"
-      >
-        <a
-          href="/features"
-          class="block cursor-pointer rounded-2xl bg-neutral-500 bg-opacity-50 p-2 backdrop-blur-md"
-        >
-          Features
-        </a>
-        <a href="/contribute" class="block cursor-pointer p-2">Contribute</a>
-        <a href="/docs/" class="block cursor-pointer p-2">Docs</a>
-        <a href="/about" class="block cursor-pointer p-2">About Us</a>
-      </nav>
-
-      <div class="fixed right-4 top-4 flex gap-4">
-        <a
-          class="block rounded-2xl p-2 duration-300 hover:scale-110 hover:bg-[#5865F2] hover:text-black active:scale-90"
-          href="https://vuetube.app/discord"
-          target="_blank"
-        >
-          <Icon class="h-6 w-6" name="fa6-brands:discord" />
-        </a>
-        <a
-          class="block rounded-2xl p-2 duration-300 hover:scale-110 hover:bg-white hover:text-black active:scale-90"
-          href="https://github.com/VueTubeApp/"
-          target="_blank"
-        >
-          <Icon class="h-6 w-6" name="fa6-brands:github" />
-        </a>
-        <button
-          class="flex items-center rounded-3xl border border-white bg-white px-4 py-2 font-black uppercase text-black duration-150 hover:scale-110 hover:rounded-2xl hover:border-neutral-500 hover:bg-black hover:text-white active:translate-y-1/2 active:scale-90 active:duration-75"
-        >
-          <Icon class="mr-4 h-6 w-6" name="mdi:download" />
-          Download
-        </button>
-      </div>
-    </header>
+    <Header />
     <main
       class="z-10 -mt-[5.5rem] mb-[50vh] grid w-full place-items-center rounded-b-[10rem] bg-black"
     >
