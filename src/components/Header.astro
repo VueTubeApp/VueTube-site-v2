@@ -3,16 +3,18 @@ import { Icon } from "astro-iconify";
 ---
 
 <header
-  class="sticky top-0 z-50 flex h-[5.5rem] w-full overflow-hidden backdrop-blur-xl"
+  class="sticky top-0 z-50 flex h-[5.5rem] w-full items-center justify-between overflow-hidden p-4 backdrop-blur-xl"
 >
-  <a
-    class="fixed left-4 top-4 hidden h-12 w-36 bg-[url('/logo.svg')] bg-contain bg-center bg-no-repeat md:block"
-    href="/"
-  >
-  </a>
+  <div class="w-1/4">
+    <a
+      class="hidden h-12 w-36 bg-[url('/logo.svg')] bg-contain bg-center bg-no-repeat md:block"
+      href="/"
+    >
+    </a>
+  </div>
 
   <nav
-    class="fixed left-1/2 top-0 hidden -translate-x-1/2 gap-4 p-5 md:flex"
+    class="top-0 hidden w-1/2 justify-center gap-4 md:flex"
     style="text-shadow: 0 0 0.25rem #000, 0 0 0.5rem #000, 0 0 0.75rem #000;"
   >
     <a
@@ -26,7 +28,7 @@ import { Icon } from "astro-iconify";
     <a href="/about" class="block cursor-pointer p-2">About Us</a>
   </nav>
 
-  <div class="fixed right-4 top-4 flex gap-4">
+  <div class="flex w-1/4 justify-end gap-4">
     <a
       class="block rounded-2xl p-2 duration-300 hover:scale-110 hover:bg-[#5865F2] hover:text-black active:scale-90"
       href="https://vuetube.app/discord"
