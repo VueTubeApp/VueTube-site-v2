@@ -3,7 +3,7 @@ import { Icon } from "astro-iconify";
 ---
 
 <header
-  class="sticky top-0 z-50 h-[5.5rem] w-full overflow-hidden bg-transparent mix-blend-difference backdrop-blur-md"
+  class="sticky top-0 z-50 h-[5.5rem] w-full overflow-hidden backdrop-blur-xl"
 >
   <a
     class="fixed left-4 top-4 hidden h-12 w-36 bg-[url('logo.svg')] bg-contain bg-center bg-no-repeat md:block"
@@ -11,10 +11,13 @@ import { Icon } from "astro-iconify";
   >
   </a>
 
-  <nav class="fixed left-1/2 top-0 hidden -translate-x-1/2 gap-4 p-5 md:flex">
+  <nav
+    class="fixed left-1/2 top-0 hidden -translate-x-1/2 gap-4 p-5 md:flex"
+    style="text-shadow: 0 0 0.25rem #000, 0 0 0.5rem #000, 0 0 0.75rem #000;"
+  >
     <a
       href="/features"
-      class="block cursor-pointer rounded-2xl bg-neutral-500 bg-opacity-50 p-2 backdrop-blur-md"
+      class="block cursor-pointer rounded-2xl bg-neutral-500 bg-opacity-25 p-2 backdrop-blur-md"
     >
       Features
     </a>
