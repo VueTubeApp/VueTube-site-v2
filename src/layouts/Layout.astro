@@ -20,7 +20,7 @@ const { title } = Astro.props;
   </head>
   <body class="flex flex-col items-center">
     <header
-      class="sticky top-0 z-50 h-[5.5rem] w-full overflow-hidden bg-transparent backdrop-blur-xl"
+      class="sticky top-0 z-50 h-[5.5rem] w-full overflow-hidden bg-transparent mix-blend-difference backdrop-blur-md"
     >
       <a
         class="fixed left-4 top-4 hidden h-12 w-36 bg-[url('logo.svg')] bg-contain bg-center bg-no-repeat md:block"
@@ -29,13 +29,14 @@ const { title } = Astro.props;
       </a>
 
       <nav
-        class="fixed left-1/2 top-0 hidden -translate-x-1/2 gap-4 p-5 mix-blend-difference md:flex"
+        class="fixed left-1/2 top-0 hidden -translate-x-1/2 gap-4 p-5 md:flex"
       >
         <a
           href="/features"
           class="block cursor-pointer rounded-2xl bg-neutral-500 bg-opacity-50 p-2 backdrop-blur-md"
-          >Features</a
         >
+          Features
+        </a>
         <a href="/contribute" class="block cursor-pointer p-2">Contribute</a>
         <a href="/docs/" class="block cursor-pointer p-2">Docs</a>
         <a href="/about" class="block cursor-pointer p-2">About Us</a>
@@ -64,29 +65,28 @@ const { title } = Astro.props;
         </button>
       </div>
     </header>
-  </body>
-  <!-- glow circle -->
-  <div
-    class="fixed left-1/2 top-0 -z-10 h-[100vw] w-[100vw] -translate-x-1/2 -translate-y-1/2 rounded-full bg-neutral-800 opacity-50 blur-[420px] portrait:h-[100vh] portrait:w-[100vh]"
-  >
-  </div>
-  <!-- <main class="-mt-[5.5rem] w-full"> -->
-  <slot />
-  <!-- </main> -->
-  <footer
-    class="sticky top-[15.5rem] w-full bg-black"
-    style="max-height: calc(100dvh - 15.5rem);"
-  >
-    <div
-      class="relative top-0 grid h-96 w-full place-items-center overflow-hidden bg-black px-4 py-16"
+    <main
+      class="z-10 -mt-[5.5rem] mb-[50vh] grid w-full place-items-center rounded-b-[10rem] bg-black"
     >
-      <!-- <div
-        class="sticky bottom-0 h-[40vh] w-full bg-[url('https://media.discordapp.net/attachments/952985066424897574/1112654424842707047/image.png?width=2592&height=1128')] bg-cover bg-top bg-no-repeat"
+      <!-- glow circle -->
+      <div
+        class="fixed left-1/2 top-0 -z-10 h-[100vw] w-[100vw] -translate-x-1/2 -translate-y-1/2 rounded-full bg-neutral-800 opacity-50 blur-[420px] portrait:h-[100vh] portrait:w-[100vh]"
       >
-      </div> -->
-      footer.
-    </div>
-  </footer>
+      </div>
+      <slot />
+    </main>
+    <footer class="fixed bottom-0 -z-10 h-[50vh] w-full">
+      <div
+        class="relative top-0 grid h-96 w-full place-items-center overflow-hidden px-4 py-16"
+      >
+        <!-- <div
+      class="sticky bottom-0 h-[40vh] w-full bg-[url('https://media.discordapp.net/attachments/952985066424897574/1112654424842707047/image.png?width=2592&height=1128')] bg-cover bg-top bg-no-repeat"
+      >
+    </div> -->
+        footer.
+      </div>
+    </footer>
+  </body>
 </html>
 
 <style is:global>
