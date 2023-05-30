@@ -46,4 +46,20 @@ const { title } = Astro.props;
     background-color: #000;
     color: white;
   }
+  /* custom rounded scrollbar */
+  ::-webkit-scrollbar {
+    width: 0.8rem;
+  }
+  ::-webkit-scrollbar-track {
+    background: #000;
+    border: solid 2px #000;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(231, 231, 231, 0.8);
+    border-radius: 0.5rem;
+    border: solid 2px #000;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(231, 231, 231, 0.9);
+  }
 </style>
