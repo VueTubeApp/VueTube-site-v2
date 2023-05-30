@@ -524,11 +524,6 @@
   resolved "https://registry.yarnpkg.com/@esbuild/win32-x64/-/win32-x64-0.17.19.tgz#8cfaf2ff603e9aabb910e9c0558c26cf32744061"
   integrity sha512-lAhycmKnVOuRYNtRtatQR1LPQf2oYCkRGkSFnseDAKPl8lu5SOsK/e1sXe5a0Pc5kHIHe6P2I/ilntNv2xf3cA==
 
-"@fontsource-variable/montserrat@^5.0.2":
-  version "5.0.2"
-  resolved "https://registry.npmjs.org/@fontsource-variable/montserrat/-/montserrat-5.0.2.tgz"
-  integrity sha512-m4DB9MWHIdTDD8tmgAGCOkyN1kDO6oup4fgyMbID8fDfnM1Jf0z1VRe8bJbdQIE9YXY9C0vAafI/ZCsuEaYUGw==
-
 "@iconify/tools@latest":
   version "3.0.1"
   resolved "https://registry.npmjs.org/@iconify/tools/-/tools-3.0.1.tgz"
