@@ -1,6 +1,7 @@
 ---
 import { Icon } from "astro-iconify";
 import Layout from "../layouts/Layout.astro";
+import Vbutton from "../components/v-button.vue";
 ---
 
 <Layout title="VueTube">
@@ -23,35 +24,35 @@ import Layout from "../layouts/Layout.astro";
       </h1>
       <div class="flex items-start gap-x-2">
         <button
-          class="title-case flex items-center gap-x-2 rounded-3xl border border-neutral-500 bg-white px-6 py-2 font-semibold text-black duration-150 hover:bg-black hover:px-8 hover:text-white active:scale-95 active:py-6 active:duration-75"
+          class="flex items-center justify-center gap-x-2 overflow-hidden rounded-3xl border border-white bg-white px-6 py-2 font-semibold capitalize text-black duration-150 hover:bg-black hover:px-8 hover:text-white active:scale-95 active:py-6 active:duration-75"
         >
           <Icon class="h-6 w-6" name="mdi:download" />
           Download
         </button>
-        <button
-          class="rounded-3xl border border-neutral-500 px-4 py-2 font-semibold duration-150 hover:bg-neutral-800 hover:text-white"
+        <Vbutton
+          class="border border-white px-6 py-2 font-semibold capitalize text-white duration-150 hover:bg-neutral-800"
         >
           or don't ¯\_(ツ)_/¯
-        </button>
+        </Vbutton>
       </div>
     </div>
   </section>
+</Layout>
+<div
+  class="sticky top-[5.5rem] h-[10rem] w-full rounded-t-3xl bg-gradient-to-b from-neutral-800 to-transparent md:rounded-t-[10rem]"
+  style="height: calc(50dvh - 5.5rem)"
+>
+</div>
+<section
+  class="top-[5.5rem] z-10 flex h-[200dvh] w-full flex-col items-center px-12"
+  style="margin-top: calc(-50dvh + 10.5rem);"
+>
   <div
-    class="sticky top-[5.5rem] h-[10rem] w-full rounded-t-3xl bg-gradient-to-b from-neutral-800 to-transparent md:rounded-t-[10rem]"
-    style="height: calc(50dvh - 5.5rem)"
+    class="h-[100dvh] w-full max-w-screen-lg bg-[url('https://media.discordapp.net/attachments/952985066424897574/1112651039968088064/image.png?width=1468&height=1402')] bg-contain bg-center bg-no-repeat"
   >
   </div>
-  <section
-    class="top-[5.5rem] z-10 flex h-[200dvh] w-full flex-col items-center px-12"
-    style="margin-top: calc(-50dvh + 10.5rem);"
+  <div
+    class="h-[100dvh] w-full max-w-screen-lg bg-[url('https://media.discordapp.net/attachments/952985066424897574/1112653454859571231/image.png?width=2382&height=1402')] bg-contain bg-center bg-no-repeat lg:w-[60vw]"
   >
-    <div
-      class="h-[100dvh] w-full max-w-screen-lg bg-[url('https://media.discordapp.net/attachments/952985066424897574/1112651039968088064/image.png?width=1468&height=1402')] bg-contain bg-center bg-no-repeat"
-    >
-    </div>
-    <div
-      class="h-[100dvh] w-full max-w-screen-lg bg-[url('https://media.discordapp.net/attachments/952985066424897574/1112653454859571231/image.png?width=2382&height=1402')] bg-contain bg-center bg-no-repeat lg:w-[60vw]"
-    >
-    </div>
-  </section>
-</Layout>
+  </div>
+</section>

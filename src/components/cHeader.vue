@@ -42,7 +42,7 @@
       </a>
       <button
         id="dl"
-        class="title-case flex items-center gap-x-2 overflow-hidden rounded-3xl border border-white bg-white px-4 py-2 font-semibold text-black duration-75 hover:scale-105 hover:border-neutral-600 hover:bg-transparent hover:text-white active:scale-110 active:rounded-2xl active:duration-150"
+        class="flex items-center justify-center gap-x-2 overflow-hidden rounded-3xl border border-white bg-white px-4 py-2 font-semibold capitalize text-black duration-75 hover:scale-105 hover:border-neutral-600 hover:bg-transparent hover:text-white active:scale-110 active:rounded-2xl active:duration-150"
         @mouseenter.capture.stop="hoverAnimate"
         @mouseleave.capture.stop="cancelAnimate"
       >
