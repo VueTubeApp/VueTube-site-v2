@@ -61,14 +61,14 @@
 
     <div class="flex w-1/4 items-center justify-end gap-4">
       <a
-        class="active:duration-0 grid h-10 w-10 place-items-center rounded-2xl duration-300 hover:scale-105 hover:bg-[#5865F2] active:scale-90"
+        class="grid h-10 w-10 place-items-center rounded-2xl duration-300 hover:scale-105 hover:bg-[#5865F2] active:scale-90 active:duration-0"
         href="https://vuetube.app/discord"
         target="_blank"
       >
         <Icon class="h-6 w-6" icon="fa-brands:discord" />
       </a>
       <a
-        class="active:duration-0 grid h-10 w-10 place-items-center rounded-2xl duration-300 hover:scale-105 hover:bg-white hover:text-black active:scale-90"
+        class="grid h-10 w-10 place-items-center rounded-2xl duration-300 hover:scale-105 hover:bg-white hover:text-black active:scale-90 active:duration-0"
         href="https://github.com/VueTubeApp/"
         target="_blank"
       >
@@ -193,6 +193,7 @@ onMounted(() => {
   const navLinks = document.querySelectorAll("nav a");
 
   navLinks.forEach((link) => {
+    if (!navElement.value) return;
     const activeNavElement = (navElement.value as Element).querySelector(
       `a[href="${window.location.pathname}"]`
     );
