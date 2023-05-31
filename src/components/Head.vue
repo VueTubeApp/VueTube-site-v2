@@ -19,10 +19,11 @@
       style="text-shadow: 0 0 0.5rem #0008, 0 0 0.75rem #0008"
       ref="navElement"
     >
-      <!-- -mx-2 to make ensure no gaps between :hover hitboxes on scale-90 -->
+      <!-- -mx-4 to make ensure no gaps between :hover hitboxes on scale-90 -->
       <a
         href="/"
-        class="-mx-2 block cursor-pointer px-6 py-4 text-neutral-500 duration-150 hover:scale-90 hover:text-white"
+        :class="isActive('/') ? 'scale-90 text-white' : 'text-neutral-500'"
+        class="-mx-4 block cursor-pointer px-8 py-4 duration-150 hover:scale-90 hover:text-white"
         @mouseenter="moveBackgroundToTarget"
         @mouseleave="onUnhover"
       >
@@ -30,7 +31,10 @@
       </a>
       <a
         href="/features"
-        class="-mx-2 block cursor-pointer px-6 py-4 text-neutral-500 duration-150 hover:scale-90 hover:text-white"
+        :class="
+          isActive('/features') ? 'scale-90 text-white' : 'text-neutral-500'
+        "
+        class="-mx-4 block cursor-pointer px-8 py-4 duration-150 hover:scale-90 hover:text-white"
         @mouseenter="moveBackgroundToTarget"
         @mouseleave="onUnhover"
       >
@@ -38,21 +42,26 @@
       </a>
       <a
         href="/contribute"
-        class="-mx-2 block cursor-pointer px-6 py-4 text-neutral-500 duration-150 hover:scale-90 hover:text-white"
+        :class="
+          isActive('/contribute') ? 'scale-90 text-white' : 'text-neutral-500'
+        "
+        class="-mx-4 block cursor-pointer px-8 py-4 duration-150 hover:scale-90 hover:text-white"
         @mouseenter="moveBackgroundToTarget"
         @mouseleave="onUnhover"
         >Contribute</a
       >
       <a
         href="/docs/"
-        class="-mx-2 block cursor-pointer px-6 py-4 text-neutral-500 duration-150 hover:scale-90 hover:text-white"
+        :class="isActive('/docs/') ? 'scale-90 text-white' : 'text-neutral-500'"
+        class="-mx-4 block cursor-pointer px-8 py-4 duration-150 hover:scale-90 hover:text-white"
         @mouseenter="moveBackgroundToTarget"
         @mouseleave="onUnhover"
         >Docs</a
       >
       <a
         href="/about"
-        class="-mx-2 block cursor-pointer px-6 py-4 text-neutral-500 duration-150 hover:scale-90 hover:text-white"
+        :class="isActive('/about') ? 'scale-90 text-white' : 'text-neutral-500'"
+        class="-mx-4 block cursor-pointer px-8 py-4 duration-150 hover:scale-90 hover:text-white"
         @mouseenter="moveBackgroundToTarget"
         @mouseleave="onUnhover"
         >About Us</a
@@ -93,6 +102,10 @@ import { Icon } from "@iconify/vue";
 import Butt from "./butt.vue";
 import anime from "animejs";
 
+function isActive(path: string) {
+  return window.location.pathname === path;
+}
+
 function hoverAnimate(e: Event) {
   anime({
     targets: (e.target as Element).querySelector("svg"),
@@ -124,7 +137,7 @@ function moveBackground(el: Element, teleport = false) {
   currentBackground = el;
   const background = document.getElementById("background") as HTMLElement;
   const rect = el.getBoundingClientRect();
-  const padding = [-10, -10]; // x, y
+  const padding = [-20, -10]; // x, y
   anime.remove(background);
   let ease: string;
   if (teleport) {
