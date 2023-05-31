@@ -89,14 +89,14 @@
       class="flex w-2/3 items-center justify-end gap-4 text-white md:w-auto lg:w-1/4"
     >
       <a
-        class="active:duration-0 grid h-10 w-10 place-items-center rounded-2xl transition duration-300 hover:scale-105 hover:bg-[#5865F2] focus:scale-105 focus:bg-[#5865F2] focus:outline-none focus:ring focus:ring-neutral-300 active:scale-90"
+        class="grid h-10 w-10 place-items-center rounded-2xl transition duration-300 hover:scale-105 hover:bg-[#5865F2] focus:scale-105 focus:bg-[#5865F2] focus:outline-none focus:ring focus:ring-neutral-300 active:scale-90 active:duration-0"
         href="https://vuetube.app/discord"
         target="_blank"
       >
         <Icon class="h-6 w-6" icon="fa-brands:discord" />
       </a>
       <a
-        class="active:duration-0 grid h-10 w-10 place-items-center rounded-2xl transition duration-300 hover:scale-105 hover:bg-white hover:text-black focus:scale-105 focus:bg-white focus:text-black focus:outline-none focus:ring focus:ring-neutral-300 active:scale-90"
+        class="grid h-10 w-10 place-items-center rounded-2xl transition duration-300 hover:scale-105 hover:bg-white hover:text-black focus:scale-105 focus:bg-white focus:text-black focus:outline-none focus:ring focus:ring-neutral-300 active:scale-90 active:duration-0"
         href="https://github.com/VueTubeApp/"
         target="_blank"
       >
