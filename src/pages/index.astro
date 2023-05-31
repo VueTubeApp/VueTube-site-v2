@@ -26,13 +26,13 @@ import Interactive from "../components/Interactive.vue";
         class="flex items-start gap-x-2 portrait:flex-col portrait:items-center portrait:gap-y-6"
       >
         <Interactive
-          class="border landscape:rounded-r-md border-white bg-white px-6 py-2 font-semibold text-black duration-150 hover:bg-black hover:px-10 hover:text-white focus:bg-black focus:px-10 focus:text-white focus:outline-none focus:ring focus:ring-neutral-300 active:scale-95 active:py-6 active:duration-75"
+          class="border landscape:rounded-r-md border-white bg-white px-6 py-2 font-semibold text-black duration-150 hover:bg-black hover:px-10 hover:text-white focus:bg-black focus:px-10 focus:text-white focus:outline-none focus:ring focus:ring-neutral-300 active:scale-95 active:py-6 active:duration-75 hover:border-neutral-600"
         >
           <Icon class="h-6 w-6" name="mdi:download" />
           Download
         </Interactive>
         <Interactive
-          class="border landscape:rounded-l-md border-white px-6 py-2 font-semibold capitalize text-white duration-150 hover:bg-neutral-800 focus:bg-neutral-800 focus:outline-none focus:ring focus:ring-neutral-300"
+          class="border landscape:rounded-l-md border-neutral-600 px-6 py-2 font-semibold capitalize text-white duration-150 hover:bg-neutral-800 focus:bg-neutral-800 focus:outline-none focus:ring focus:ring-neutral-300"
         >
           or don't ¯\_(ツ)_/¯
         </Interactive>
@@ -58,19 +58,20 @@ import Interactive from "../components/Interactive.vue";
       sunt eius laborum adipisci exercitationem? Nam rem aut vel adipisci
       doloribus consequuntur ipsum! Ipsa facere ducimus eaque provident ipsum.
     </h3>
-    <div class="flex gap-4 mt-20 portrait:flex-col">
-      <div class="bg-[url('https://images.unsplash.com/photo-1534996858221-380b92700493?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3431&q=80')] bg-cover bg-bottom h-96 w-64 rounded-3xl flex flex-col justify-between hover:text-blue-300 cursor-pointer hover:p-2 hover:scale-105 duration-300">
+    <div class="flex w-full max-w-screen-md gap-4 mt-20 portrait:flex-col">
+      <div class="w-1/3 bg-[url('https://images.unsplash.com/photo-1534996858221-380b92700493?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3431&q=80')] bg-cover bg-bottom h-96 rounded-3xl flex flex-col justify-between hover:text-blue-300 cursor-pointer hover:p-2 hover:scale-105 duration-300">
         <h3 class="font-semibold m-6">Watch In Your <br /> Language</h3>
         <div class="bg-black m-3 mr-auto rounded-full px-2 py-1 text-xs font-semibold" >
           Community transations
         </div>
       </div>
 
-      <div class="flex flex-col rounded-3xl p-4 items-center cursor-pointer hover:p-6 pb-0 hover:pb-0 hover:scale-105 duration-300 bg-neutral-800 hover:text-purple-300">
-        <h3 class="font-semibold m-6">Streamline Your Watching Experience</h3>
+      <div class="w-2/3 flex flex-col rounded-3xl p-4 items-center cursor-pointer hover:p-6 pb-0 hover:pb-0 hover:scale-105 duration-300 bg-neutral-700 hover:text-purple-300">
+        <h3 class="m-2 text-center text-xs font-thin text-neutral-300">Built-in extensions</h3>
+        <h3 class="mb-4 font-bold text-center text-lg">Streamline Your <br/> Watching Experience</h3>
         <div class="flex w-full h-full">
-          <div class="bg-purple-700 w-2/4 mx-auto mt-12 border-4 border-purple-300 border-b-0 rounded-t-2xl" />
-          <div class="flex flex-col text-xs w-1/4 justify-around text-center p-4 items-center">
+          <div class="bg-purple-700 w-2/4 mx-auto mt-10 border-8 border-purple-300 border-b-0 rounded-t-3xl" />
+          <div class="flex flex-col text-xs w-1/4 justify-around text-center m-10 items-center">
             <span>Sponsorblock</span>
             <span>RYD</span>
             <span>Community Plugins</span>
@@ -78,10 +79,24 @@ import Interactive from "../components/Interactive.vue";
         </div>
       </div>
     </div>
-    <div
-      class="h-[100dvh] w-full max-w-screen-lg bg-[url('https://media.discordapp.net/attachments/952985066424897574/1112651039968088064/image.png?width=1468&height=1402')] bg-contain bg-center bg-no-repeat"
-    >
+
+    <div class="flex gap-4 portrait:flex-col mt-4 w-full max-w-screen-md">
+      <div class="cursor-pointer w-2/3 bg-neutral-700 flex rounded-3xl hover:p-2 hover:scale-105 duration-300 hover:pb-0">
+        <div class="p-12 pr-0 w-1/2">
+          <span class="text-thin text-neutral-300">Customizations</span>
+          <h3 class="font-bold mb-10">Tailor-made For You</h3>
+          <p class="text-xs text-neutral-300">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti consectetur laboriosam modi fuga doloribus ut!</p>
+        </div>
+        <div class="w-44 h-56 bg-emerald-800 border-emerald-400 rounded-t-3xl border-8 mt-12 mx-auto border-b-0" />
+      </div>
+      <div class="cursor-pointer w-1/3 h-full rounded-3xl hover:scale-105 duration-300 bg-cover bg-[url('https://images.unsplash.com/photo-1510535043828-3d1edc68071e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2370&q=80')]">
+        <div class="w-full h-full bg-black bg-opacity-50 p-4 flex flex-col hover:p-6 duration-300 items-start justify-end">
+          <span class="text-orange-300 font-thin">Fast & Private</span>
+          <h3 class="font-bold text-lg">Privacy At <br/> Lightning Speeds</h3>
+        </div>
+      </div>
     </div>
+
     <div
       class="h-[100dvh] w-full max-w-screen-lg bg-[url('https://media.discordapp.net/attachments/952985066424897574/1112653454859571231/image.png?width=2382&height=1402')] bg-contain bg-center bg-no-repeat lg:w-[60vw]"
     >
