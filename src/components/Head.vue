@@ -15,14 +15,13 @@
       id="background"
     ></div>
     <nav
-      class="top-0 z-20 hidden w-1/2 justify-center font-semibold md:flex"
+      class="top-0 z-20 hidden w-1/2 justify-center font-semibold text-neutral-500 md:flex"
       style="text-shadow: 0 0 0.5rem #0008, 0 0 0.75rem #0008"
       ref="navElement"
     >
       <!-- -mx-4 to make ensure no gaps between :hover hitboxes on scale-90 -->
       <a
         href="/"
-        :class="isActive('/') ? 'scale-90 text-white' : 'text-neutral-500'"
         class="-mx-4 block cursor-pointer px-8 py-4 duration-150 hover:scale-90 hover:text-white"
         @mouseenter="moveBackgroundToTarget"
         @mouseleave="onUnhover"
@@ -31,9 +30,6 @@
       </a>
       <a
         href="/features"
-        :class="
-          isActive('/features') ? 'scale-90 text-white' : 'text-neutral-500'
-        "
         class="-mx-4 block cursor-pointer px-8 py-4 duration-150 hover:scale-90 hover:text-white"
         @mouseenter="moveBackgroundToTarget"
         @mouseleave="onUnhover"
@@ -42,9 +38,6 @@
       </a>
       <a
         href="/contribute"
-        :class="
-          isActive('/contribute') ? 'scale-90 text-white' : 'text-neutral-500'
-        "
         class="-mx-4 block cursor-pointer px-8 py-4 duration-150 hover:scale-90 hover:text-white"
         @mouseenter="moveBackgroundToTarget"
         @mouseleave="onUnhover"
@@ -52,7 +45,6 @@
       >
       <a
         href="/docs/"
-        :class="isActive('/docs/') ? 'scale-90 text-white' : 'text-neutral-500'"
         class="-mx-4 block cursor-pointer px-8 py-4 duration-150 hover:scale-90 hover:text-white"
         @mouseenter="moveBackgroundToTarget"
         @mouseleave="onUnhover"
@@ -60,7 +52,6 @@
       >
       <a
         href="/about"
-        :class="isActive('/about') ? 'scale-90 text-white' : 'text-neutral-500'"
         class="-mx-4 block cursor-pointer px-8 py-4 duration-150 hover:scale-90 hover:text-white"
         @mouseenter="moveBackgroundToTarget"
         @mouseleave="onUnhover"
@@ -197,6 +188,20 @@ onMounted(() => {
   window.addEventListener("resize", () => {
     if (!currentBackground) return;
     moveBackground(currentBackground, true);
+  });
+
+  const navLinks = document.querySelectorAll("nav a");
+
+  navLinks.forEach((link) => {
+    const activeNavElement = (navElement.value as Element).querySelector(
+      `a[href="${window.location.pathname}"]`
+    );
+    console.log(link);
+    console.log(activeNavElement);
+    if (link == activeNavElement) {
+      link.classList.remove("text-neutral-500");
+      link.classList.add("scale-90", "text-white");
+    }
   });
 });
 </script>
