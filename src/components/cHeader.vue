@@ -60,14 +60,14 @@
 
     <div class="flex w-1/4 items-center justify-end gap-4">
       <a
-        class="grid h-10 w-10 place-items-center rounded-2xl duration-300 hover:scale-105 hover:bg-[#5865F2] active:scale-90 active:duration-0"
+        class="active:duration-0 grid h-10 w-10 place-items-center rounded-2xl duration-300 hover:scale-105 hover:bg-[#5865F2] active:scale-90"
         href="https://vuetube.app/discord"
         target="_blank"
       >
         <Icon class="h-6 w-6" icon="fa-brands:discord" />
       </a>
       <a
-        class="grid h-10 w-10 place-items-center rounded-2xl duration-300 hover:scale-105 hover:bg-white hover:text-black active:scale-90 active:duration-0"
+        class="active:duration-0 grid h-10 w-10 place-items-center rounded-2xl duration-300 hover:scale-105 hover:bg-white hover:text-black active:scale-90"
         href="https://github.com/VueTubeApp/"
         target="_blank"
       >
@@ -101,7 +101,7 @@ function hoverAnimate(e: Event) {
       { translateY: "-2rem", easing: "steps(1)" },
       { translateY: "2rem", easing: "easeInOutExpo" },
       { translateY: "-2rem", easing: "steps(1)" },
-      { translateY: "0rem", easing: "easeInOutExpo" },
+      { translateY: "0rem", easing: "easeOutElastic" },
     ],
     duration: 800,
   });
