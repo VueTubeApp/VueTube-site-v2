@@ -2,10 +2,10 @@
   <header
     :class="
       menu
-        ? 'h-[23rem] rounded-b-3xl bg-neutral-800 bg-opacity-30'
+        ? 'h-[23rem] rounded-b-3xl bg-neutral-800 bg-opacity-30 duration-300'
         : 'h-[5.5rem] overflow-hidden rounded-b-none bg-transparent'
     "
-    class="fixed top-0 z-50 flex w-full flex-wrap items-center justify-between p-4 backdrop-blur-xl duration-300 md:sticky lg:px-6"
+    class="fixed top-0 z-50 flex w-full flex-wrap items-center justify-between p-4 backdrop-blur-xl md:sticky lg:px-6"
   >
     <div class="w-1/3 md:w-auto lg:w-1/4">
       <a
@@ -25,14 +25,14 @@
       id="background"
     ></div>
     <nav
-      class="z-20 order-last mt-4 flex w-full flex-col items-end justify-center font-semibold text-neutral-400 duration-300 md:order-none md:mt-0 md:flex md:w-1/2 md:flex-row md:items-center"
+      class="z-20 order-last mt-4 flex w-full flex-col items-end justify-center font-semibold text-neutral-400 md:order-none md:mt-0 md:flex md:w-1/2 md:flex-row md:items-center"
       style="text-shadow: 0 0 0.5rem #0008, 0 0 0.75rem #0008"
       ref="navElement"
     >
       <!-- -mx-4 to make ensure no gaps between :hover hitboxes on scale-90 -->
       <a
         href="/"
-        class="-mr-5 block cursor-pointer whitespace-nowrap px-8 py-4 duration-150 hover:scale-90 hover:text-white md:-mx-3"
+        class="-mr-5 block cursor-pointer whitespace-nowrap px-8 py-4 transition duration-150 hover:scale-90 hover:text-white md:-mx-3"
         @mouseenter="moveBackgroundToTarget"
         @mouseleave="onUnhover"
       >
@@ -40,7 +40,7 @@
       </a>
       <a
         href="/features"
-        class="-mr-5 block cursor-pointer whitespace-nowrap px-8 py-4 duration-150 hover:scale-90 hover:text-white md:-mx-3"
+        class="-mr-5 block cursor-pointer whitespace-nowrap px-8 py-4 transition duration-150 hover:scale-90 hover:text-white md:-mx-3"
         @mouseenter="moveBackgroundToTarget"
         @mouseleave="onUnhover"
       >
@@ -48,21 +48,21 @@
       </a>
       <a
         href="/contribute"
-        class="-mr-5 block cursor-pointer whitespace-nowrap px-8 py-4 duration-150 hover:scale-90 hover:text-white md:-mx-3"
+        class="-mr-5 block cursor-pointer whitespace-nowrap px-8 py-4 transition duration-150 hover:scale-90 hover:text-white md:-mx-3"
         @mouseenter="moveBackgroundToTarget"
         @mouseleave="onUnhover"
         >Contribute</a
       >
       <a
         href="/docs/"
-        class="-mr-5 block cursor-pointer whitespace-nowrap px-8 py-4 duration-150 hover:scale-90 hover:text-white md:-mx-3"
+        class="-mr-5 block cursor-pointer whitespace-nowrap px-8 py-4 transition duration-150 hover:scale-90 hover:text-white md:-mx-3"
         @mouseenter="moveBackgroundToTarget"
         @mouseleave="onUnhover"
         >Docs</a
       >
       <a
         href="/about"
-        class="-mr-5 block cursor-pointer whitespace-nowrap px-8 py-4 duration-150 hover:scale-90 hover:text-white md:-mx-3"
+        class="-mr-5 block cursor-pointer whitespace-nowrap px-8 py-4 transition duration-150 hover:scale-90 hover:text-white md:-mx-3"
         @mouseenter="moveBackgroundToTarget"
         @mouseleave="onUnhover"
         >About Us</a
@@ -71,14 +71,14 @@
 
     <div class="flex w-2/3 items-center justify-end gap-4 md:w-auto lg:w-1/4">
       <a
-        class="grid h-10 w-10 place-items-center rounded-2xl duration-300 hover:scale-105 hover:bg-[#5865F2] active:scale-90 active:duration-0"
+        class="grid h-10 w-10 place-items-center rounded-2xl transition duration-300 hover:scale-105 hover:bg-[#5865F2] active:scale-90 active:duration-0"
         href="https://vuetube.app/discord"
         target="_blank"
       >
         <Icon class="h-6 w-6" icon="fa-brands:discord" />
       </a>
       <a
-        class="grid h-10 w-10 place-items-center rounded-2xl duration-300 hover:scale-105 hover:bg-white hover:text-black active:scale-90 active:duration-0"
+        class="grid h-10 w-10 place-items-center rounded-2xl transition duration-300 hover:scale-105 hover:bg-white hover:text-black active:scale-90 active:duration-0"
         href="https://github.com/VueTubeApp/"
         target="_blank"
       >
@@ -86,7 +86,7 @@
       </a>
       <Interactive
         id="dl"
-        class="flex items-center justify-center gap-x-2 overflow-hidden rounded-3xl px-2 py-2 font-semibold capitalize text-white duration-75 hover:scale-105 hover:border-neutral-600 hover:bg-transparent hover:text-white active:scale-110 active:rounded-2xl active:duration-150 md:border md:border-white md:bg-white md:text-black xl:pl-3 xl:pr-4"
+        class="flex items-center justify-center gap-x-2 overflow-hidden rounded-3xl px-2 py-2 font-semibold capitalize text-white transition duration-75 hover:scale-105 hover:border-neutral-600 hover:bg-transparent hover:text-white active:scale-110 active:rounded-2xl active:duration-150 md:border md:border-white md:bg-white md:text-black xl:pl-3 xl:pr-4"
         @mouseenter.capture.stop="hoverAnimate"
         @mouseleave.capture.stop="cancelAnimate"
       >
@@ -203,10 +203,12 @@ const navElement = ref(null);
 
 onMounted(() => {
   resetBackground(true);
-
   // window resize event listener to resize the background element to the current nav element
-  window.addEventListener("resize", () => {
+  window.addEventListener("resize", (e: Event) => {
     if (!currentBackground) return;
+    if (window.innerWidth >= 768) {
+      menu.value = false;
+    }
     moveBackground(currentBackground, true);
   });
 
