@@ -75,7 +75,7 @@
       </a>
       <VButton
         id="dl"
-        class="flex items-center justify-center gap-x-2 overflow-hidden rounded-3xl border border-white bg-white px-4 py-2 font-semibold capitalize text-black duration-75 hover:scale-105 hover:border-neutral-600 hover:bg-transparent hover:text-white active:scale-110 active:rounded-2xl active:duration-150"
+        class="flex items-center justify-center gap-x-2 overflow-hidden rounded-3xl border border-white bg-white py-2 pl-3 pr-4 font-semibold capitalize text-black duration-75 hover:scale-105 hover:border-neutral-600 hover:bg-transparent hover:text-white active:scale-110 active:rounded-2xl active:duration-150"
         @mouseenter.capture.stop="hoverAnimate"
         @mouseleave.capture.stop="cancelAnimate"
       >
@@ -103,7 +103,7 @@ function hoverAnimate(e: Event) {
       { translateY: "-2rem", easing: "steps(1)" },
       { translateY: "0rem", easing: "easeOutElastic" },
     ],
-    duration: 800,
+    duration: 750,
   });
 }
 
