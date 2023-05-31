@@ -2,7 +2,7 @@
   <header
     class="sticky top-0 z-50 flex w-full flex-wrap items-center justify-between overflow-hidden p-4 backdrop-blur-xl md:h-[5.5rem] lg:px-6"
   >
-    <div class="w-1/3 md:w-1/4">
+    <div class="w-1/3 md:w-auto lg:w-1/4">
       <a
         class="block h-12 w-12 bg-[url('/favicon.svg')] bg-contain bg-center bg-no-repeat lg:w-36 lg:bg-[url('/logo.svg')]"
         href="/"
@@ -15,7 +15,8 @@
       id="background"
     ></div>
     <nav
-      class="z-20 order-last mt-4 flex w-full flex-col items-end justify-center font-semibold text-neutral-400 md:order-none md:mt-0 md:w-1/2 md:flex-row md:items-center"
+      :class="menu ? 'flex' : 'hidden'"
+      class="z-20 order-last mt-4 flex w-full flex-col items-end justify-center font-semibold text-neutral-400 md:order-none md:mt-0 md:flex md:w-1/2 md:flex-row md:items-center"
       style="text-shadow: 0 0 0.5rem #0008, 0 0 0.75rem #0008"
       ref="navElement"
     >
@@ -59,7 +60,7 @@
       >
     </nav>
 
-    <div class="flex w-2/3 items-center justify-end gap-4 md:w-1/4">
+    <div class="flex w-2/3 items-center justify-end gap-4 md:w-auto lg:w-1/4">
       <a
         class="active:duration-0 grid h-10 w-10 place-items-center rounded-2xl duration-300 hover:scale-105 hover:bg-[#5865F2] active:scale-90"
         href="https://vuetube.app/discord"
@@ -76,13 +77,19 @@
       </a>
       <Interactive
         id="dl"
-        class="flex items-center justify-center gap-x-2 overflow-hidden rounded-3xl border border-white bg-white py-2 px-2 font-semibold capitalize text-black duration-75 hover:scale-105 hover:border-neutral-600 hover:bg-transparent hover:text-white active:scale-110 active:rounded-2xl active:duration-150 xl:pl-3 xl:pr-4"
+        class="flex items-center justify-center gap-x-2 overflow-hidden rounded-3xl py-2 px-2 font-semibold capitalize text-white duration-75 hover:scale-105 hover:border-neutral-600 hover:bg-transparent hover:text-white active:scale-110 active:rounded-2xl active:duration-150 md:border md:border-white md:bg-white md:text-black xl:pl-3 xl:pr-4"
         @mouseenter.capture.stop="hoverAnimate"
         @mouseleave.capture.stop="cancelAnimate"
       >
         <Icon class="h-6 w-6" icon="mdi:download" />
         <span class="hidden xl:block">Download</span>
       </Interactive>
+      <button
+        @click="menu = !menu"
+        class="-mr-4 rounded-l-full bg-neutral-600 bg-opacity-30 p-2 pl-3 md:hidden"
+      >
+        <Icon class="h-6 w-6" :icon="menu ? 'mdi:close' : 'mdi:menu'" />
+      </button>
     </div>
   </header>
 </template>
@@ -92,6 +99,8 @@ import { ref, onMounted } from "vue";
 import { Icon } from "@iconify/vue";
 import Interactive from "./Interactive.vue";
 import anime from "animejs";
+
+const menu = ref(false);
 
 function hoverAnimate(e: Event) {
   anime({
