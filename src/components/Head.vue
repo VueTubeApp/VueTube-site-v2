@@ -57,8 +57,9 @@
         @mouseleave="onUnhover"
         @focusin="moveBackgroundToTarget"
         @focusout="onUnhover"
-        >Contribute</a
       >
+        Contribute
+      </a>
       <a
         href="/docs/"
         class="-mr-5 block cursor-pointer whitespace-nowrap px-8 py-4 transition duration-150 hover:scale-90 hover:text-white focus:scale-90 focus:text-white focus:outline-none md:-mx-3"
@@ -66,8 +67,9 @@
         @mouseleave="onUnhover"
         @focusin="moveBackgroundToTarget"
         @focusout="onUnhover"
-        >Docs</a
       >
+        Docs
+      </a>
       <a
         href="/about"
         class="-mr-5 block cursor-pointer whitespace-nowrap px-8 py-4 transition duration-150 hover:scale-90 hover:text-white focus:scale-90 focus:text-white focus:outline-none md:-mx-3"
@@ -75,20 +77,21 @@
         @mouseleave="onUnhover"
         @focusin="moveBackgroundToTarget"
         @focusout="onUnhover"
-        >About Us</a
       >
+        About Us
+      </a>
     </nav>
 
     <div class="flex w-2/3 items-center justify-end gap-4 md:w-auto lg:w-1/4">
       <a
-        class="grid h-10 w-10 place-items-center rounded-2xl transition duration-300 hover:scale-105 hover:bg-[#5865F2] focus:scale-105 focus:bg-[#5865F2] focus:outline-none focus:ring focus:ring-neutral-300 active:scale-90 active:duration-0"
+        class="active:duration-0 grid h-10 w-10 place-items-center rounded-2xl transition duration-300 hover:scale-105 hover:bg-[#5865F2] focus:scale-105 focus:bg-[#5865F2] focus:outline-none focus:ring focus:ring-neutral-300 active:scale-90"
         href="https://vuetube.app/discord"
         target="_blank"
       >
         <Icon class="h-6 w-6" icon="fa-brands:discord" />
       </a>
       <a
-        class="grid h-10 w-10 place-items-center rounded-2xl transition duration-300 hover:scale-105 hover:bg-white hover:text-black focus:scale-105 focus:bg-white focus:text-black focus:outline-none focus:ring focus:ring-neutral-300 active:scale-90 active:duration-0"
+        class="active:duration-0 grid h-10 w-10 place-items-center rounded-2xl transition duration-300 hover:scale-105 hover:bg-white hover:text-black focus:scale-105 focus:bg-white focus:text-black focus:outline-none focus:ring focus:ring-neutral-300 active:scale-90"
         href="https://github.com/VueTubeApp/"
         target="_blank"
       >
