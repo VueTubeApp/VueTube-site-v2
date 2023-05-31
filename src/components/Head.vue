@@ -11,17 +11,17 @@
     </div>
 
     <div
-      class="absolute z-10 rounded-full bg-white backdrop-blur-xl"
+      class="absolute z-10 rounded-full bg-neutral-300 backdrop-blur-xl"
       id="background"
     ></div>
     <nav
-      class="top-0 z-20 hidden w-1/2 justify-center gap-4 font-semibold md:flex"
+      class="top-0 z-20 hidden w-1/2 justify-center font-semibold md:flex"
       style="text-shadow: 0 0 0.25rem #000, 0 0 0.5rem #000, 0 0 0.75rem #000"
       ref="navElement"
     >
       <a
         href="/"
-        class="block cursor-pointer rounded-2xl p-2"
+        class="block cursor-pointer px-4 py-2"
         @mouseenter="moveBackgroundToTarget"
         @mouseleave="onUnhover"
       >
@@ -29,7 +29,7 @@
       </a>
       <a
         href="/features"
-        class="block cursor-pointer rounded-2xl bg-opacity-25 p-2"
+        class="block cursor-pointer px-4 py-2"
         @mouseenter="moveBackgroundToTarget"
         @mouseleave="onUnhover"
       >
@@ -37,21 +37,21 @@
       </a>
       <a
         href="/contribute"
-        class="block cursor-pointer p-2"
+        class="block cursor-pointer px-4 py-2"
         @mouseenter="moveBackgroundToTarget"
         @mouseleave="onUnhover"
         >Contribute</a
       >
       <a
         href="/docs/"
-        class="block cursor-pointer p-2"
+        class="block cursor-pointer px-4 py-2"
         @mouseenter="moveBackgroundToTarget"
         @mouseleave="onUnhover"
         >Docs</a
       >
       <a
         href="/about"
-        class="block cursor-pointer p-2"
+        class="block cursor-pointer px-4 py-2"
         @mouseenter="moveBackgroundToTarget"
         @mouseleave="onUnhover"
         >About Us</a
@@ -129,7 +129,7 @@ function moveBackground(el: Element, teleport = false) {
   if (teleport) {
     ease = "steps(1)";
   } else {
-    ease = "easeInOutExpo";
+    ease = "easeOutExpo";
   }
   anime({
     targets: background,
