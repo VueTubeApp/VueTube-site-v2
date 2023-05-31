@@ -15,7 +15,7 @@
       id="background"
     ></div>
     <nav
-      class="z-20 hidden justify-center font-semibold text-neutral-400 md:flex md:w-1/2"
+      class="z-20 order-last mt-4 w-full items-end justify-center font-semibold text-neutral-400 md:order-none md:mt-0 md:flex md:w-1/2 md:items-center"
       style="text-shadow: 0 0 0.5rem #0008, 0 0 0.75rem #0008"
       ref="navElement"
     >
@@ -84,52 +84,6 @@
         <span class="hidden xl:block">Download</span>
       </Interactive>
     </div>
-
-    <!-- mobile nav -->
-    <nav
-      class="z-20 mt-4 flex w-screen flex-col items-end justify-center font-semibold text-neutral-400 md:hidden md:w-1/2"
-      style="text-shadow: 0 0 0.5rem #0008, 0 0 0.75rem #0008"
-      ref="navElementMobile"
-    >
-      <!-- -mx-4 to make ensure no gaps between :hover hitboxes on scale-90 -->
-      <a
-        href="/"
-        class="-mx-3 block cursor-pointer whitespace-nowrap px-8 py-4 duration-150 hover:scale-90 hover:text-white"
-        @mouseenter="moveBackgroundToTarget"
-        @mouseleave="onUnhover"
-      >
-        Home
-      </a>
-      <a
-        href="/features"
-        class="-mx-3 block cursor-pointer whitespace-nowrap px-8 py-4 duration-150 hover:scale-90 hover:text-white"
-        @mouseenter="moveBackgroundToTarget"
-        @mouseleave="onUnhover"
-      >
-        Features
-      </a>
-      <a
-        href="/contribute"
-        class="-mx-3 block cursor-pointer whitespace-nowrap px-8 py-4 duration-150 hover:scale-90 hover:text-white"
-        @mouseenter="moveBackgroundToTarget"
-        @mouseleave="onUnhover"
-        >Contribute</a
-      >
-      <a
-        href="/docs/"
-        class="-mx-3 block cursor-pointer whitespace-nowrap px-8 py-4 duration-150 hover:scale-90 hover:text-white"
-        @mouseenter="moveBackgroundToTarget"
-        @mouseleave="onUnhover"
-        >Docs</a
-      >
-      <a
-        href="/about"
-        class="-mx-3 block cursor-pointer whitespace-nowrap px-8 py-4 duration-150 hover:scale-90 hover:text-white"
-        @mouseenter="moveBackgroundToTarget"
-        @mouseleave="onUnhover"
-        >About Us</a
-      >
-    </nav>
   </header>
 </template>
 
