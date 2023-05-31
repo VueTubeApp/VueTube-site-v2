@@ -11,7 +11,8 @@
     </div>
 
     <div
-      class="absolute z-10 rounded-full bg-neutral-300 backdrop-blur-xl"
+      :class="menu ? 'block' : 'hidden'"
+      class="absolute z-10 rounded-full bg-neutral-300 backdrop-blur-xl md:block"
       id="background"
     ></div>
     <nav
