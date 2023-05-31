@@ -102,9 +102,9 @@ function hoverAnimate(e: Event) {
       { translateY: "-2rem", easing: "steps(1)" },
       { translateY: "2rem", easing: "easeInOutExpo" },
       { translateY: "-2rem", easing: "steps(1)" },
-      { translateY: "0rem", easing: "easeOutElastic" },
+      { translateY: "0rem", easing: "easeOutElastic(10, 1)" },
     ],
-    duration: 750,
+    duration: 800,
   });
 }
 
