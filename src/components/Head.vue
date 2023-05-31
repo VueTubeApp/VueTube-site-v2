@@ -16,12 +16,13 @@
     ></div>
     <nav
       class="top-0 z-20 hidden w-1/2 justify-center font-semibold md:flex"
-      style="text-shadow: 0 0 0.25rem #000, 0 0 0.5rem #000, 0 0 0.75rem #000"
+      style="text-shadow: 0 0 0.5rem #0008, 0 0 0.75rem #0008"
       ref="navElement"
     >
+      <!-- -mx-2 to make ensure no gaps between :hover hitboxes on scale-90 -->
       <a
         href="/"
-        class="block cursor-pointer p-4"
+        class="-mx-2 block cursor-pointer px-6 py-4 text-neutral-500 duration-150 hover:scale-90 hover:text-white"
         @mouseenter="moveBackgroundToTarget"
         @mouseleave="onUnhover"
       >
@@ -29,7 +30,7 @@
       </a>
       <a
         href="/features"
-        class="block cursor-pointer p-4"
+        class="-mx-2 block cursor-pointer px-6 py-4 text-neutral-500 duration-150 hover:scale-90 hover:text-white"
         @mouseenter="moveBackgroundToTarget"
         @mouseleave="onUnhover"
       >
@@ -37,21 +38,21 @@
       </a>
       <a
         href="/contribute"
-        class="block cursor-pointer p-4"
+        class="-mx-2 block cursor-pointer px-6 py-4 text-neutral-500 duration-150 hover:scale-90 hover:text-white"
         @mouseenter="moveBackgroundToTarget"
         @mouseleave="onUnhover"
         >Contribute</a
       >
       <a
         href="/docs/"
-        class="block cursor-pointer p-4"
+        class="-mx-2 block cursor-pointer px-6 py-4 text-neutral-500 duration-150 hover:scale-90 hover:text-white"
         @mouseenter="moveBackgroundToTarget"
         @mouseleave="onUnhover"
         >Docs</a
       >
       <a
         href="/about"
-        class="block cursor-pointer p-4"
+        class="-mx-2 block cursor-pointer px-6 py-4 text-neutral-500 duration-150 hover:scale-90 hover:text-white"
         @mouseenter="moveBackgroundToTarget"
         @mouseleave="onUnhover"
         >About Us</a
@@ -123,7 +124,7 @@ function moveBackground(el: Element, teleport = false) {
   currentBackground = el;
   const background = document.getElementById("background") as HTMLElement;
   const rect = el.getBoundingClientRect();
-  const padding = [-2, -10]; // x, y
+  const padding = [-10, -10]; // x, y
   anime.remove(background);
   let ease: string;
   if (teleport) {
