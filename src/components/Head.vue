@@ -14,7 +14,10 @@
             ? 'scale: 2.5; rotate: 120deg; translate: 5rem 10rem; opacity: 0.5'
             : 'scale: 1; translate: 0 0;'
         "
-        class="block h-12 w-12 bg-[url('/logomark.svg')] bg-contain bg-center bg-no-repeat duration-300 focus:scale-105 md:duration-200 md:hover:scale-105 lg:w-36 lg:bg-[url('/logo.svg')]"
+        :class="
+          menu ? `bg-[url('/logomark120.svg')]` : `bg-[url('/logomark.svg')]`
+        "
+        class="block h-12 w-12 bg-contain bg-center bg-no-repeat duration-300 focus:scale-105 md:duration-200 md:hover:scale-105 lg:w-36 lg:bg-[url('/logo.svg')]"
         href="/"
       >
       </a>
