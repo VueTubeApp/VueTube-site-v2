@@ -14,7 +14,7 @@
             ? 'scale: 2.5; rotate: 120deg; translate: 5rem 10rem; opacity: 0.5'
             : 'scale: 1; translate: 0 0;'
         "
-        class="block h-12 w-12 bg-[url('/logomark.svg')] bg-contain bg-center bg-no-repeat duration-300 md:duration-200 md:hover:scale-105 lg:w-36 lg:bg-[url('/logo.svg')]"
+        class="block h-12 w-12 bg-[url('/logomark.svg')] bg-contain bg-center bg-no-repeat duration-300 focus:scale-105 md:duration-200 md:hover:scale-105 lg:w-36 lg:bg-[url('/logo.svg')]"
         href="/"
       >
       </a>
@@ -32,53 +32,63 @@
       <!-- -mx-4 to make ensure no gaps between :hover hitboxes on scale-90 -->
       <a
         href="/"
-        class="-mr-5 block cursor-pointer whitespace-nowrap px-8 py-4 transition duration-150 hover:scale-90 hover:text-white md:-mx-3"
+        class="-mr-5 block cursor-pointer whitespace-nowrap px-8 py-4 transition duration-150 hover:scale-90 hover:text-white focus:scale-90 focus:text-white focus:outline-none md:-mx-3"
         @mouseenter="moveBackgroundToTarget"
         @mouseleave="onUnhover"
+        @focusin="moveBackgroundToTarget"
+        @focusout="onUnhover"
       >
         Home
       </a>
       <a
         href="/features"
-        class="-mr-5 block cursor-pointer whitespace-nowrap px-8 py-4 transition duration-150 hover:scale-90 hover:text-white md:-mx-3"
+        class="-mr-5 block cursor-pointer whitespace-nowrap px-8 py-4 transition duration-150 hover:scale-90 hover:text-white focus:scale-90 focus:text-white focus:outline-none md:-mx-3"
         @mouseenter="moveBackgroundToTarget"
         @mouseleave="onUnhover"
+        @focusin="moveBackgroundToTarget"
+        @focusout="onUnhover"
       >
         Features
       </a>
       <a
         href="/contribute"
-        class="-mr-5 block cursor-pointer whitespace-nowrap px-8 py-4 transition duration-150 hover:scale-90 hover:text-white md:-mx-3"
+        class="-mr-5 block cursor-pointer whitespace-nowrap px-8 py-4 transition duration-150 hover:scale-90 hover:text-white focus:scale-90 focus:text-white focus:outline-none md:-mx-3"
         @mouseenter="moveBackgroundToTarget"
         @mouseleave="onUnhover"
+        @focusin="moveBackgroundToTarget"
+        @focusout="onUnhover"
         >Contribute</a
       >
       <a
         href="/docs/"
-        class="-mr-5 block cursor-pointer whitespace-nowrap px-8 py-4 transition duration-150 hover:scale-90 hover:text-white md:-mx-3"
+        class="-mr-5 block cursor-pointer whitespace-nowrap px-8 py-4 transition duration-150 hover:scale-90 hover:text-white focus:scale-90 focus:text-white focus:outline-none md:-mx-3"
         @mouseenter="moveBackgroundToTarget"
         @mouseleave="onUnhover"
+        @focusin="moveBackgroundToTarget"
+        @focusout="onUnhover"
         >Docs</a
       >
       <a
         href="/about"
-        class="-mr-5 block cursor-pointer whitespace-nowrap px-8 py-4 transition duration-150 hover:scale-90 hover:text-white md:-mx-3"
+        class="-mr-5 block cursor-pointer whitespace-nowrap px-8 py-4 transition duration-150 hover:scale-90 hover:text-white focus:scale-90 focus:text-white focus:outline-none md:-mx-3"
         @mouseenter="moveBackgroundToTarget"
         @mouseleave="onUnhover"
+        @focusin="moveBackgroundToTarget"
+        @focusout="onUnhover"
         >About Us</a
       >
     </nav>
 
     <div class="flex w-2/3 items-center justify-end gap-4 md:w-auto lg:w-1/4">
       <a
-        class="grid h-10 w-10 place-items-center rounded-2xl transition duration-300 hover:scale-105 hover:bg-[#5865F2] active:scale-90 active:duration-0"
+        class="grid h-10 w-10 place-items-center rounded-2xl transition duration-300 hover:scale-105 hover:bg-[#5865F2] focus:scale-105 focus:bg-[#5865F2] focus:outline-none focus:ring focus:ring-neutral-300 active:scale-90 active:duration-0"
         href="https://vuetube.app/discord"
         target="_blank"
       >
         <Icon class="h-6 w-6" icon="fa-brands:discord" />
       </a>
       <a
-        class="grid h-10 w-10 place-items-center rounded-2xl transition duration-300 hover:scale-105 hover:bg-white hover:text-black active:scale-90 active:duration-0"
+        class="grid h-10 w-10 place-items-center rounded-2xl transition duration-300 hover:scale-105 hover:bg-white hover:text-black focus:scale-105 focus:bg-white focus:text-black focus:outline-none focus:ring focus:ring-neutral-300 active:scale-90 active:duration-0"
         href="https://github.com/VueTubeApp/"
         target="_blank"
       >
@@ -86,9 +96,11 @@
       </a>
       <Interactive
         id="dl"
-        class="flex items-center justify-center gap-x-2 overflow-hidden rounded-3xl px-2 py-2 font-semibold capitalize text-white transition duration-75 hover:scale-105 hover:border-neutral-600 hover:bg-transparent hover:text-white active:scale-110 active:rounded-2xl active:duration-150 md:border md:border-white md:bg-white md:text-black xl:pl-3 xl:pr-4"
-        @mouseenter.capture.stop="hoverAnimate"
-        @mouseleave.capture.stop="cancelAnimate"
+        class="flex items-center justify-center gap-x-2 overflow-hidden rounded-3xl px-2 py-2 font-semibold capitalize text-white transition duration-75 hover:scale-105 hover:border-neutral-600 hover:bg-transparent hover:text-white focus:scale-105 focus:border-neutral-600 focus:bg-transparent focus:text-white focus:outline-none focus:ring focus:ring-neutral-300 active:scale-110 active:rounded-2xl active:duration-150 md:border md:border-white md:bg-white md:text-black xl:pl-3 xl:pr-4"
+        @mouseenter="hoverAnimate"
+        @mouseleave="cancelAnimate"
+        @focusin="hoverAnimate"
+        @focusout="cancelAnimate"
       >
         <Icon class="h-6 w-6" icon="mdi:download" />
         <span class="hidden xl:block">Download</span>

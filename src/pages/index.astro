@@ -14,7 +14,7 @@ import Interactive from "../components/Interactive.vue";
     >
     </div>
     <div class="grid w-1/2 place-content-center portrait:h-1/2 portrait:w-full">
-      <h1 class="mb-6 text-4xl md:text-6xl portrait:text-center font-black">
+      <h1 class="mb-6 text-4xl font-black md:text-6xl portrait:text-center">
         Video Watching, <br />
         <span
           class="bg-[url('https://media1.giphy.com/media/l378oRMuApI3a35Cg/giphy.gif')] bg-clip-text bg-center text-transparent hue-rotate-90 invert"
@@ -22,15 +22,17 @@ import Interactive from "../components/Interactive.vue";
           Supercharged
         </span>
       </h1>
-      <div class="flex items-start portrait:flex-col portrait:gap-y-6 portrait:items-center gap-x-2">
+      <div
+        class="flex items-start gap-x-2 portrait:flex-col portrait:items-center portrait:gap-y-6"
+      >
         <Interactive
-          class="border border-white bg-white px-6 py-2 font-semibold text-black duration-150 hover:bg-black hover:px-10 hover:text-white active:scale-95 active:py-6 active:duration-75"
+          class="border border-white bg-white px-6 py-2 font-semibold text-black duration-150 hover:bg-black hover:px-10 hover:text-white focus:bg-black focus:px-10 focus:text-white focus:outline-none focus:ring focus:ring-neutral-300 active:scale-95 active:py-6 active:duration-75"
         >
           <Icon class="h-6 w-6" name="mdi:download" />
           Download
         </Interactive>
         <Interactive
-          class="border border-white px-6 py-2 font-semibold capitalize text-white duration-150 hover:bg-neutral-800"
+          class="border border-white px-6 py-2 font-semibold capitalize text-white duration-150 hover:bg-neutral-800 focus:bg-neutral-800 focus:outline-none focus:ring focus:ring-neutral-300"
         >
           or don't ¯\_(ツ)_/¯
         </Interactive>
@@ -46,6 +48,16 @@ import Interactive from "../components/Interactive.vue";
     class="top-[5.5rem] z-10 flex h-[200dvh] w-full flex-col items-center px-12"
     style="margin-top: calc(-50dvh + 10.5rem);"
   >
+    <h2
+      class="mb-2 text-center text-4xl font-bold capitalize md:mb-4 md:text-6xl"
+    >
+      You are in control.
+    </h2>
+    <h3 class="max-w-prose text-center md:text-lg">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam minima modi
+      sunt eius laborum adipisci exercitationem? Nam rem aut vel adipisci
+      doloribus consequuntur ipsum! Ipsa facere ducimus eaque provident ipsum.
+    </h3>
     <div
       class="h-[100dvh] w-full max-w-screen-lg bg-[url('https://media.discordapp.net/attachments/952985066424897574/1112651039968088064/image.png?width=1468&height=1402')] bg-contain bg-center bg-no-repeat"
     >
