@@ -21,7 +21,7 @@
     >
       <a
         href="/"
-        class="block cursor-pointer px-4 py-2"
+        class="block cursor-pointer p-4"
         @mouseenter="moveBackgroundToTarget"
         @mouseleave="onUnhover"
       >
@@ -29,7 +29,7 @@
       </a>
       <a
         href="/features"
-        class="block cursor-pointer px-4 py-2"
+        class="block cursor-pointer p-4"
         @mouseenter="moveBackgroundToTarget"
         @mouseleave="onUnhover"
       >
@@ -37,21 +37,21 @@
       </a>
       <a
         href="/contribute"
-        class="block cursor-pointer px-4 py-2"
+        class="block cursor-pointer p-4"
         @mouseenter="moveBackgroundToTarget"
         @mouseleave="onUnhover"
         >Contribute</a
       >
       <a
         href="/docs/"
-        class="block cursor-pointer px-4 py-2"
+        class="block cursor-pointer p-4"
         @mouseenter="moveBackgroundToTarget"
         @mouseleave="onUnhover"
         >Docs</a
       >
       <a
         href="/about"
-        class="block cursor-pointer px-4 py-2"
+        class="block cursor-pointer p-4"
         @mouseenter="moveBackgroundToTarget"
         @mouseleave="onUnhover"
         >About Us</a
@@ -123,7 +123,7 @@ function moveBackground(el: Element, teleport = false) {
   currentBackground = el;
   const background = document.getElementById("background") as HTMLElement;
   const rect = el.getBoundingClientRect();
-  const padding = [6, 2];
+  const padding = [-2, -10]; // x, y
   anime.remove(background);
   let ease: string;
   if (teleport) {
