@@ -14,7 +14,7 @@
             ? 'scale: 2.5; rotate: 120deg; translate: 5rem 10rem; opacity: 0.5'
             : 'scale: 1; translate: 0 0;'
         "
-        class="block h-12 w-12 bg-[url('/favicon.svg')] bg-contain bg-center bg-no-repeat duration-300 lg:w-36 lg:bg-[url('/logo.svg')]"
+        class="block h-12 w-12 bg-[url('/logomark.svg')] bg-contain bg-center bg-no-repeat duration-300 lg:w-36 lg:bg-[url('/logo.svg')]"
         href="/"
       >
       </a>
@@ -71,14 +71,14 @@
 
     <div class="flex w-2/3 items-center justify-end gap-4 md:w-auto lg:w-1/4">
       <a
-        class="active:duration-0 grid h-10 w-10 place-items-center rounded-2xl duration-300 hover:scale-105 hover:bg-[#5865F2] active:scale-90"
+        class="grid h-10 w-10 place-items-center rounded-2xl duration-300 hover:scale-105 hover:bg-[#5865F2] active:scale-90 active:duration-0"
         href="https://vuetube.app/discord"
         target="_blank"
       >
         <Icon class="h-6 w-6" icon="fa-brands:discord" />
       </a>
       <a
-        class="active:duration-0 grid h-10 w-10 place-items-center rounded-2xl duration-300 hover:scale-105 hover:bg-white hover:text-black active:scale-90"
+        class="grid h-10 w-10 place-items-center rounded-2xl duration-300 hover:scale-105 hover:bg-white hover:text-black active:scale-90 active:duration-0"
         href="https://github.com/VueTubeApp/"
         target="_blank"
       >
@@ -86,7 +86,7 @@
       </a>
       <Interactive
         id="dl"
-        class="flex items-center justify-center gap-x-2 overflow-hidden rounded-3xl py-2 px-2 font-semibold capitalize text-white duration-75 hover:scale-105 hover:border-neutral-600 hover:bg-transparent hover:text-white active:scale-110 active:rounded-2xl active:duration-150 md:border md:border-white md:bg-white md:text-black xl:pl-3 xl:pr-4"
+        class="flex items-center justify-center gap-x-2 overflow-hidden rounded-3xl px-2 py-2 font-semibold capitalize text-white duration-75 hover:scale-105 hover:border-neutral-600 hover:bg-transparent hover:text-white active:scale-110 active:rounded-2xl active:duration-150 md:border md:border-white md:bg-white md:text-black xl:pl-3 xl:pr-4"
         @mouseenter.capture.stop="hoverAnimate"
         @mouseleave.capture.stop="cancelAnimate"
       >
