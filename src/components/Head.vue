@@ -29,7 +29,7 @@
       style="text-shadow: 0 0 0.5rem #0008, 0 0 0.75rem #0008"
       ref="navElement"
     >
-      <!-- -mx-4 to make ensure no gaps between :hover hitboxes on scale-90 -->
+      <!-- md:-mx-3 to make ensure no gaps between :hover hitboxes on scale-90 -->
       <a
         href="/"
         class="-mr-5 block cursor-pointer whitespace-nowrap px-8 py-4 transition duration-150 hover:scale-90 hover:text-white focus:scale-90 focus:text-white focus:outline-none md:-mx-3"
