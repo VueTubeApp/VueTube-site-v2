@@ -1,6 +1,6 @@
 <template>
   <header
-    class="sticky top-0 z-50 flex h-[5.5rem] w-full items-center justify-between overflow-hidden p-4 backdrop-blur-xl"
+    class="sticky top-0 z-50 flex h-[5.5rem] w-full items-center justify-between overflow-hidden px-10 py-4 backdrop-blur-xl"
   >
     <div class="w-1/4">
       <a
@@ -10,19 +10,52 @@
       </a>
     </div>
 
+    <div
+      class="absolute z-10 rounded-full bg-white backdrop-blur-xl"
+      id="background"
+    ></div>
     <nav
-      class="top-0 hidden w-1/2 justify-center gap-4 md:flex"
+      class="top-0 z-20 hidden w-1/2 justify-center gap-4 font-semibold md:flex"
       style="text-shadow: 0 0 0.25rem #000, 0 0 0.5rem #000, 0 0 0.75rem #000"
+      ref="navElement"
     >
       <a
+        href="/"
+        class="block cursor-pointer rounded-2xl p-2"
+        @mouseenter="moveBackgroundToTarget"
+        @mouseleave="onUnhover"
+      >
+        Home
+      </a>
+      <a
         href="/features"
-        class="block cursor-pointer rounded-2xl bg-neutral-500 bg-opacity-25 p-2 backdrop-blur-md"
+        class="block cursor-pointer rounded-2xl bg-opacity-25 p-2"
+        @mouseenter="moveBackgroundToTarget"
+        @mouseleave="onUnhover"
       >
         Features
       </a>
-      <a href="/contribute" class="block cursor-pointer p-2">Contribute</a>
-      <a href="/docs/" class="block cursor-pointer p-2">Docs</a>
-      <a href="/about" class="block cursor-pointer p-2">About Us</a>
+      <a
+        href="/contribute"
+        class="block cursor-pointer p-2"
+        @mouseenter="moveBackgroundToTarget"
+        @mouseleave="onUnhover"
+        >Contribute</a
+      >
+      <a
+        href="/docs/"
+        class="block cursor-pointer p-2"
+        @mouseenter="moveBackgroundToTarget"
+        @mouseleave="onUnhover"
+        >Docs</a
+      >
+      <a
+        href="/about"
+        class="block cursor-pointer p-2"
+        @mouseenter="moveBackgroundToTarget"
+        @mouseleave="onUnhover"
+        >About Us</a
+      >
     </nav>
 
     <div class="flex w-1/4 items-center justify-end gap-4">
@@ -57,6 +90,7 @@
 import { Icon } from "@iconify/vue";
 import anime from "animejs";
 import VButton from "./v-button.vue";
+import { ref, onMounted } from "vue";
 
 function hoverAnimate(e: Event) {
   anime({
@@ -81,4 +115,74 @@ function cancelAnimate(e: Event) {
     duration: 0,
   });
 }
+
+let currentBackground: Element;
+
+// function to resize and move the background element to a given element
+function moveBackground(el: Element, teleport = false) {
+  currentBackground = el;
+  const background = document.getElementById("background") as HTMLElement;
+  const rect = el.getBoundingClientRect();
+  const padding = [6, 2];
+  anime.remove(background);
+  if (teleport) {
+    background.style.opacity = "0.3";
+    background.style.width = rect.width + padding[0] * 2 + "px";
+    background.style.height = rect.height + padding[1] * 2 + "px";
+    background.style.left = rect.left - padding[0] + "px";
+    background.style.top = rect.top - padding[1] + "px";
+    return;
+  }
+  anime({
+    targets: background,
+    opacity: 0.3,
+    width: rect.width + padding[0] * 2,
+    height: rect.height + padding[1] * 2,
+    left: rect.left - padding[0],
+    top: rect.top - padding[1],
+    duration: 500,
+    easing: "easeInOutExpo",
+  });
+}
+
+// event handler function to move the background element to the target of the event
+function moveBackgroundToTarget(e: Event) {
+  moveBackground(e.target as Element);
+}
+
+function resetBackground(teleport = false) {
+  // find the current active nav element corresponding to the current page
+  if (!navElement.value) return;
+  const activeNavElement = (navElement.value as Element).querySelector(
+    `a[href="${window.location.pathname}"]`
+  );
+  if (!activeNavElement) {
+    moveBackground((navElement.value as Element).children[0]);
+    anime({
+      targets: "#background",
+      opacity: 0,
+      duration: 500,
+      easing: "easeInOutExpo",
+    });
+    return;
+  }
+  moveBackground(activeNavElement, teleport);
+}
+
+function onUnhover() {
+  resetBackground();
+}
+
+const navElement = ref(null);
+
+onMounted(() => {
+  if (!navElement.value) return;
+  resetBackground(true);
+
+  // window resize event listener to resize the background element to the current nav element
+  window.addEventListener("resize", () => {
+    if (!currentBackground) return;
+    moveBackground(currentBackground, true);
+  });
+});
 </script>
