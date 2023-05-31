@@ -1,7 +1,7 @@
 ---
 import { Icon } from "astro-iconify";
 import Layout from "../layouts/Layout.astro";
-import Vbutton from "../components/v-button.vue";
+import Butt from "../components/butt.vue";
 ---
 
 <Layout title="VueTube">
@@ -23,17 +23,17 @@ import Vbutton from "../components/v-button.vue";
         </span>
       </h1>
       <div class="flex items-start gap-x-2">
-        <Vbutton
+        <Butt
           class="border border-white bg-white px-6 py-2 font-semibold text-black duration-150 hover:bg-black hover:px-10 hover:text-white active:scale-95 active:py-6 active:duration-75"
         >
           <Icon class="h-6 w-6" name="mdi:download" />
           Download
-        </Vbutton>
-        <Vbutton
+        </Butt>
+        <Butt
           class="border border-white px-6 py-2 font-semibold capitalize text-white duration-150 hover:bg-neutral-800"
         >
           or don't ¯\_(ツ)_/¯
-        </Vbutton>
+        </Butt>
       </div>
     </div>
   </section>
