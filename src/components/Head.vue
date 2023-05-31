@@ -1,23 +1,31 @@
 <template>
   <header
-    class="sticky top-0 z-50 flex w-full flex-wrap items-center justify-between overflow-hidden p-4 backdrop-blur-xl md:h-[5.5rem] lg:px-6"
+    :class="
+      menu
+        ? 'h-[23rem] rounded-b-3xl bg-neutral-800 bg-opacity-30'
+        : 'h-[5.5rem] overflow-hidden rounded-b-none bg-transparent'
+    "
+    class="fixed top-0 z-50 flex w-full flex-wrap items-center justify-between p-4 backdrop-blur-xl duration-300 md:sticky lg:px-6"
   >
     <div class="w-1/3 md:w-auto lg:w-1/4">
       <a
-        class="block h-12 w-12 bg-[url('/favicon.svg')] bg-contain bg-center bg-no-repeat lg:w-36 lg:bg-[url('/logo.svg')]"
+        :style="
+          menu
+            ? 'scale: 2.5; rotate: 120deg; translate: 5rem 10rem; opacity: 0.5'
+            : 'scale: 1; translate: 0 0;'
+        "
+        class="block h-12 w-12 bg-[url('/favicon.svg')] bg-contain bg-center bg-no-repeat duration-300 lg:w-36 lg:bg-[url('/logo.svg')]"
         href="/"
       >
       </a>
     </div>
 
     <div
-      :class="menu ? 'block' : 'hidden'"
       class="absolute z-10 rounded-full bg-neutral-300 backdrop-blur-xl md:block"
       id="background"
     ></div>
     <nav
-      :class="menu ? 'flex' : 'hidden'"
-      class="z-20 order-last mt-4 flex w-full flex-col items-end justify-center font-semibold text-neutral-400 md:order-none md:mt-0 md:flex md:w-1/2 md:flex-row md:items-center"
+      class="z-20 order-last mt-4 flex w-full flex-col items-end justify-center font-semibold text-neutral-400 duration-300 md:order-none md:mt-0 md:flex md:w-1/2 md:flex-row md:items-center"
       style="text-shadow: 0 0 0.5rem #0008, 0 0 0.75rem #0008"
       ref="navElement"
     >
