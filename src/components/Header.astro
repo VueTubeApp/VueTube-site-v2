@@ -1,5 +1,8 @@
 ---
 import { Icon } from "astro-iconify";
+const pathname = new URL(Astro.request.url).pathname;
+const currentPath = pathname.slice(1); // remove the first "/"
+console.log(currentPath);
 ---
 
 <header
@@ -7,7 +10,8 @@ import { Icon } from "astro-iconify";
 >
   <div class="w-1/4">
     <a
-      class="hidden h-12 w-36 bg-[url('/logo.svg')] bg-contain bg-center bg-no-repeat md:block"
+      class="ml-2 hidden h-12 w-36 bg-[url('/logo.svg')] bg-contain bg-center bg-no-repeat duration-150 hover:bg-[url('/logo-color.svg')] md:block"
+      class={pathname.includes("/") ? "activelink" : "bg-[url('/logo.svg')]"}
       href="/"
     >
     </a>
@@ -19,13 +23,32 @@ import { Icon } from "astro-iconify";
   >
     <a
       href="/features"
-      class="block cursor-pointer rounded-2xl bg-neutral-500 bg-opacity-25 p-2 backdrop-blur-md"
+      class="block cursor-pointer p-2 hover:rounded-2xl hover:bg-neutral-500 hover:bg-opacity-25"
+      class={currentPath === "features" ? "activelink" : ""}
     >
       Features
     </a>
-    <a href="/contribute" class="block cursor-pointer p-2">Contribute</a>
-    <a href="/docs/" class="block cursor-pointer p-2">Docs</a>
-    <a href="/about" class="block cursor-pointer p-2">About Us</a>
+    <a
+      href="/contribute"
+      class="block cursor-pointer p-2 hover:rounded-2xl hover:bg-neutral-500 hover:bg-opacity-25"
+      class={currentPath == "contribute" ? "activelink" : ""}
+    >
+      Contribute
+    </a>
+    <a
+      href="/docs/"
+      class="block cursor-pointer p-2 hover:rounded-2xl hover:bg-neutral-500 hover:bg-opacity-25"
+      class={currentPath === "docs" ? "activelink" : ""}
+    >
+      Docs
+    </a>
+    <a
+      href="/about"
+      class="block cursor-pointer p-2"
+      class={currentPath === "about" ? "activelink" : ""}
+    >
+      About Us
+    </a>
   </nav>
 
   <div class="flex w-1/4 items-center justify-end gap-4">
@@ -53,7 +76,17 @@ import { Icon } from "astro-iconify";
   </div>
 </header>
 
-<style>
+<style is:global>
+  @tailwind base;
+  @tailwind components;
+  @tailwind utilities;
+
+  .activelink {
+    /* NOTE: putting these directly under astro condition leads to tailwind treeshaking the styles for these unless they are used elsewhere because they are not in the class="", so tailwind ignores them */
+    background: red !important;
+    outline: 1px solid red;
+    @apply rounded-2xl bg-neutral-500 bg-opacity-50;
+  }
   #dl:hover > svg {
     animation: download 0.5s linear 1;
   }
