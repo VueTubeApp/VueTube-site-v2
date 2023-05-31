@@ -74,7 +74,7 @@
       >
         <Icon class="h-6 w-6" icon="fa-brands:github" />
       </a>
-      <Butt
+      <Interactive
         id="dl"
         class="flex items-center justify-center gap-x-2 overflow-hidden rounded-3xl border border-white bg-white py-2 pl-3 pr-4 font-semibold capitalize text-black duration-75 hover:scale-105 hover:border-neutral-600 hover:bg-transparent hover:text-white active:scale-110 active:rounded-2xl active:duration-150"
         @mouseenter.capture.stop="hoverAnimate"
@@ -82,7 +82,7 @@
       >
         <Icon class="h-6 w-6" icon="mdi:download" />
         Download
-      </Butt>
+      </Interactive>
     </div>
   </header>
 </template>
@@ -90,7 +90,7 @@
 <script lang="ts" setup>
 import { ref, onMounted } from "vue";
 import { Icon } from "@iconify/vue";
-import Butt from "./butt.vue";
+import Interactive from "./Interactive.vue";
 import anime from "animejs";
 
 function hoverAnimate(e: Event) {
