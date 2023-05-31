@@ -135,9 +135,10 @@ let currentBackground: Element;
 // function to resize and move the background element to a given element
 function moveBackground(el: Element, teleport = false) {
   currentBackground = el;
+  let isActive = el.classList.contains("scale-90");
   const background = document.getElementById("background") as HTMLElement;
   const rect = el.getBoundingClientRect();
-  const padding = [-20, -10]; // x, y
+  let padding = [-20, -10]; // x, y
   anime.remove(background);
   let ease: string;
   if (teleport) {
@@ -148,10 +149,10 @@ function moveBackground(el: Element, teleport = false) {
   anime({
     targets: background,
     opacity: 0.3,
-    width: rect.width + padding[0] * 2,
-    height: rect.height + padding[1] * 2,
-    left: rect.left - padding[0],
-    top: rect.top - padding[1],
+    width: (isActive ? (rect.width / 9) * 10 : rect.width) + padding[0] * 2,
+    height: (isActive ? (rect.height / 9) * 10 : rect.height) + padding[1] * 2,
+    left: (isActive ? rect.left - rect.width / 18 : rect.left) - padding[0],
+    top: (isActive ? rect.top - rect.height / 18 : rect.top) - padding[1],
     duration: 500,
     easing: ease,
   });
