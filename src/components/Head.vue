@@ -89,7 +89,7 @@
     <nav
       class="z-20 mt-4 flex w-screen flex-col items-end justify-center font-semibold text-neutral-400 md:hidden md:w-1/2"
       style="text-shadow: 0 0 0.5rem #0008, 0 0 0.75rem #0008"
-      ref="navElement"
+      ref="navElementMobile"
     >
       <!-- -mx-4 to make ensure no gaps between :hover hitboxes on scale-90 -->
       <a
