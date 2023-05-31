@@ -3,7 +3,7 @@
     :class="
       menu
         ? 'h-[23rem] rounded-b-3xl bg-neutral-800 bg-opacity-30 duration-300'
-        : 'h-[5.5rem] overflow-hidden rounded-b-none bg-transparent'
+        : 'h-[5.5rem] overflow-hidden rounded-b-none bg-transparent duration-300'
     "
     class="fixed top-0 z-50 flex w-full flex-wrap items-center justify-between p-4 backdrop-blur-xl md:sticky lg:px-6"
   >
@@ -139,7 +139,7 @@ function hoverAnimate(e: Event) {
       { translateY: "-2rem", easing: "steps(1)" },
       { translateY: "0rem", easing: "easeOutElastic(10, 1)" },
     ],
-    duration: 800,
+    duration: 600,
   });
 }
 
@@ -148,7 +148,7 @@ function cancelAnimate(e: Event) {
   anime({
     targets: (e.target as Element).querySelector("svg"),
     translateY: "0rem",
-    duration: 0,
+    duration: 300,
   });
 }
 
