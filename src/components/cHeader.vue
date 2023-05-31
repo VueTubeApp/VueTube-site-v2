@@ -125,13 +125,11 @@ function moveBackground(el: Element, teleport = false) {
   const rect = el.getBoundingClientRect();
   const padding = [6, 2];
   anime.remove(background);
+  let ease: string;
   if (teleport) {
-    background.style.opacity = "0.3";
-    background.style.width = rect.width + padding[0] * 2 + "px";
-    background.style.height = rect.height + padding[1] * 2 + "px";
-    background.style.left = rect.left - padding[0] + "px";
-    background.style.top = rect.top - padding[1] + "px";
-    return;
+    ease = "steps(1)";
+  } else {
+    ease = "easeInOutExpo";
   }
   anime({
     targets: background,
@@ -141,7 +139,7 @@ function moveBackground(el: Element, teleport = false) {
     left: rect.left - padding[0],
     top: rect.top - padding[1],
     duration: 500,
-    easing: "easeInOutExpo",
+    easing: ease,
   });
 }
 
@@ -161,6 +159,7 @@ function resetBackground(teleport = false) {
     anime({
       targets: "#background",
       opacity: 0,
+      width: 0,
       duration: 500,
       easing: "easeInOutExpo",
     });
