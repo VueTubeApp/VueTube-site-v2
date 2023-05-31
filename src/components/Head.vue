@@ -22,7 +22,7 @@
       <!-- -mx-4 to make ensure no gaps between :hover hitboxes on scale-90 -->
       <a
         href="/"
-        class="-mx-4 block cursor-pointer px-8 py-4 duration-150 hover:scale-90 hover:text-white"
+        class="-mx-2 block cursor-pointer px-8 py-4 duration-150 hover:scale-90 hover:text-white"
         @mouseenter="moveBackgroundToTarget"
         @mouseleave="onUnhover"
       >
@@ -30,7 +30,7 @@
       </a>
       <a
         href="/features"
-        class="-mx-4 block cursor-pointer px-8 py-4 duration-150 hover:scale-90 hover:text-white"
+        class="-mx-2 block cursor-pointer px-8 py-4 duration-150 hover:scale-90 hover:text-white"
         @mouseenter="moveBackgroundToTarget"
         @mouseleave="onUnhover"
       >
@@ -38,21 +38,21 @@
       </a>
       <a
         href="/contribute"
-        class="-mx-4 block cursor-pointer px-8 py-4 duration-150 hover:scale-90 hover:text-white"
+        class="-mx-2 block cursor-pointer px-8 py-4 duration-150 hover:scale-90 hover:text-white"
         @mouseenter="moveBackgroundToTarget"
         @mouseleave="onUnhover"
         >Contribute</a
       >
       <a
         href="/docs/"
-        class="-mx-4 block cursor-pointer px-8 py-4 duration-150 hover:scale-90 hover:text-white"
+        class="-mx-2 block cursor-pointer px-8 py-4 duration-150 hover:scale-90 hover:text-white"
         @mouseenter="moveBackgroundToTarget"
         @mouseleave="onUnhover"
         >Docs</a
       >
       <a
         href="/about"
-        class="-mx-4 block cursor-pointer px-8 py-4 duration-150 hover:scale-90 hover:text-white"
+        class="-mx-2 block cursor-pointer px-8 py-4 duration-150 hover:scale-90 hover:text-white"
         @mouseenter="moveBackgroundToTarget"
         @mouseleave="onUnhover"
         >About Us</a
@@ -93,10 +93,6 @@ import { Icon } from "@iconify/vue";
 import Butt from "./butt.vue";
 import anime from "animejs";
 
-function isActive(path: string) {
-  return window.location.pathname === path;
-}
-
 function hoverAnimate(e: Event) {
   anime({
     targets: (e.target as Element).querySelector("svg"),
@@ -125,25 +121,29 @@ let currentBackground: Element;
 
 // function to resize and move the background element to a given element
 function moveBackground(el: Element, teleport = false) {
+  const padding = [-20, -10]; // x, y
+
   currentBackground = el;
-  let isActive = el.classList.contains("scale-90");
+  const isActive = el.classList.contains("scale-90");
   const background = document.getElementById("background") as HTMLElement;
-  const rect = el.getBoundingClientRect();
-  let padding = [-20, -10]; // x, y
+
+  const ease = teleport ? "steps(1)" : "easeOutExpo";
+
+  const scale = isActive ? 0.9 : 1;
+  const { width, height, left, top } = el.getBoundingClientRect();
+  const adjustedWidth = width / scale;
+  const adjustedHeight = height / scale;
+  const adjustedLeft = left - (adjustedWidth - width) / 2;
+  const adjustedTop = top - (adjustedHeight - height) / 2;
+
   anime.remove(background);
-  let ease: string;
-  if (teleport) {
-    ease = "steps(1)";
-  } else {
-    ease = "easeOutExpo";
-  }
   anime({
     targets: background,
     opacity: 0.3,
-    width: (isActive ? (rect.width / 9) * 10 : rect.width) + padding[0] * 2,
-    height: (isActive ? (rect.height / 9) * 10 : rect.height) + padding[1] * 2,
-    left: (isActive ? rect.left - rect.width / 18 : rect.left) - padding[0],
-    top: (isActive ? rect.top - rect.height / 18 : rect.top) - padding[1],
+    width: adjustedWidth + padding[0] * 2,
+    height: adjustedHeight + padding[1] * 2,
+    left: adjustedLeft - padding[0],
+    top: adjustedTop - padding[1],
     duration: 500,
     easing: ease,
   });
@@ -156,12 +156,14 @@ function moveBackgroundToTarget(e: Event) {
 
 function resetBackground(teleport = false) {
   // find the current active nav element corresponding to the current page
-  if (!navElement.value) return;
-  const activeNavElement = (navElement.value as Element).querySelector(
+  const navElementValue = navElement.value as unknown as Element;
+  if (!navElementValue) return;
+
+  const activeNavElement = navElementValue.querySelector(
     `a[href="${window.location.pathname}"]`
   );
   if (!activeNavElement) {
-    moveBackground((navElement.value as Element).children[0]);
+    moveBackground(navElementValue.children[0]);
     anime({
       targets: "#background",
       opacity: 0,
@@ -171,6 +173,7 @@ function resetBackground(teleport = false) {
     });
     return;
   }
+
   moveBackground(activeNavElement, teleport);
 }
 
@@ -181,7 +184,6 @@ function onUnhover() {
 const navElement = ref(null);
 
 onMounted(() => {
-  if (!navElement.value) return;
   resetBackground(true);
 
   // window resize event listener to resize the background element to the current nav element
@@ -190,15 +192,14 @@ onMounted(() => {
     moveBackground(currentBackground, true);
   });
 
-  const navLinks = document.querySelectorAll("nav a");
+  const navLinks = Array.from(document.querySelectorAll("nav a"));
 
   navLinks.forEach((link) => {
     if (!navElement.value) return;
     const activeNavElement = (navElement.value as Element).querySelector(
       `a[href="${window.location.pathname}"]`
     );
-    console.log(link);
-    console.log(activeNavElement);
+
     if (link == activeNavElement) {
       link.classList.remove("text-neutral-400");
       link.classList.add("scale-90", "text-white");
