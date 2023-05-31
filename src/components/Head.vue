@@ -15,7 +15,7 @@
       id="background"
     ></div>
     <nav
-      class="top-0 z-20 hidden w-1/2 justify-center font-semibold text-neutral-500 md:flex"
+      class="top-0 z-20 hidden w-1/2 justify-center font-semibold text-neutral-400 md:flex"
       style="text-shadow: 0 0 0.5rem #0008, 0 0 0.75rem #0008"
       ref="navElement"
     >
@@ -200,7 +200,7 @@ onMounted(() => {
     console.log(link);
     console.log(activeNavElement);
     if (link == activeNavElement) {
-      link.classList.remove("text-neutral-500");
+      link.classList.remove("text-neutral-400");
       link.classList.add("scale-90", "text-white");
     }
   });
