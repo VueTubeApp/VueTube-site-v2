@@ -164,12 +164,12 @@ import Interactive from "../components/Interactive.vue";
           beatae!
         </h4>
       </div>
-      <button
+      <Interactive
         class="absolute bottom-12 right-4 flex items-center gap-2 rounded-2xl border border-neutral-600 px-3 py-2 duration-200 hover:scale-110 hover:rounded-3xl hover:bg-neutral-100 hover:text-black"
       >
         Newsroom
         <Icon name="mdi:arrow-right" class="h-4 w-4" />
-      </button>
+      </Interactive>
     </section>
     <section
       class="flex w-full flex-col items-center bg-gradient-to-b from-transparent via-black to-black p-4"
@@ -187,17 +187,19 @@ import Interactive from "../components/Interactive.vue";
       </h3>
       <div class="mt-8 flex w-full max-w-screen-md flex-col gap-4 md:flex-row">
         <div class="flex w-full justify-center gap-4">
-          <button
+          <Interactive
+            url="/contribute"
             class="flex items-center gap-2 rounded-full bg-white px-4 py-2 text-black duration-200 hover:bg-orange-700 hover:text-white"
           >
             Contribute
-          </button>
-          <button
+          </Interactive>
+          <Interactive
+            url="/docs"
             class="flex items-center gap-2 px-3 py-2 underline decoration-orange-700 decoration-wavy underline-offset-2 duration-200 hover:decoration-emerald-400 hover:underline-offset-8"
           >
             Documentation
             <Icon name="mdi:arrow-right" class="h-4 w-4" />
-          </button>
+          </Interactive>
         </div>
       </div>
     </section>
