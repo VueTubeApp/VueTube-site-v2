@@ -67,17 +67,19 @@ import Interactive from "../components/Interactive.vue";
       class="grid w-full max-w-screen-md grid-cols-1 grid-rows-[repeat(4,_minmax(400px,_1fr))] gap-4 p-4 md:grid-cols-6 md:grid-rows-[minmax(350px,_1.7fr)_minmax(240px,_1.25fr)]"
     >
       <div
-        class="rounded-3xl bg-[url('https://images.unsplash.com/photo-1534996858221-380b92700493?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3431&q=80')] bg-cover p-5 duration-300 hover:scale-[1.03] md:col-span-2"
+        onclick="location.href='/features'"
+        class="cursor-pointer rounded-3xl bg-[url('https://images.unsplash.com/photo-1534996858221-380b92700493?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3431&q=80')] bg-cover p-5 duration-300 hover:scale-[1.03] hover:p-6 hover:text-blue-300 active:scale-90 md:col-span-2"
       >
-        <span class="text-xs font-light text-brand-green"
-          >Community Translations</span
-        >
         <h3 class="text-base font-bold capitalize">
           Videos for everyone, <br /> in every language.
         </h3>
+        <span class="text-xs font-light text-blue-300">
+          Community Translations
+        </span>
       </div>
       <div
-        class="flex flex-col rounded-3xl bg-neutral-700 p-4 pb-0 duration-300 hover:scale-[1.03] md:col-span-4 md:row-span-1"
+        onclick="location.href='/features'"
+        class="flex cursor-pointer flex-col rounded-3xl bg-neutral-700 p-4 pb-0 duration-300 hover:scale-[1.03] active:scale-90 md:col-span-4 md:row-span-1"
       >
         <h3 class="m-2 text-center text-xs font-thin text-neutral-300">
           Built-in extensions
@@ -100,11 +102,13 @@ import Interactive from "../components/Interactive.vue";
         </div>
       </div>
       <div
-        class="flex rounded-3xl bg-neutral-700 p-4 pb-0 duration-300 hover:scale-[1.03] md:col-span-4 md:row-span-1"
+        onclick="location.href='/features'"
+        class="flex cursor-pointer rounded-3xl bg-neutral-700 p-4 pb-0 duration-300 hover:scale-[1.03] active:scale-90 md:col-span-4 md:row-span-1"
       >
-        <div class="w-1/2 p-4 pr-0 md:p-12">
-          <span class="text-light text-xs text-brand-green">Customizations</span
-          >
+        <div class="w-1/2 p-4 pr-0 md:p-8">
+          <span class="text-light text-xs text-emerald-100">
+            Customizations
+          </span>
           <h3 class="mb-2 font-bold">Tailor-made For You</h3>
           <p class="text-xs text-neutral-300">
             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti
@@ -117,10 +121,14 @@ import Interactive from "../components/Interactive.vue";
         </div>
       </div>
       <div
-        class="item-start flex flex-col justify-end rounded-3xl bg-neutral-700 bg-cover p-4 duration-300 hover:scale-[1.03] md:col-span-2"
+        onclick="location.href='/features'"
+        class="flex cursor-pointer flex-col justify-end rounded-3xl bg-neutral-700 bg-cover p-4 duration-300 hover:scale-[1.03] hover:p-5 hover:text-brand-yellow active:scale-90 md:col-span-2"
         style="background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.7) 100%),url('https://images.unsplash.com/photo-1510535043828-3d1edc68071e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2370&q=80')"
       >
-        <span class="text-xs font-light text-brand-yellow">Fast & Private</span>
+        <span
+          class="text-xs font-light text-brand-yellow"
+          style="text-shadow: 0 0 0.5rem #000;">Fast & Private</span
+        >
         <h3 class="text-base font-bold">Privacy At Lightning Speeds.</h3>
       </div>
     </section>
