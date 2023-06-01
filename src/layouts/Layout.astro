@@ -26,10 +26,10 @@ const { title } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
-  <body class="flex flex-col items-center">
+  <body class="flex flex-col items-center pb-[50vh]">
     <Head client:load />
     <main
-      class="text-white z-10 md:-mt-[5.5rem] grid w-full place-items-center rounded-b-[10rem]"
+      class="z-10 grid w-full place-items-center rounded-b-[10rem] bg-black text-white md:-mt-[5.5rem]"
     >
       <!-- glow circle -->
       <div
@@ -37,8 +37,8 @@ const { title } = Astro.props;
       >
       </div>
       <slot><slot /></slot>
-      <Foot />
     </main>
+    <Foot />
   </body>
 
   <style is:global>
