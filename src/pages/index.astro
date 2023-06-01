@@ -4,22 +4,37 @@ import Layout from "../layouts/Layout.astro";
 import Interactive from "../components/Interactive.vue";
 import Contributors from "../components/Contributors.vue";
 import { Octokit } from "@octokit/core";
+import RYD from "../components/icons/ryd.vue";
+import Sponsorblock from "../components/icons/sponsorblock.vue";
 
-const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
-// get the contributors of a given repo
-const { data: contributors } = await octokit.request(
-  "GET /repos/{owner}/{repo}/contributors",
-  {
-    owner: "VueTubeApp",
-    repo: "VueTube",
-    headers: {
-      "X-GitHub-Api-Version": "2022-11-28",
-    },
-    per_page: 100, // might need to decrease this or paginate
+async function getOcto() {
+  if (!process.env.IS_PROD) {
+    console.log("You are not in production mode. Mocking data.");
+    return Array(50).fill(
+      "https://avatars.githubusercontent.com/u/27463495?u=2d0480d746e005fba0374736dd2e8a76b54e4923&v=4"
+    );
   }
-);
-// put all avatar urls in a list
-const avatars = contributors.map((contributor) => contributor.avatar_url);
+  const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
+  if (!process.env.GITHUB_TOKEN) {
+    console.error("No GitHub token provided. Please set GITHUB_TOKEN env var.");
+    return [];
+  }
+  const { data: contributors } = await octokit.request(
+    "GET /repos/{owner}/{repo}/contributors",
+    {
+      owner: "VueTubeApp",
+      repo: "VueTube",
+      headers: {
+        "X-GitHub-Api-Version": "2022-11-28",
+      },
+      per_page: 100, // might need to decrease this or paginate
+    }
+  );
+  // put all avatar urls in a list
+  return contributors.map((contributor) => contributor.avatar_url);
+}
+
+const avatars = await getOcto();
 ---
 
 <Layout title="VueTube">
@@ -84,48 +99,60 @@ const avatars = contributors.map((contributor) => contributor.avatar_url);
     >
       <div
         onclick="location.href='/features'"
-        class="cursor-pointer rounded-3xl bg-[url('https://images.unsplash.com/photo-1534996858221-380b92700493?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3431&q=80')] bg-cover p-5 duration-300 hover:scale-[1.03] hover:p-6 hover:text-blue-300 active:scale-90 md:col-span-2"
+        class="cursor-pointer rounded-3xl bg-[url('https://images.unsplash.com/photo-1534996858221-380b92700493?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3431&q=80')] bg-cover p-5 duration-300 hover:scale-[1.03] hover:p-6 hover:text-blue-300 active:scale-95 md:col-span-2"
       >
-        <h3 class="text-base font-bold capitalize">
-          Videos for everyone, <br /> in every language.
-        </h3>
         <span class="text-xs font-light text-blue-300">
           Community Translations
         </span>
+        <h3 class="text-base font-bold capitalize leading-5">
+          Videos for everyone, <br /> in every language.
+        </h3>
       </div>
       <div
-        onclick="location.href='/features'"
-        class="flex cursor-pointer flex-col rounded-3xl bg-neutral-700 p-4 pb-0 duration-300 hover:scale-[1.03] active:scale-90 md:col-span-4 md:row-span-1"
+        class="flex cursor-pointer flex-col rounded-3xl bg-neutral-700 p-4 pb-0 duration-300 hover:scale-[1.03] md:col-span-4 md:row-span-1"
       >
-        <h3 class="m-2 text-center text-xs font-thin text-neutral-300">
+        <h3 class="text-center text-xs font-light text-brand-purple">
           Built-in extensions
         </h3>
-        <h3 class="mb-4 text-center text-lg font-bold">
+        <h3 class="mb-4 text-center text-lg font-bold leading-5">
           Streamline Your <br /> Watching Experience
         </h3>
         <div class="grid h-full w-full grid-cols-2 gap-4 px-6">
           <div
-            class="mx-auto w-full rounded-t-3xl border-8 border-b-0 border-purple-200 bg-brand-purple"
+            class="mx-auto w-full rounded-t-3xl border-8 border-b-0 border-purple-200 bg-brand-purple drop-shadow-lg"
           >
           </div>
           <div
-            class="flex flex-col items-center justify-around text-center text-xs"
+            class="flex flex-col content-center items-center justify-around gap-4 p-4 text-center text-xs"
           >
-            <span>Sponsorblock</span>
-            <span>RYD</span>
-            <span>Community<br />Plugins</span>
+            <!-- Pretend this one is active for now -->
+            <div
+              class="flex w-full flex-grow basis-0 flex-col items-center gap-2 rounded-2xl border-4 border-brand-purple bg-purple-100 p-4 drop-shadow-lg"
+            >
+              <Sponsorblock class="h-11 text-[#413663]" />
+            </div>
+
+            <div
+              class="flex w-full flex-grow basis-0 flex-col items-center gap-2 rounded-2xl bg-white p-4 drop-shadow-lg"
+            >
+              <RYD class="h-11 text-gray-300" />
+            </div>
+            <div
+              class="flex w-full flex-grow basis-0 flex-col items-center gap-2 rounded-2xl bg-white p-4 drop-shadow-lg"
+            >
+              <Icon name="fa-solid:plug" class="h-11 text-gray-300" />
+            </div>
           </div>
         </div>
       </div>
       <div
-        onclick="location.href='/features'"
-        class="flex cursor-pointer flex-col rounded-3xl bg-neutral-700 p-4 pb-0 duration-300 hover:scale-[1.03] active:scale-90 md:col-span-4 md:row-span-1 md:flex-row"
+        class="flex cursor-pointer flex-col rounded-3xl bg-neutral-700 p-4 pb-0 duration-300 hover:scale-[1.03] md:col-span-4 md:row-span-1 md:flex-row"
       >
         <div class="w-1/2 p-4 pr-0 md:p-8">
           <span class="text-light text-xs text-emerald-100">
             Customizations
           </span>
-          <h3 class="mb-2 font-bold">Tailor-made For You</h3>
+          <h3 class="mb-2 font-bold leading-5">Tailor-made For You</h3>
           <p class="text-xs text-neutral-300">
             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti
             consectetur laboriosam modi fuga doloribus ut!
@@ -138,18 +165,20 @@ const avatars = contributors.map((contributor) => contributor.avatar_url);
       </div>
       <div
         onclick="location.href='/features'"
-        class="flex cursor-pointer flex-col justify-end rounded-3xl bg-neutral-700 bg-cover p-4 duration-300 hover:scale-[1.03] hover:p-5 hover:text-brand-yellow active:scale-90 md:col-span-2"
+        class="flex cursor-pointer flex-col justify-end rounded-3xl bg-neutral-700 bg-cover p-4 duration-300 hover:scale-[1.03] hover:p-5 hover:text-brand-yellow active:scale-95 md:col-span-2"
         style="background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.7) 100%),url('https://images.unsplash.com/photo-1510535043828-3d1edc68071e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2370&q=80')"
       >
         <span
           class="text-xs font-light text-brand-yellow"
           style="text-shadow: 0 0 0.5rem #000;">Fast & Private</span
         >
-        <h3 class="text-base font-bold">Privacy At Lightning Speeds.</h3>
+        <h3 class="text-base font-bold leading-5">
+          Privacy At Lightning Speeds.
+        </h3>
       </div>
     </section>
 
-    <h2 class="mb-12 mt-24 text-center text-4xl font-bold capitalize md:mb-8">
+    <h2 class="mb-12 mt-24 text-center text-4xl font-bold capitalize md:mb-2">
       Discover what's new.
     </h2>
     <section
@@ -163,8 +192,10 @@ const avatars = contributors.map((contributor) => contributor.avatar_url);
             class="aspect-video rounded-3xl bg-[url('https://media.discordapp.net/attachments/970793575153561640/970794418896502804/vueee.png?width=1852&height=1306')] bg-cover bg-center"
           >
           </div>
-          <div class="ml-4 mt-4 text-xs font-thin text-neutral-300">Update</div>
-          <h4 class="ml-4 text-lg">
+          <div class="mb-1 mt-3 text-sm font-light text-neutral-300">
+            Update
+          </div>
+          <h4 class="text-lg">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur,
             beatae!
           </h4>
@@ -174,10 +205,10 @@ const avatars = contributors.map((contributor) => contributor.avatar_url);
             class="aspect-video rounded-3xl bg-[url('https://images.unsplash.com/photo-1630514969818-94aefc42ec47?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80')] bg-cover bg-center"
           >
           </div>
-          <div class="ml-4 mt-4 text-xs font-thin text-neutral-300">
+          <div class="mb-1 mt-3 text-sm font-light text-neutral-300">
             Community
           </div>
-          <h4 class="ml-4 text-lg">
+          <h4 class="text-lg">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur,
             beatae!
           </h4>
@@ -203,7 +234,7 @@ const avatars = contributors.map((contributor) => contributor.avatar_url);
         adipisci doloribus consequuntur ipsum! Ipsa facere ducimus eaque
         provident ipsum.
       </h3>
-      <div class="mt-8 flex w-full max-w-screen-md flex-col gap-4 md:flex-row">
+      <div class="mt-4 flex w-full max-w-screen-md flex-col gap-4 md:flex-row">
         <div class="flex w-full justify-center gap-4">
           <Interactive
             url="/contribute"
@@ -220,13 +251,14 @@ const avatars = contributors.map((contributor) => contributor.avatar_url);
           </Interactive>
         </div>
       </div>
-      <div class="mt-12 flex w-full max-w-screen-md flex-wrap gap-1">
-        <!-- TODO : replace with a Vue component that loops -->
+      <div
+        class="mt-6 flex w-full max-w-screen-md flex-wrap justify-center gap-2"
+      >
         <Contributors contributors={avatars} />
       </div>
     </section>
     <div
-      class="grid w-full place-content-center rounded-b-3xl bg-gradient-to-b from-black via-black to-neutral-900 px-4 py-36"
+      class="grid w-full place-content-center rounded-b-[5.5rem] bg-gradient-to-b from-black via-black to-neutral-900 px-4 py-36"
     >
       <div
         class="flex w-full max-w-screen-md flex-col justify-between md:flex-row"
@@ -262,15 +294,18 @@ const avatars = contributors.map((contributor) => contributor.avatar_url);
         <div class="flex flex-col gap-2">
           <div class="flex">
             <Interactive
-              class="flex items-center gap-2 rounded-full bg-brand-blue px-6 py-2 font-semibold text-black duration-200"
+              class="pointer-events-none flex flex-grow items-center gap-2 rounded-full bg-brand-blue px-6 py-2 font-semibold text-black duration-200"
             >
               Past Versions
             </Interactive>
             <Interactive
-              class="flex items-center justify-center gap-2 rounded-full px-6 py-2 duration-200 hover:bg-neutral-950"
+              class="group flex items-center justify-center gap-2 rounded-full px-6 py-2 duration-200"
             >
-              Latest Version
-              <Icon name="mdi:arrow-right" class="h-4 w-4" />
+              Later Versions
+              <Icon
+                name="mdi:arrow-right"
+                class="h-4 w-4 duration-300 group-hover:translate-x-1"
+              />
             </Interactive>
           </div>
           <div class="w-full rounded-2xl bg-neutral-800 p-8"></div>
@@ -278,15 +313,18 @@ const avatars = contributors.map((contributor) => contributor.avatar_url);
           <div class="w-full rounded-2xl bg-neutral-800 p-8"></div>
           <div class="mt-12 flex">
             <Interactive
-              class="flex items-center gap-2 rounded-full bg-brand-red px-6 py-2 font-semibold duration-200"
+              class="pointer-events-none flex flex-grow items-center gap-2 rounded-full bg-brand-red px-6 py-2 font-semibold duration-200"
             >
               Canary
             </Interactive>
             <Interactive
-              class="flex items-center justify-center gap-2 rounded-full px-6 py-2 duration-200 hover:bg-neutral-950"
+              class="group flex items-center justify-center gap-2 rounded-full px-6 py-2 duration-200"
             >
-              Latest Version
-              <Icon name="mdi:arrow-right" class="h-4 w-4" />
+              Later Versions
+              <Icon
+                name="mdi:arrow-right"
+                class="h-4 w-4 duration-300 group-hover:translate-x-1"
+              />
             </Interactive>
           </div>
           <div class="w-full rounded-2xl bg-neutral-800 p-8"></div>

@@ -29,6 +29,7 @@ Once you have created your token, create a `.env` file in the root of the projec
 GITHUB_TOKEN=YOUR_TOKEN_HERE
 ```
 
+Set the value of `IS_PROD` to false to mock the output to avoid being rate limited (recommended for development)
 ## 🚀 Project Structure
 
 Inside of this project, you'll see the following folders and files:
