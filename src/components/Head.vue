@@ -117,7 +117,11 @@
         @click="menu = !menu"
         class="-mr-4 rounded-l-full bg-neutral-600 bg-opacity-30 p-2 pl-3 md:hidden"
       >
-        <Icon class="h-6 w-6" :icon="menu ? 'mdi:close' : 'mdi:menu'" />
+        <Icon
+          class="h-6 w-6 duration-300"
+          :class="menu ? 'rotate-90' : 'rotate-0'"
+          :icon="menu ? 'mdi:close' : 'mdi:menu'"
+        />
       </button>
     </div>
   </header>
