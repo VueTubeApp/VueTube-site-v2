@@ -119,7 +119,7 @@ const avatars = contributors.map((contributor) => contributor.avatar_url);
       </div>
       <div
         onclick="location.href='/features'"
-        class="flex cursor-pointer rounded-3xl bg-neutral-700 p-4 pb-0 duration-300 hover:scale-[1.03] active:scale-90 md:col-span-4 md:row-span-1"
+        class="flex cursor-pointer flex-col rounded-3xl bg-neutral-700 p-4 pb-0 duration-300 hover:scale-[1.03] active:scale-90 md:col-span-4 md:row-span-1 md:flex-row"
       >
         <div class="w-1/2 p-4 pr-0 md:p-8">
           <span class="text-light text-xs text-emerald-100">
@@ -153,38 +153,43 @@ const avatars = contributors.map((contributor) => contributor.avatar_url);
       Discover what's new.
     </h2>
     <section
-      class="relative mt-4 flex w-full max-w-screen-md flex-col gap-4 p-4 pb-24 md:flex-row"
+      class="flex w-full flex-col items-center bg-gradient-to-b from-transparent to-black p-4"
     >
-      <div class="mb-8 flex flex-col md:w-1/2">
-        <div
-          class="aspect-video rounded-3xl bg-[url('https://media.discordapp.net/attachments/970793575153561640/970794418896502804/vueee.png?width=1852&height=1306')] bg-cover bg-center"
-        >
-        </div>
-        <div class="ml-4 mt-4 text-xs font-thin text-neutral-300">Update</div>
-        <h4 class="ml-4 text-lg">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur,
-          beatae!
-        </h4>
-      </div>
-      <div class="mb-8 md:w-1/2">
-        <div
-          class="aspect-video rounded-3xl bg-[url('https://images.unsplash.com/photo-1630514969818-94aefc42ec47?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80')] bg-cover bg-center"
-        >
-        </div>
-        <div class="ml-4 mt-4 text-xs font-thin text-neutral-300">
-          Community
-        </div>
-        <h4 class="ml-4 text-lg">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur,
-          beatae!
-        </h4>
-      </div>
-      <button
-        class="absolute bottom-12 right-0 flex items-center gap-2 rounded-2xl border border-neutral-600 px-3 py-2 duration-200 hover:scale-110 hover:rounded-3xl hover:bg-neutral-100 hover:text-black"
+      <div
+        class="relative mt-4 flex w-full max-w-screen-md flex-col gap-4 p-4 pb-24 md:flex-row"
       >
-        Newsroom
-        <Icon name="mdi:arrow-right" class="h-4 w-4" />
-      </button>
+        <div class="mb-8 flex flex-col md:w-1/2">
+          <div
+            class="aspect-video rounded-3xl bg-[url('https://media.discordapp.net/attachments/970793575153561640/970794418896502804/vueee.png?width=1852&height=1306')] bg-cover bg-center"
+          >
+          </div>
+          <div class="ml-4 mt-4 text-xs font-thin text-neutral-300">Update</div>
+          <h4 class="ml-4 text-lg">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur,
+            beatae!
+          </h4>
+        </div>
+        <div class="mb-8 md:w-1/2">
+          <div
+            class="aspect-video rounded-3xl bg-[url('https://images.unsplash.com/photo-1630514969818-94aefc42ec47?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80')] bg-cover bg-center"
+          >
+          </div>
+          <div class="ml-4 mt-4 text-xs font-thin text-neutral-300">
+            Community
+          </div>
+          <h4 class="ml-4 text-lg">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur,
+            beatae!
+          </h4>
+        </div>
+        <Interactive
+          url="/about"
+          class="absolute bottom-12 right-4 flex items-center gap-2 rounded-2xl border border-neutral-600 px-3 py-2 duration-200 hover:scale-110 hover:rounded-3xl hover:bg-neutral-100 hover:text-black"
+        >
+          Newsroom
+          <Icon name="mdi:arrow-right" class="h-4 w-4" />
+        </Interactive>
+      </div>
     </section>
     <section class="flex w-full flex-col items-center bg-black p-4">
       <h2
@@ -221,7 +226,7 @@ const avatars = contributors.map((contributor) => contributor.avatar_url);
       </div>
     </section>
     <div
-      class="grid w-full place-content-center rounded-b-3xl bg-gradient-to-b from-black via-black to-neutral-900 py-36"
+      class="grid w-full place-content-center rounded-b-3xl bg-gradient-to-b from-black via-black to-neutral-900 px-4 py-36"
     >
       <div
         class="flex w-full max-w-screen-md flex-col justify-between md:flex-row"
