@@ -2,6 +2,24 @@
 import { Icon } from "astro-iconify";
 import Layout from "../layouts/Layout.astro";
 import Interactive from "../components/Interactive.vue";
+import Contributors from "../components/Contributors.vue";
+import { Octokit } from "@octokit/core";
+
+const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
+// get the contributors of a given repo
+const { data: contributors } = await octokit.request(
+  "GET /repos/{owner}/{repo}/contributors",
+  {
+    owner: "VueTubeApp",
+    repo: "VueTube",
+    headers: {
+      "X-GitHub-Api-Version": "2022-11-28",
+    },
+    per_page: 100, // might need to decrease this or paginate
+  }
+);
+// put all avatar urls in a list
+const avatars = contributors.map((contributor) => contributor.avatar_url);
 ---
 
 <Layout title="VueTube">
@@ -50,9 +68,7 @@ import Interactive from "../components/Interactive.vue";
     class="top-[5.5rem] flex w-full flex-col items-center"
     style="margin-top: calc(-50dvh + 10.5rem);"
   >
-    <h2
-      class="mb-8 text-center text-4xl font-bold capitalize md:mb-4 md:text-6xl"
-    >
+    <h2 class="mb-8 text-center text-4xl font-bold capitalize md:mb-4">
       You are out of control.
     </h2>
     <h3 class="max-w-prose px-4 text-neutral-400 md:text-lg">
@@ -133,9 +149,7 @@ import Interactive from "../components/Interactive.vue";
       </div>
     </section>
 
-    <h2
-      class="mb-12 mt-24 text-center text-4xl font-bold capitalize md:mb-8 md:text-6xl"
-    >
+    <h2 class="mb-12 mt-24 text-center text-4xl font-bold capitalize md:mb-8">
       Discover what's new.
     </h2>
     <section
@@ -174,7 +188,7 @@ import Interactive from "../components/Interactive.vue";
     </section>
     <section class="flex w-full flex-col items-center bg-black p-4">
       <h2
-        class="md:text-6x max-w-screen-mdl mb-12 mt-24 text-center text-4xl font-bold capitalize md:mb-8"
+        class="max-w-screen-mdl mb-12 mt-24 text-center text-4xl font-bold capitalize md:mb-8"
       >
         🥫 Free & Open Sauce, Forever
       </h2>
@@ -203,91 +217,7 @@ import Interactive from "../components/Interactive.vue";
       </div>
       <div class="mt-12 flex w-full max-w-screen-md flex-wrap gap-1">
         <!-- TODO : replace with a Vue component that loops -->
-        <div
-          class="h-16 w-16 rounded-full border"
-          style="box-shadow: 0 0 1rem -0.1rem #fff8;"
-        >
-        </div>
-        <div
-          class="h-16 w-16 rounded-full border"
-          style="box-shadow: 0 0 1rem -0.1rem #fff8;"
-        >
-        </div>
-        <div
-          class="h-16 w-16 rounded-full border"
-          style="box-shadow: 0 0 1rem -0.1rem #fff8;"
-        >
-        </div>
-        <div
-          class="h-16 w-16 rounded-full border"
-          style="box-shadow: 0 0 1rem -0.1rem #fff8;"
-        >
-        </div>
-        <div
-          class="h-16 w-16 rounded-full border"
-          style="box-shadow: 0 0 1rem -0.1rem #fff8;"
-        >
-        </div>
-        <div
-          class="h-16 w-16 rounded-full border"
-          style="box-shadow: 0 0 1rem -0.1rem #fff8;"
-        >
-        </div>
-        <div
-          class="h-16 w-16 rounded-full border"
-          style="box-shadow: 0 0 1rem -0.1rem #fff8;"
-        >
-        </div>
-        <div
-          class="h-16 w-16 rounded-full border"
-          style="box-shadow: 0 0 1rem -0.1rem #fff8;"
-        >
-        </div>
-        <div
-          class="h-16 w-16 rounded-full border"
-          style="box-shadow: 0 0 1rem -0.1rem #fff8;"
-        >
-        </div>
-        <div
-          class="h-16 w-16 rounded-full border"
-          style="box-shadow: 0 0 1rem -0.1rem #fff8;"
-        >
-        </div>
-        <div
-          class="h-16 w-16 rounded-full border"
-          style="box-shadow: 0 0 1rem -0.1rem #fff8;"
-        >
-        </div>
-        <div
-          class="h-16 w-16 rounded-full border"
-          style="box-shadow: 0 0 1rem -0.1rem #fff8;"
-        >
-        </div>
-        <div
-          class="h-16 w-16 rounded-full border"
-          style="box-shadow: 0 0 1rem -0.1rem #fff8;"
-        >
-        </div>
-        <div
-          class="h-16 w-16 rounded-full border"
-          style="box-shadow: 0 0 1rem -0.1rem #fff8;"
-        >
-        </div>
-        <div
-          class="h-16 w-16 rounded-full border"
-          style="box-shadow: 0 0 1rem -0.1rem #fff8;"
-        >
-        </div>
-        <div
-          class="h-16 w-16 rounded-full border"
-          style="box-shadow: 0 0 1rem -0.1rem #fff8;"
-        >
-        </div>
-        <div
-          class="h-16 w-16 rounded-full border"
-          style="box-shadow: 0 0 1rem -0.1rem #fff8;"
-        >
-        </div>
+        <Contributors contributors={avatars} />
       </div>
     </section>
     <div
@@ -302,7 +232,7 @@ import Interactive from "../components/Interactive.vue";
           >
           </div>
           <h2
-            class="md:text-6x mt-8 max-w-screen-md text-center text-4xl font-bold capitalize"
+            class="mt-8 max-w-screen-md text-center text-4xl font-bold capitalize"
           >
             Get VueTube
           </h2>

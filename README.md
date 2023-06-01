@@ -19,6 +19,16 @@
   </br> Powered by <a href="https://astro.build">Astro</a>, <a href="https://tailwindcss.com">Tailwind</a> and <a href="https://vuejs.org">Vue.js</a>
 </p>
 
+## ⚙️ Environment Variables
+
+This project uses GitHub's REST API to fetch data from the VueTube repository. You will need to create a GitHub personal access token to use this project. Find out how to create one [here]('https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token')
+
+Once you have created your token, create a `.env` file in the root of the project and add the following:
+
+```env
+GITHUB_TOKEN=YOUR_TOKEN_HERE
+```
+
 ## 🚀 Project Structure
 
 Inside of this project, you'll see the following folders and files:
