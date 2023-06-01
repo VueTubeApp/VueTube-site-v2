@@ -296,7 +296,36 @@ import Interactive from "../components/Interactive.vue";
     <div
       class="grid h-[100vh] w-full place-content-center rounded-b-3xl bg-gradient-to-b from-black via-black to-neutral-900"
     >
-      test 2.
+      <div class="flex w-full max-w-screen-md justify-between">
+        <div class="flex flex-col items-start">
+          <div
+            class="h-20 w-20 bg-[url('/logomark.svg')] bg-contain bg-center bg-no-repeat"
+          >
+          </div>
+          <h2
+            class="md:text-6x mt-8 max-w-screen-md text-center text-4xl font-bold capitalize"
+          >
+            Get VueTube
+          </h2>
+          <div class="my-8 max-w-[40ch] text-neutral-500">
+            Download the latest stable version of VueTube | VueTube Version
+            0.5.1 For Android | Released 2023.01.6 (2.22 MB)
+          </div>
+          <div class="flex flex-col gap-2 font-semibold">
+            <Interactive
+              class="flex items-center gap-2 rounded-full bg-green-800 px-6 py-2 duration-200 hover:bg-green-700"
+            >
+              Download Latest
+            </Interactive>
+            <Interactive
+              class="flex items-center justify-center gap-2 rounded-full bg-white px-4 py-2 text-black duration-200 hover:bg-neutral-200"
+            >
+              GitHub
+              <Icon name="mdi:arrow-right" class="h-4 w-4" />
+            </Interactive>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 </Layout>
