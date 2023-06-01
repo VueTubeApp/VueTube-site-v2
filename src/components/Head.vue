@@ -5,7 +5,7 @@
         ? 'h-[23rem] rounded-b-3xl bg-neutral-800 bg-opacity-30 duration-300'
         : 'h-[5.5rem] overflow-hidden rounded-b-none bg-transparent duration-300'
     "
-    class="fixed top-0 z-50 flex w-full flex-wrap items-center justify-between p-4 backdrop-blur-xl md:sticky lg:px-6"
+    class="fixed top-0 z-50 flex w-full flex-wrap items-center justify-between p-4 backdrop-blur-xl lg:px-6"
   >
     <div class="w-1/3 md:w-auto lg:w-1/4">
       <a

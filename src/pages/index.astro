@@ -101,22 +101,21 @@ import Interactive from "../components/Interactive.vue";
     </section>
 
     <section
-      class="mt-4 flex w-full max-w-screen-md flex-col gap-4 px-4 md:flex-row"
+      class="mt-4 flex w-full max-w-screen-md flex-col gap-4 px-4 md:h-64 md:flex-row"
     >
       <div
         class="flex cursor-pointer rounded-3xl bg-neutral-700 duration-300 hover:scale-105 hover:p-2 hover:pb-0 md:w-2/3"
       >
-        <div class="w-1/2 p-4 pr-0 md:p-12">
-          <span class="text-light text-xs text-brand-green">Customizations</span
-          >
-          <h3 class="mb-2 font-bold">Tailor-made For You</h3>
+        <div class="w-1/2 p-4 pr-0 md:p-8">
+          <span class="text-thin text-neutral-300">Customizations</span>
+          <h3 class="mb-10 font-bold">Tailor-made For You</h3>
           <p class="text-xs text-neutral-300">
             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti
             consectetur laboriosam modi fuga doloribus ut!
           </p>
         </div>
         <div
-          class="mx-auto mt-auto h-36 w-28 rounded-t-3xl border-8 border-b-0 border-emerald-100 bg-brand-green md:h-56 md:w-44"
+          class="mx-auto mt-auto h-36 w-28 rounded-t-3xl border-8 border-b-0 border-emerald-400 bg-emerald-800 md:h-52 md:w-44"
         >
         </div>
       </div>
@@ -237,9 +236,7 @@ import Interactive from "../components/Interactive.vue";
         <Icon name="mdi:arrow-right" class="h-4 w-4" />
       </button>
     </section>
-    <section
-      class="flex w-full flex-col items-center bg-gradient-to-b from-transparent via-black to-black p-4"
-    >
+    <section class="flex w-full flex-col items-center bg-black p-4">
       <h2
         class="md:text-6x max-w-screen-mdl mb-12 mt-24 text-center text-4xl font-bold capitalize md:mb-8"
       >
@@ -253,24 +250,179 @@ import Interactive from "../components/Interactive.vue";
       </h3>
       <div class="mt-8 flex w-full max-w-screen-md flex-col gap-4 md:flex-row">
         <div class="flex w-full justify-center gap-4">
-          <button
+          <Interactive
+            url="/contribute"
             class="flex items-center gap-2 rounded-full bg-white px-4 py-2 text-black duration-200 hover:bg-orange-700 hover:text-white"
           >
             Contribute
-          </button>
-          <button
+          </Interactive>
+          <Interactive
+            url="/docs"
             class="flex items-center gap-2 px-3 py-2 underline decoration-orange-700 decoration-wavy underline-offset-2 duration-200 hover:decoration-emerald-400 hover:underline-offset-8"
           >
             Documentation
             <Icon name="mdi:arrow-right" class="h-4 w-4" />
-          </button>
+          </Interactive>
+        </div>
+      </div>
+      <div class="mt-12 flex w-full max-w-screen-md flex-wrap gap-1">
+        <!-- TODO : replace with a Vue component that loops -->
+        <div
+          class="h-16 w-16 rounded-full border"
+          style="box-shadow: 0 0 1rem -0.1rem #fff8;"
+        >
+        </div>
+        <div
+          class="h-16 w-16 rounded-full border"
+          style="box-shadow: 0 0 1rem -0.1rem #fff8;"
+        >
+        </div>
+        <div
+          class="h-16 w-16 rounded-full border"
+          style="box-shadow: 0 0 1rem -0.1rem #fff8;"
+        >
+        </div>
+        <div
+          class="h-16 w-16 rounded-full border"
+          style="box-shadow: 0 0 1rem -0.1rem #fff8;"
+        >
+        </div>
+        <div
+          class="h-16 w-16 rounded-full border"
+          style="box-shadow: 0 0 1rem -0.1rem #fff8;"
+        >
+        </div>
+        <div
+          class="h-16 w-16 rounded-full border"
+          style="box-shadow: 0 0 1rem -0.1rem #fff8;"
+        >
+        </div>
+        <div
+          class="h-16 w-16 rounded-full border"
+          style="box-shadow: 0 0 1rem -0.1rem #fff8;"
+        >
+        </div>
+        <div
+          class="h-16 w-16 rounded-full border"
+          style="box-shadow: 0 0 1rem -0.1rem #fff8;"
+        >
+        </div>
+        <div
+          class="h-16 w-16 rounded-full border"
+          style="box-shadow: 0 0 1rem -0.1rem #fff8;"
+        >
+        </div>
+        <div
+          class="h-16 w-16 rounded-full border"
+          style="box-shadow: 0 0 1rem -0.1rem #fff8;"
+        >
+        </div>
+        <div
+          class="h-16 w-16 rounded-full border"
+          style="box-shadow: 0 0 1rem -0.1rem #fff8;"
+        >
+        </div>
+        <div
+          class="h-16 w-16 rounded-full border"
+          style="box-shadow: 0 0 1rem -0.1rem #fff8;"
+        >
+        </div>
+        <div
+          class="h-16 w-16 rounded-full border"
+          style="box-shadow: 0 0 1rem -0.1rem #fff8;"
+        >
+        </div>
+        <div
+          class="h-16 w-16 rounded-full border"
+          style="box-shadow: 0 0 1rem -0.1rem #fff8;"
+        >
+        </div>
+        <div
+          class="h-16 w-16 rounded-full border"
+          style="box-shadow: 0 0 1rem -0.1rem #fff8;"
+        >
+        </div>
+        <div
+          class="h-16 w-16 rounded-full border"
+          style="box-shadow: 0 0 1rem -0.1rem #fff8;"
+        >
+        </div>
+        <div
+          class="h-16 w-16 rounded-full border"
+          style="box-shadow: 0 0 1rem -0.1rem #fff8;"
+        >
         </div>
       </div>
     </section>
     <div
       class="grid h-[100vh] w-full place-content-center rounded-b-3xl bg-gradient-to-b from-black via-black to-neutral-900"
     >
-      test 2.
+      <div
+        class="flex w-full max-w-screen-md flex-col justify-between md:flex-row"
+      >
+        <div class="mb-8 flex flex-col items-start">
+          <div
+            class="h-20 w-20 bg-[url('/logomark.svg')] bg-contain bg-center bg-no-repeat"
+          >
+          </div>
+          <h2
+            class="md:text-6x mt-8 max-w-screen-md text-center text-4xl font-bold capitalize"
+          >
+            Get VueTube
+          </h2>
+          <div class="my-8 max-w-[40ch] text-neutral-500">
+            Download the latest stable version of VueTube | VueTube Version
+            0.5.1 For Android | Released 2023.01.6 (2.22 MB)
+          </div>
+          <div class="flex flex-col gap-2 font-semibold">
+            <Interactive
+              class="flex items-center gap-2 rounded-full bg-green-800 px-6 py-2 duration-200 hover:bg-green-700"
+            >
+              Download Latest
+            </Interactive>
+            <Interactive
+              class="flex items-center justify-center gap-2 rounded-full bg-white px-4 py-2 text-black duration-200 hover:bg-neutral-200"
+            >
+              GitHub
+              <Icon name="mdi:arrow-right" class="h-4 w-4" />
+            </Interactive>
+          </div>
+        </div>
+        <div class="flex flex-col gap-2">
+          <div class="flex">
+            <Interactive
+              class="flex items-center gap-2 rounded-full bg-blue-300 px-6 py-2 font-semibold text-black duration-200"
+            >
+              Past Versions
+            </Interactive>
+            <Interactive
+              class="flex items-center justify-center gap-2 rounded-full px-6 py-2 duration-200 hover:bg-neutral-950"
+            >
+              Latest Version
+              <Icon name="mdi:arrow-right" class="h-4 w-4" />
+            </Interactive>
+          </div>
+          <div class="w-full rounded-2xl bg-neutral-800 p-8"></div>
+          <div class="w-full rounded-2xl bg-neutral-800 p-8"></div>
+          <div class="w-full rounded-2xl bg-neutral-800 p-8"></div>
+          <div class="mt-12 flex">
+            <Interactive
+              class="flex items-center gap-2 rounded-full bg-orange-700 px-6 py-2 font-semibold duration-200"
+            >
+              Canary
+            </Interactive>
+            <Interactive
+              class="flex items-center justify-center gap-2 rounded-full px-6 py-2 duration-200 hover:bg-neutral-950"
+            >
+              Latest Version
+              <Icon name="mdi:arrow-right" class="h-4 w-4" />
+            </Interactive>
+          </div>
+          <div class="w-full rounded-2xl bg-neutral-800 p-8"></div>
+          <div class="w-full rounded-2xl bg-neutral-800 p-8"></div>
+          <div class="w-full rounded-2xl bg-neutral-800 p-8"></div>
+        </div>
+      </div>
     </div>
   </section>
 </Layout>
