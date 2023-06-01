@@ -24,11 +24,11 @@
     </div>
 
     <div
-      class="absolute z-10 rounded-full bg-neutral-300 backdrop-blur-xl md:block"
+      class="absolute rounded-full bg-neutral-300 backdrop-blur-xl md:block"
       id="background"
     ></div>
     <nav
-      class="z-20 order-last mt-4 flex w-full flex-col items-end justify-center font-semibold text-neutral-400 md:order-none md:mt-0 md:flex md:w-1/2 md:flex-row md:items-center"
+      class="order-last mt-4 flex w-full flex-col items-end justify-center font-semibold text-neutral-400 md:order-none md:mt-0 md:flex md:w-1/2 md:flex-row md:items-center"
       style="text-shadow: 0 0 0.5rem #0008, 0 0 0.75rem #0008"
       ref="navElement"
     >
