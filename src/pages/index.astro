@@ -296,8 +296,10 @@ import Interactive from "../components/Interactive.vue";
     <div
       class="grid h-[100vh] w-full place-content-center rounded-b-3xl bg-gradient-to-b from-black via-black to-neutral-900"
     >
-      <div class="flex w-full max-w-screen-md justify-between">
-        <div class="flex flex-col items-start">
+      <div
+        class="flex w-full max-w-screen-md flex-col justify-between md:flex-row"
+      >
+        <div class="mb-8 flex flex-col items-start">
           <div
             class="h-20 w-20 bg-[url('/logomark.svg')] bg-contain bg-center bg-no-repeat"
           >
@@ -324,6 +326,40 @@ import Interactive from "../components/Interactive.vue";
               <Icon name="mdi:arrow-right" class="h-4 w-4" />
             </Interactive>
           </div>
+        </div>
+        <div class="flex flex-col gap-2">
+          <div class="flex">
+            <Interactive
+              class="flex items-center gap-2 rounded-full bg-blue-300 px-6 py-2 font-semibold text-black duration-200"
+            >
+              Past Versions
+            </Interactive>
+            <Interactive
+              class="flex items-center justify-center gap-2 rounded-full px-6 py-2 duration-200 hover:bg-neutral-950"
+            >
+              Latest Version
+              <Icon name="mdi:arrow-right" class="h-4 w-4" />
+            </Interactive>
+          </div>
+          <div class="w-full rounded-2xl bg-neutral-800 p-8"></div>
+          <div class="w-full rounded-2xl bg-neutral-800 p-8"></div>
+          <div class="w-full rounded-2xl bg-neutral-800 p-8"></div>
+          <div class="mt-12 flex">
+            <Interactive
+              class="flex items-center gap-2 rounded-full bg-orange-700 px-6 py-2 font-semibold duration-200"
+            >
+              Canary
+            </Interactive>
+            <Interactive
+              class="flex items-center justify-center gap-2 rounded-full px-6 py-2 duration-200 hover:bg-neutral-950"
+            >
+              Latest Version
+              <Icon name="mdi:arrow-right" class="h-4 w-4" />
+            </Interactive>
+          </div>
+          <div class="w-full rounded-2xl bg-neutral-800 p-8"></div>
+          <div class="w-full rounded-2xl bg-neutral-800 p-8"></div>
+          <div class="w-full rounded-2xl bg-neutral-800 p-8"></div>
         </div>
       </div>
     </div>
