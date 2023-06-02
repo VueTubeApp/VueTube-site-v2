@@ -97,8 +97,8 @@ const avatars = await getOcto();
     <section
       class="grid w-full max-w-screen-md grid-cols-1 grid-rows-[repeat(4,_minmax(400px,_1fr))] gap-4 p-4 md:grid-cols-6 md:grid-rows-[minmax(350px,_1.7fr)_minmax(240px,_1.25fr)]"
     >
-      <div
-        onclick="location.href='/features'"
+      <a
+        href="/features"
         class="cursor-pointer rounded-3xl bg-[url('https://images.unsplash.com/photo-1534996858221-380b92700493?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3431&q=80')] bg-cover p-5 duration-300 hover:scale-[1.03] hover:p-6 hover:text-blue-300 active:scale-95 md:col-span-2"
       >
         <span class="text-xs font-light text-blue-300">
@@ -107,9 +107,9 @@ const avatars = await getOcto();
         <h3 class="text-base font-bold capitalize leading-5">
           Videos for everyone, <br /> in every language.
         </h3>
-      </div>
+      </a>
       <div
-        class="flex cursor-pointer flex-col rounded-3xl bg-neutral-700 p-4 pb-0 duration-300 hover:scale-[1.03] md:col-span-4 md:row-span-1"
+        class="flex flex-col rounded-3xl bg-neutral-700 p-4 pb-0 duration-300 hover:scale-[1.03] md:col-span-4 md:row-span-1"
       >
         <h3 class="text-center text-xs font-light text-brand-purple">
           Built-in extensions
@@ -118,16 +118,20 @@ const avatars = await getOcto();
           Streamline Your <br /> Watching Experience
         </h3>
         <div class="grid h-full w-full grid-cols-2 gap-4 px-6">
-          <div
-            class="mx-auto w-full rounded-t-3xl border-8 border-b-0 border-purple-200 bg-brand-purple drop-shadow-lg"
-          >
+          <div class="relative mx-auto w-full overflow-hidden">
+            <!-- This will be a fancy animation. Image for effect -->
+            <img
+              src="/extension-mock.png"
+              alt=""
+              class="absolute mx-auto w-full drop-shadow-lg"
+            />
           </div>
           <div
             class="flex flex-col content-center items-center justify-around gap-4 p-4 text-center text-xs"
           >
             <!-- Pretend this one is active for now -->
             <div
-              class="flex w-full flex-grow basis-0 flex-col items-center gap-2 rounded-2xl border-4 border-brand-purple bg-purple-100 p-4 drop-shadow-lg"
+              class="flex w-full flex-grow basis-0 flex-col items-center gap-2 rounded-2xl border-2 border-brand-purple bg-purple-100 p-4 drop-shadow-lg"
             >
               <Sponsorblock class="h-11 text-[#413663]" />
             </div>
@@ -146,7 +150,7 @@ const avatars = await getOcto();
         </div>
       </div>
       <div
-        class="flex cursor-pointer flex-col rounded-3xl bg-neutral-700 p-4 pb-0 duration-300 hover:scale-[1.03] md:col-span-4 md:row-span-1 md:flex-row"
+        class="flex flex-col rounded-3xl bg-neutral-700 p-4 pb-0 duration-300 hover:scale-[1.03] md:col-span-4 md:row-span-1 md:flex-row"
       >
         <div class="w-1/2 p-4 pr-0 md:p-8">
           <span class="text-light text-xs text-emerald-100">
@@ -158,13 +162,15 @@ const avatars = await getOcto();
             consectetur laboriosam modi fuga doloribus ut!
           </p>
         </div>
-        <div
-          class="mx-auto mt-auto h-36 w-28 rounded-t-3xl border-8 border-b-0 border-emerald-100 bg-brand-green md:h-56 md:w-44"
-        >
+        <div class="relative flex-grow overflow-hidden">
+          <img
+            src="/customise-mock.png"
+            class="absolute mx-auto h-auto w-auto pt-4 drop-shadow-lg"
+          />
         </div>
       </div>
-      <div
-        onclick="location.href='/features'"
+      <a
+        href="/features"
         class="flex cursor-pointer flex-col justify-end rounded-3xl bg-neutral-700 bg-cover p-4 duration-300 hover:scale-[1.03] hover:p-5 hover:text-brand-yellow active:scale-95 md:col-span-2"
         style="background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.7) 100%),url('https://images.unsplash.com/photo-1510535043828-3d1edc68071e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2370&q=80')"
       >
@@ -175,7 +181,7 @@ const avatars = await getOcto();
         <h3 class="text-base font-bold leading-5">
           Privacy At Lightning Speeds.
         </h3>
-      </div>
+      </a>
     </section>
 
     <h2 class="mb-12 mt-24 text-center text-4xl font-bold capitalize md:mb-2">
