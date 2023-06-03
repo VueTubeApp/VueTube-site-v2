@@ -36,13 +36,19 @@ onMounted(() => {
 
     camera.position.set(0, 0.075, 0.15);
 
-    const controls = new OrbitControls(camera, document.documentElement);
+    const controls = new OrbitControls(
+      camera,
+      container.parentElement.parentElement
+    );
+    controls.enableZoom = false;
+    controls.enablePan = false;
     controls.addEventListener("change", render); // use if there is no animation loop
     controls.minDistance = 0.135;
     controls.maxDistance = 0.135;
     controls.target.set(0, 0.075, 0.015);
     controls.update();
 
+    // TODO: add slow rotate animation on scroll or by default
     camera.position.set(0, 0.075, 0.15);
 
     // the 3d phone
