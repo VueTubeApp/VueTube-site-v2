@@ -1,56 +1,86 @@
 <template>
-  <div class="phone z-50">
-    <canvas ref="canvas" class="phone__canvas top-0 h-full w-full"></canvas>
+  <div class="z-50">
+    <canvas id="canvas" class="top-0 h-full w-full"></canvas>
   </div>
 </template>
 <script setup>
-import * as Three from "three";
-import { onMounted, ref } from "vue";
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
-import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
+import * as THREE from "three";
+import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+import { RGBELoader } from "three/addons/loaders/RGBELoader.js";
+
 onMounted(() => {
-  const canvas = ref(null);
-  const scene = new Three.Scene();
-  const camera = new Three.PerspectiveCamera(
-    75,
-    window.innerWidth / window.innerHeight,
-    0.1,
-    1000
-  );
-  const renderer = new Three.WebGLRenderer({ canvas: canvas.value });
-  const loader = new GLTFLoader();
-  const controls = new OrbitControls(camera, renderer.domElement);
-  const animate = () => {
-    requestAnimationFrame(animate);
+  let camera, scene, renderer;
+
+  init();
+  render();
+
+  function init() {
+    const container = document.getElementByID("canvas");
+    document.body.appendChild(container);
+
+    camera = new THREE.PerspectiveCamera(
+      45,
+      window.innerWidth / window.innerHeight,
+      0.25,
+      20
+    );
+    camera.position.set(-1.8, 0.6, 2.7);
+
+    scene = new THREE.Scene();
+
+    new RGBELoader()
+      .setPath("textures/equirectangular/")
+      .load("royal_esplanade_1k.hdr", function (texture) {
+        texture.mapping = THREE.EquirectangularReflectionMapping;
+
+        scene.background = texture;
+        scene.environment = texture;
+
+        render();
+
+        // model
+
+        const loader = new GLTFLoader().setPath(
+          "models/gltf/DamagedHelmet/glTF/"
+        );
+        loader.load("DamagedHelmet.gltf", function (gltf) {
+          scene.add(gltf.scene);
+
+          render();
+        });
+      });
+
+    renderer = new THREE.WebGLRenderer({ antialias: true });
+    renderer.setPixelRatio(window.devicePixelRatio);
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1;
+    container.appendChild(renderer.domElement);
+
+    const controls = new OrbitControls(camera, renderer.domElement);
+    controls.addEventListener("change", render); // use if there is no animation loop
+    controls.minDistance = 2;
+    controls.maxDistance = 10;
+    controls.target.set(0, 0, -0.2);
     controls.update();
+
+    window.addEventListener("resize", onWindowResize);
+  }
+
+  function onWindowResize() {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+
+    renderer.setSize(window.innerWidth, window.innerHeight);
+
+    render();
+  }
+
+  //
+
+  function render() {
     renderer.render(scene, camera);
-  };
-  // set camera position
-  camera.position.x = 0;
-  camera.position.y = 0;
-
-  camera.position.z = 5;
-
-  // set renderer size
-  renderer.setSize(window.innerWidth, window.innerHeight);
-  renderer.setPixelRatio(window.devicePixelRatio);
-
-  // add lights
-
-  const light = new Three.DirectionalLight(0xffffff, 1);
-  light.position.set(0, 0, 1).normalize();
-  scene.add(light);
-
-  // load '/vuephone.gltf'
-
-  loader.load("/vuephone.gltf", (gltf) => {
-    scene.add(gltf.scene);
-  });
-
-  // add global lights
-
-  renderer.setSize(window.innerWidth, window.innerHeight);
-  document.body.appendChild(renderer.domElement);
-  animate();
+  }
 });
 </script>
