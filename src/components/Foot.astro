@@ -1,3 +1,45 @@
+---
+const sitemap = [
+  {
+    label: "Team",
+  },
+  {
+    label: "Branding",
+  },
+  {
+    label: "Support",
+  },
+  {
+    label: "Donate",
+  },
+  {
+    label: "Connect",
+  },
+];
+const socials = [
+  {
+    label: "Twitter",
+    color: "#1DA1F2",
+  },
+  {
+    label: "Reddit",
+    color: "#FF4500",
+  },
+  {
+    label: "Discord",
+    color: "#5865F2",
+  },
+  {
+    label: "Github",
+    color: "#FFFFFF",
+  },
+  {
+    label: "YouTube",
+    color: "#FF0000",
+  },
+];
+---
+
 <footer class="fixed bottom-0 w-full text-white">
   <div
     class="m-auto flex h-full w-full max-w-screen-md justify-between gap-8 p-8"
@@ -22,61 +64,35 @@
       <!-- links -->
       <div class="flex flex-col text-neutral-300">
         <!-- <b class="mb-4 font-bold text-white">Sitemap.</b> -->
-        <a
-          class="cursor-pointer pb-1 duration-300 hover:translate-x-1 hover:text-white md:pb-2 md:text-xl"
-        >
-          Team
-        </a>
-        <a
-          class="cursor-pointer pb-1 duration-300 hover:translate-x-1 hover:text-white md:pb-2 md:text-xl"
-        >
-          Branding
-        </a>
-        <a
-          class="cursor-pointer pb-1 duration-300 hover:translate-x-1 hover:text-white md:pb-2 md:text-xl"
-        >
-          Support
-        </a>
-        <a
-          class="cursor-pointer pb-1 duration-300 hover:translate-x-1 hover:text-white md:pb-2 md:text-xl"
-        >
-          Donate
-        </a>
-        <a
-          class="cursor-pointer pb-1 duration-300 hover:translate-x-1 hover:text-white md:pb-2 md:text-xl"
-        >
-          Connect
-        </a>
+        {
+          sitemap.map((item, index) => (
+            <a
+              class="cursor-pointer pb-1 duration-300 hover:translate-x-1 hover:text-white md:pb-2 md:text-xl"
+              href={item.href}
+              target={item.external ? "_blank" : ""}
+              rel={item.external ? "noopener" : ""}
+            >
+              {item.label}
+            </a>
+          ))
+        }
       </div>
 
       <!-- socials -->
       <div class="flex flex-col text-neutral-300">
         <!-- <b class="mb-4 font-bold text-white">Socials.</b> -->
-        <a
-          class="cursor-pointer pb-1 duration-300 hover:translate-x-1 hover:text-[#1DA1F2]"
-        >
-          Twitter
-        </a>
-        <a
-          class="cursor-pointer pb-1 duration-300 hover:translate-x-1 hover:text-[#FF4500]"
-        >
-          Reddit
-        </a>
-        <a
-          class="cursor-pointer pb-1 duration-300 hover:translate-x-1 hover:text-[#5865F2]"
-        >
-          Discord
-        </a>
-        <a
-          class="cursor-pointer pb-1 duration-300 hover:translate-x-1 hover:text-white"
-        >
-          GitHub
-        </a>
-        <a
-          class="cursor-pointer pb-1 duration-300 hover:translate-x-1 hover:text-[#FF0000]"
-        >
-          YouTube
-        </a>
+        {
+          socials.map((item, index) => (
+            <a
+              class={`cursor-pointer pb-1 duration-300 hover:translate-x-1 hover:text-[${item.color}]`}
+              href={item.href}
+              target={item.external ? "_blank" : ""}
+              rel={item.external ? "noopener" : ""}
+            >
+              {item.label}
+            </a>
+          ))
+        }
       </div>
     </div>
   </div>
