@@ -193,9 +193,9 @@ const avatars = await getOcto();
       class="flex w-full flex-col items-center bg-gradient-to-b from-transparent to-black p-4 pb-10"
     >
       <div
-        class="relative flex w-full max-w-screen-md flex-wrap items-baseline gap-y-2 p-4 md:flex-row"
+        class="relative flex w-full max-w-screen-md flex-col flex-wrap items-baseline gap-y-2 p-4 md:flex-row"
       >
-        <a class="group mb-8 flex w-3/5 flex-col p-4" href="/about">
+        <a class="group mb-8 flex flex-col p-4 md:w-3/5" href="/about">
           <div
             class="overflow-hidden rounded-3xl duration-300 group-hover:scale-95"
           >
@@ -212,7 +212,7 @@ const avatars = await getOcto();
             beatae!
           </h4>
         </a>
-        <a class="group mb-8 flex w-2/5 flex-col p-4" href="/about">
+        <a class="group mb-8 flex flex-col p-4 md:w-2/5" href="/about">
           <div
             class="overflow-hidden rounded-3xl duration-300 group-hover:scale-95"
           >
