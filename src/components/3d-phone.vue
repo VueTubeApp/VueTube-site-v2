@@ -1,6 +1,6 @@
 <template>
   <div class="phone z-50">
-    <canvas ref="canvas" class="phone__canvas"></canvas>
+    <canvas ref="canvas" class="phone__canvas top-0 h-full w-full"></canvas>
   </div>
 </template>
 <script setup>
@@ -9,56 +9,48 @@ import { onMounted, ref } from "vue";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 onMounted(() => {
-  // Get a reference to the container element that will hold our scene
-  const container = document.querySelector(".phone__canvas");
+  const canvas = ref(null);
+  const scene = new Three.Scene();
+  const camera = new Three.PerspectiveCamera(
+    75,
+    window.innerWidth / window.innerHeight,
+    0.1,
+    1000
+  );
+  const renderer = new Three.WebGLRenderer({ canvas: canvas.value });
+  const loader = new GLTFLoader();
+  const controls = new OrbitControls(camera, renderer.domElement);
+  const animate = () => {
+    requestAnimationFrame(animate);
+    controls.update();
+    renderer.render(scene, camera);
+  };
+  // set camera position
+  camera.position.x = 0;
+  camera.position.y = 0;
 
-  // create a Scene
-  const scene = new Scene();
+  camera.position.z = 5;
 
-  // Set the background color
-  scene.background = new Color("skyblue");
+  // set renderer size
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.setPixelRatio(window.devicePixelRatio);
 
-  // Create a camera
-  const fov = 35; // AKA Field of View
-  const aspect = container.clientWidth / container.clientHeight;
-  const near = 0.1; // the near clipping plane
-  const far = 100; // the far clipping plane
+  // add lights
 
-  const camera = new PerspectiveCamera(fov, aspect, near, far);
+  const light = new Three.DirectionalLight(0xffffff, 1);
+  light.position.set(0, 0, 1).normalize();
+  scene.add(light);
 
-  // every object is initially created at ( 0, 0, 0 )
-  // move the camera back so we can view the scene
-  camera.position.set(0, 0, 10);
-
-  // create a geometry
-  const geometry = new BoxBufferGeometry(2, 2, 2);
-
-  // create a default (white) Basic material
-  const material = new MeshBasicMaterial();
-
-  // create a Mesh containing the geometry and material
-  const cube = new Mesh(geometry, material);
-
-  // add the mesh to the scene
-  scene.add(cube);
+  // load '/vuephone.gltf'
 
   loader.load("/vuephone.gltf", (gltf) => {
     scene.add(gltf.scene);
   });
 
-  // create the renderer
-  const renderer = new WebGLRenderer();
+  // add global lights
 
-  // next, set the renderer to the same size as our container element
-  renderer.setSize(container.clientWidth, container.clientHeight);
-
-  // finally, set the pixel ratio so that our scene will look good on HiDPI displays
-  renderer.setPixelRatio(window.devicePixelRatio);
-
-  // add the automatically created <canvas> element to the page
-  container.append(renderer.domElement);
-
-  // render, or 'create a still image', of the scene
-  renderer.render(scene, camera);
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  document.body.appendChild(renderer.domElement);
+  animate();
 });
 </script>
