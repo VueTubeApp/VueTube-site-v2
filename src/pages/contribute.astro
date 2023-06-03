@@ -1,10 +1,18 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { Icon } from "astro-iconify";
 ---
 
+<script>
+  const menuButton = document.getElementById("menu");
+  menuButton?.addEventListener("click", () => {
+    document.getElementById("nav")?.classList.toggle("-translate-x-full");
+  });
+</script>
 <Layout title="VueTube | Contribute">
   <aside
-    class="fixed left-0 top-[5.5rem] flex flex-col gap-2 overflow-y-auto px-4 py-2"
+    id="nav"
+    class="fixed left-0 top-[9rem] flex -translate-x-full flex-col gap-2 overflow-y-auto px-4 py-2 pt-4 backdrop-blur-xl duration-300 ease-in-out xl:top-[5.5rem] xl:translate-x-0"
     style="height: calc(100dvh - 5.5rem)"
   >
     <!-- TODO : replace with a Vue component that loops over a map of links -->
@@ -90,7 +98,7 @@ import Layout from "../layouts/Layout.astro";
     >
       Helpers
     </div>
-    <div
+    <!-- <div
       class="ml-2 cursor-pointer rounded-lg bg-opacity-50 px-2 py-1 hover:bg-neutral-800"
       style="text-shadow: 0 0 1rem white;"
     >
@@ -101,7 +109,7 @@ import Layout from "../layouts/Layout.astro";
       style="text-shadow: 0 0 1rem white;"
     >
       Error Handling
-    </div>
+    </div> -->
     <b class="mt-2 pl-2 text-sm font-bold">Plugins</b>
     <div
       class="ml-2 cursor-pointer rounded-lg bg-opacity-50 px-2 py-1 hover:bg-neutral-800"
@@ -130,4 +138,14 @@ import Layout from "../layouts/Layout.astro";
     </div>
     <!-- TODO : add sections for this website -->
   </aside>
+  <div class="min-h-[100vh] w-full">
+    <nav
+      class="fixed top-[5.5rem] flex w-full items-center border-b border-t border-neutral-800 p-4 px-6 outline-2 outline-red-500 backdrop-blur-xl xl:hidden"
+    >
+      <button id="menu" class="mr-6">
+        <Icon class="h-6 w-6" name="mdi:menu" />
+      </button>
+      <span>The Mobile App {">"} Environment Setup</span>
+    </nav>
+  </div>
 </Layout>
