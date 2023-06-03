@@ -30,25 +30,27 @@ onMounted(() => {
 
     scene = new THREE.Scene();
 
-    new RGBELoader().load("royal_esplanade_1k.hdr", function (texture) {
-      texture.mapping = THREE.EquirectangularReflectionMapping;
+    new RGBELoader()
+      .setPath("/phon/")
+      .load("royal_esplanade_1k.hdr", function (texture) {
+        texture.mapping = THREE.EquirectangularReflectionMapping;
 
-      scene.background = texture;
-      scene.environment = texture;
-
-      render();
-
-      // model
-
-      const loader = new GLTFLoader();
-      loader.load("/vuephone.gltf", function (gltf) {
-        scene.add(gltf.scene);
-        // chnage the position of the phone
-        gltf.scene.position.set(0, -0.1, 0);
+        scene.background = texture;
+        scene.environment = texture;
 
         render();
+
+        // model
+
+        const loader = new GLTFLoader();
+        loader.setPath("/phon/").load("vuephone.gltf", function (gltf) {
+          scene.add(gltf.scene);
+          // chnage the position of the phone
+          gltf.scene.position.set(0, -0.1, 0);
+
+          render();
+        });
       });
-    });
 
     renderer = new THREE.WebGLRenderer({ antialias: true });
     renderer.setPixelRatio(window.devicePixelRatio);
