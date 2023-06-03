@@ -10,8 +10,6 @@ import { onMounted } from "vue";
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
-import { RGBELoader } from "three/addons/loaders/RGBELoader.js";
-
 onMounted(() => {
   let camera, scene, renderer;
   let mesh;
@@ -20,53 +18,54 @@ onMounted(() => {
   //
   function init() {
     let container = document.getElementById("container");
+
+    // camera
     camera = new THREE.PerspectiveCamera(
-      5, // fov
+      40, // fov
       container.clientWidth / container.clientWidth, // aspect ratio
       0.25,
       0
     );
-    camera.position.set(0, 0, 0);
+    camera.position.set(0, 0, 0.15);
 
+    // renderer
     scene = new THREE.Scene();
-
-    new RGBELoader()
-      .setPath("/phon/")
-      .load("royal_esplanade_1k.hdr", function (texture) {
-        texture.mapping = THREE.EquirectangularReflectionMapping;
-
-        scene.background = texture;
-        scene.environment = texture;
-
-        render();
-
-        // model
-
-        const loader = new GLTFLoader();
-        loader.setPath("/phon/").load("vuephone.gltf", function (gltf) {
-          scene.add(gltf.scene);
-          // chnage the position of the phone
-          gltf.scene.position.set(0, -0.1, 0);
-
-          render();
-        });
-      });
-
-    renderer = new THREE.WebGLRenderer({ antialias: true });
+    renderer = new THREE.WebGLRenderer({ alpha: true });
     renderer.setPixelRatio(window.devicePixelRatio);
     renderer.setSize(container.clientWidth, container.clientWidth);
-    renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    renderer.toneMappingExposure = 1;
     container.appendChild(renderer.domElement);
 
+    // controls
     const controls = new OrbitControls(camera, renderer.domElement);
     controls.addEventListener("change", render); // use if there is no animation loop
-    controls.minDistance = 2;
-    controls.maxDistance = 5;
+    controls.minDistance = 0;
+    controls.maxDistance = 99999999;
     controls.target.set(0, -0.05, -0.02);
     controls.update();
 
+    // the 3d phone
+    const gloader = new GLTFLoader();
+    gloader.setPath("/phon/").load("Project Name.gltf", function (gltf) {
+      scene.add(gltf.scene);
+      // chnage the position of the phone
+      gltf.scene.position.set(0, -0.15, 0);
+      render();
+    });
+
+    // lights
+    const light = new THREE.AmbientLight(0xffffff);
+    scene.add(light);
     window.addEventListener("resize", onWindowResize);
+
+    // red backdrop
+    const dirlight = new THREE.DirectionalLight(0xff0000, 25);
+    dirlight.position.set(0, -0.15, -10);
+    scene.add(dirlight);
+
+    // white top right
+    const dirlight2 = new THREE.DirectionalLight(0xffffff, 25);
+    dirlight2.position.set(0.15, 0.15, -5);
+    scene.add(dirlight2);
   }
 
   function onWindowResize() {
