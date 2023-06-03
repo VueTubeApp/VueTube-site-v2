@@ -6,6 +6,7 @@ import Contributors from "../components/Contributors.vue";
 import { Octokit } from "@octokit/core";
 import RYD from "../components/icons/ryd.vue";
 import Sponsorblock from "../components/icons/sponsorblock.vue";
+import ThreeDPhone from "../components/3d-phone.vue";
 
 async function getOcto() {
   if (!process.env.IS_PROD) {
@@ -43,8 +44,9 @@ const avatars = await getOcto();
   >
     <!-- half and half -->
     <div
-      class="w-1/2 bg-[url('https://media.discordapp.net/attachments/952985066424897574/1112627081617084416/image.png?width=762&height=1400')] bg-contain bg-center bg-no-repeat portrait:h-1/2 portrait:w-full portrait:bg-cover portrait:bg-top"
+      class="grid w-1/2 place-items-center bg-[url('https://media.discordapp.net/attachments/952985066424897574/1112627081617084416/image.png?width=762&height=1400')] bg-contain bg-center bg-no-repeat portrait:h-1/2 portrait:w-full portrait:bg-cover portrait:bg-top"
     >
+      <ThreeDPhone client:only />
     </div>
     <div
       class="flex w-1/2 flex-col justify-center portrait:h-1/2 portrait:w-full portrait:justify-end"
