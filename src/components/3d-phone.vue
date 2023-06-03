@@ -1,7 +1,7 @@
 <template>
   <div
     id="container"
-    class="z-50 grid w-full place-items-center overflow-hidden rounded-3xl"
+    class="z-50 grid h-full w-full place-items-center overflow-hidden rounded-3xl"
   ></div>
 </template>
 <script setup>
@@ -21,18 +21,18 @@ onMounted(() => {
 
     // camera
     camera = new THREE.PerspectiveCamera(
-      40, // fov
-      container.clientWidth / container.clientWidth, // aspect ratio
-      0.25,
-      0
+      75, // fov
+      container.clientWidth / container.clientHeight, // aspect ratio
+      0.001,
+      1000
     );
-    camera.position.set(0, 0, 0.15);
+    camera.position.set(0, 0, 0.1);
 
     // renderer
     scene = new THREE.Scene();
     renderer = new THREE.WebGLRenderer({ alpha: true });
     renderer.setPixelRatio(window.devicePixelRatio);
-    renderer.setSize(container.clientWidth, container.clientWidth);
+    renderer.setSize(container.clientWidth, container.clientHeight);
     container.appendChild(renderer.domElement);
 
     // controls
@@ -53,19 +53,33 @@ onMounted(() => {
     });
 
     // lights
-    const light = new THREE.AmbientLight(0xffffff);
-    scene.add(light);
-    window.addEventListener("resize", onWindowResize);
+    const ambient = new THREE.AmbientLight(0xffffff, 0.5);
+    scene.add(ambient);
 
-    // red backdrop
-    const dirlight = new THREE.DirectionalLight(0xff0000, 25);
-    dirlight.position.set(0, -0.15, -10);
-    scene.add(dirlight);
-
-    // white top right
-    const dirlight2 = new THREE.DirectionalLight(0xffffff, 25);
-    dirlight2.position.set(0.15, 0.15, -5);
+    // white top light
+    const dirlight2 = new THREE.DirectionalLight(0xffffff, 0.5);
+    dirlight2.position.set(0, 20, 15);
     scene.add(dirlight2);
+
+    // white bottom light
+    const dirlight3 = new THREE.DirectionalLight(0xffffff, 0.5);
+    dirlight3.position.set(0, -20, 15);
+    scene.add(dirlight3);
+
+    // white left light
+    const dirlight4 = new THREE.DirectionalLight(0xffffff, 0.5);
+    dirlight4.position.set(20, 0, 15);
+    scene.add(dirlight4);
+
+    // white right light
+    const dirlight5 = new THREE.DirectionalLight(0xffffff, 0.5);
+    dirlight5.position.set(-20, 0, 15);
+    scene.add(dirlight5);
+
+    // backlight
+    const dirlight6 = new THREE.DirectionalLight(0xffffff, 1);
+    dirlight6.position.set(0, -0.15, -20);
+    scene.add(dirlight6);
   }
 
   function onWindowResize() {
