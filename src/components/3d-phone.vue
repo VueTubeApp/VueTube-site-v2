@@ -10,10 +10,17 @@ import { onMounted } from "vue";
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer";
+import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass";
+import { GammaCorrectionShader } from "three/addons/shaders/GammaCorrectionShader.js";
+import { TAARenderPass } from "three/addons/postprocessing/TAARenderPass.js";
+
 onMounted(() => {
-  let camera, scene, renderer;
+  let camera, scene, renderer, controls;
   let mesh;
+  let composer;
   init();
+  setPostProcessing();
   render();
   //
   function init() {
@@ -21,89 +28,105 @@ onMounted(() => {
 
     // camera
     camera = new THREE.PerspectiveCamera(
-      90, // fov
-      container.clientWidth / container.clientHeight, // aspect ratio
+      90,
+      container.clientWidth / container.clientHeight,
       0.001,
       1000
     );
+    camera.position.set(0, 0.075, 0.15);
 
-    // renderer
-    scene = new THREE.Scene();
-    renderer = new THREE.WebGLRenderer({ alpha: true });
+    // Renderer
+    renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
     renderer.setPixelRatio(window.devicePixelRatio);
     renderer.setSize(container.clientWidth, container.clientHeight);
     container.appendChild(renderer.domElement);
 
-    camera.position.set(0, 0.075, 0.15);
-
-    const controls = new OrbitControls(
-      camera,
-      container.parentElement.parentElement
-    );
+    // Controls
+    controls = new OrbitControls(camera, container.parentElement.parentElement);
     controls.enableZoom = false;
     controls.enablePan = false;
-    controls.addEventListener("change", render); // use if there is no animation loop
     controls.minDistance = 0.135;
     controls.maxDistance = 0.135;
     controls.target.set(0, 0.075, 0.015);
-    controls.update();
+    controls.autoRotate = true;
+    controls.autoRotateSpeed = 1;
 
-    // TODO: add slow rotate animation on scroll or by default
-    camera.position.set(0, 0.075, 0.15);
+    // Vertical axis locked
+    controls.minPolarAngle = Math.PI / 2;
+    controls.maxPolarAngle = Math.PI / 2;
 
-    // the 3d phone
+    // Resize
+    // window.addEventListener("resize", onWindowResize);
+
+    // Scene
+    scene = new THREE.Scene();
+
+    // lights
+    scene.add(new THREE.AmbientLight(0xffffff, 0.5));
+
+    // white topright light
+    scene.add(createDirectionalLight(0x404040, 0.25, 5, 20, 15));
+
+    // white bottom light
+    scene.add(createDirectionalLight(0xffffff, 0.5, 0, -20, 15));
+
+    // white left light
+    scene.add(createDirectionalLight(0xffffff, 0.5, 20, 0, 15));
+
+    // white right light
+    scene.add(createDirectionalLight(0xffffff, 0.5, -20, 0, 15));
+
+    // // backlight
+    scene.add(createDirectionalLight(0xffffff, 1, 0, 0, -20));
+
+    // Load 3D phone model
     const gloader = new GLTFLoader();
     gloader.setPath("/phon/").load("Project Name.gltf", function (gltf) {
       scene.add(gltf.scene);
-      // chnage the position of the phone
+      // change the position of the phone
       gltf.scene.position.set(0, 0, 0);
-      gltf.scene.rotation.set(0.25, 0, 0);
-      render();
+      gltf.scene.rotation.set(0.25, 0.4, 0);
     });
 
-    // lights
-    const ambient = new THREE.AmbientLight(0xffffff, 0.5);
-    scene.add(ambient);
+    // Resize Handler
+    // window.addEventListener("resize", onWindowResize, false);
+  }
 
-    // white topsright light
-    const dirlight2 = new THREE.DirectionalLight(0x404040, 0.25);
-    // diffuse
+  function createDirectionalLight(color, intensity, x, y, z) {
+    const light = new THREE.DirectionalLight(color, intensity);
+    light.position.set(x, y, z);
+    return light;
+  }
 
-    dirlight2.position.set(5, 20, 15);
-    scene.add(dirlight2);
+  function setPostProcessing() {
+    composer = new EffectComposer(renderer);
 
-    // white bottom light
-    const dirlight3 = new THREE.DirectionalLight(0xffffff, 0.5);
-    dirlight3.position.set(0, -20, 15);
-    scene.add(dirlight3);
+    const taaRenderPass = new TAARenderPass(scene, camera);
+    taaRenderPass.unbiased = false;
+    composer.addPass(taaRenderPass);
 
-    // white left light
-    const dirlight4 = new THREE.DirectionalLight(0xffffff, 0.5);
-    dirlight4.position.set(20, 0, 15);
-    scene.add(dirlight4);
+    const renderPass = new RenderPass(scene, camera);
+    composer.addPass(renderPass);
 
-    // white right light
-    const dirlight5 = new THREE.DirectionalLight(0xffffff, 0.5);
-    dirlight5.position.set(-20, 0, 15);
-    scene.add(dirlight5);
-
-    // backlight
-    const dirlight6 = new THREE.DirectionalLight(0xffffff, 1);
-    dirlight6.position.set(0, 0, -20);
-    scene.add(dirlight6);
+    // const outputPass = new ShaderPass(GammaCorrectionShader);
+    // composer.addPass(outputPass);
   }
 
   function onWindowResize() {
-    camera.aspect = window.innerWidth / window.innerHeight;
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+
+    camera.aspect = width / height;
     camera.updateProjectionMatrix();
 
-    renderer.setSize(window.innerWidth, window.innerHeight);
-
-    render();
+    renderer.setSize(width, height);
+    composer.setSize(width, height);
   }
 
   function render() {
-    renderer.render(scene, camera);
+    requestAnimationFrame(render);
+    controls.update();
+    composer.render(scene, camera);
   }
 });
 </script>
