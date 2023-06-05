@@ -19,6 +19,7 @@ onMounted(() => {
   let camera, scene, renderer, controls;
   let mesh;
   let composer;
+  let back = false;
   init();
   setPostProcessing();
   render();
@@ -47,9 +48,28 @@ onMounted(() => {
     controls.enablePan = false;
     controls.minDistance = 0.135;
     controls.maxDistance = 0.135;
-    controls.target.set(0, 0.075, 0.015);
+    controls.target.set(0, 0.075, 0.0015);
     controls.autoRotate = true;
-    controls.autoRotateSpeed = 1;
+    controls.autoRotateSpeed = 2;
+    // setInterval(() => {
+    //   controls.autoRotateSpeed == 2
+    //     ? (controls.autoRotateSpeed = 10)
+    //     : (controls.autoRotateSpeed = 2);
+    // }, 2345);
+
+    setInterval(() => {
+      // console.log(controls.rotation);
+      // TODO: use controls current rotation angle instead of "back"
+      if (back) {
+        controls.autoRotateSpeed -= 0.1;
+        if (controls.autoRotateSpeed <= 2) back = false;
+      } else {
+        controls.autoRotateSpeed += 0.1;
+        if (controls.autoRotateSpeed >= 10) back = true;
+      }
+    }, 30);
+
+    controls.enableDamping = true;
 
     // Vertical axis locked
     controls.minPolarAngle = Math.PI / 2;
@@ -85,7 +105,7 @@ onMounted(() => {
       scene.add(gltf.scene);
       // change the position of the phone
       gltf.scene.position.set(0, 0, 0);
-      gltf.scene.rotation.set(0.25, 0.4, 0);
+      gltf.scene.rotation.set(0.15, -0.15, 0);
     });
 
     // Resize Handler
