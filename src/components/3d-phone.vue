@@ -82,22 +82,20 @@ onMounted(() => {
     scene = new THREE.Scene();
 
     // lights
-    scene.add(new THREE.AmbientLight(0xffffff, 0.5));
+    scene.add(new THREE.AmbientLight(0xffffff, 1));
 
-    // white topright light
-    scene.add(createDirectionalLight(0x404040, 0.25, 5, 20, 15));
+    scene.add(createDirectionalLight(0x404040, 0.75, 5, 20, 0));
 
-    // white bottom light
     scene.add(createDirectionalLight(0xffffff, 0.5, 0, -20, 15));
 
-    // white left light
-    scene.add(createDirectionalLight(0xffffff, 0.5, 20, 0, 15));
+    scene.add(createDirectionalLight(0xffffff, 0.5, 0, 20, 15));
 
-    // white right light
-    scene.add(createDirectionalLight(0xffffff, 0.5, -20, 0, 15));
+    scene.add(createDirectionalLight(0xffffff, 0.5, 0, 8, -20));
+    scene.add(createDirectionalLight(0xffffff, 0.5, 0, 20, -20));
+    // TODO: add hemispheric light or a spotlight at the bottom
 
     // // backlight
-    scene.add(createDirectionalLight(0xffffff, 1, 0, 0, -20));
+    // scene.add(createDirectionalLight(0xffffff, 1, 0, 0, -20));
 
     // Load 3D phone model
     const gloader = new GLTFLoader();
