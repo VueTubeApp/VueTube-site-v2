@@ -49,7 +49,7 @@ onMounted(() => {
     controls.maxDistance = 0.135;
     controls.target.set(0, 0.075, 0.0015);
     controls.autoRotate = true;
-    controls.autoRotateSpeed = 2;
+    controls.autoRotateSpeed = 1;
     // setInterval(() => {
     //   controls.autoRotateSpeed == 2
     //     ? (controls.autoRotateSpeed = 10)
@@ -59,10 +59,10 @@ onMounted(() => {
       setInterval(() => {
         if (
           controls.getAzimuthalAngle() < 1.55 &&
-          controls.getAzimuthalAngle() > -1
+          controls.getAzimuthalAngle() > -0.5
         ) {
-          if (controls.autoRotateSpeed > 2) controls.autoRotateSpeed -= 5;
-          else controls.autoRotateSpeed = 2;
+          if (controls.autoRotateSpeed > 1) controls.autoRotateSpeed -= 5;
+          else controls.autoRotateSpeed = 1;
         } else {
           if (controls.autoRotateSpeed < 20) controls.autoRotateSpeed += 2;
           else controls.autoRotateSpeed = 20;
