@@ -19,7 +19,6 @@ onMounted(() => {
   let camera, scene, renderer, controls;
   let mesh;
   let composer;
-  let back = false;
   init();
   setPostProcessing();
   render();
@@ -56,18 +55,20 @@ onMounted(() => {
     //     ? (controls.autoRotateSpeed = 10)
     //     : (controls.autoRotateSpeed = 2);
     // }, 2345);
-
-    setInterval(() => {
-      // console.log(controls.rotation);
-      // TODO: use controls current rotation angle instead of "back"
-      if (back) {
-        controls.autoRotateSpeed -= 0.1;
-        if (controls.autoRotateSpeed <= 2) back = false;
-      } else {
-        controls.autoRotateSpeed += 0.1;
-        if (controls.autoRotateSpeed >= 10) back = true;
-      }
-    }, 30);
+    setTimeout(() => {
+      setInterval(() => {
+        if (
+          controls.getAzimuthalAngle() < 1.55 &&
+          controls.getAzimuthalAngle() > -1
+        ) {
+          if (controls.autoRotateSpeed > 2) controls.autoRotateSpeed -= 5;
+          else controls.autoRotateSpeed = 2;
+        } else {
+          if (controls.autoRotateSpeed < 20) controls.autoRotateSpeed += 2;
+          else controls.autoRotateSpeed = 20;
+        }
+      }, 100);
+    }, 500);
 
     controls.enableDamping = true;
 
