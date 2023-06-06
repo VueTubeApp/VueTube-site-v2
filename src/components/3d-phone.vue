@@ -92,6 +92,15 @@ onMounted(() => {
 
     scene.add(createDirectionalLight(0xffffff, 0.5, 0, 8, -20));
     scene.add(createDirectionalLight(0xffffff, 0.5, 0, 20, -20));
+
+    // lights on the right matching the hero title
+    scene.add(createDirectionalLight(0xffffff, 0.5, 10, 3, 6));
+    scene.add(createDirectionalLight(0xffffff, 0.5, 10, 1.5, 6));
+    scene.add(createDirectionalLight(0x00e4bf, 0.5, 10, 0, 6));
+    // same as above but for when the phone has been rotated
+    scene.add(createDirectionalLight(0xffffff, 0.5, -15, 3, -6));
+    scene.add(createDirectionalLight(0xffffff, 0.5, -15, 1.5, -6));
+    scene.add(createDirectionalLight(0x00e4bf, 0.5, -15, 0, -6));
     // TODO: add hemispheric light or a spotlight at the bottom
 
     // // backlight
