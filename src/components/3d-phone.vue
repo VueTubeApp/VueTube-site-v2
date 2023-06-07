@@ -17,7 +17,7 @@ import { TAARenderPass } from "three/addons/postprocessing/TAARenderPass.js";
 
 onMounted(() => {
   let camera, scene, renderer, controls;
-  let mesh;
+  let mesh, mylight;
   let composer;
   init();
   setPostProcessing();
@@ -87,6 +87,10 @@ onMounted(() => {
     // lights
     scene.add(new THREE.AmbientLight(0xffffff, 1));
 
+    // has to be mylight, used onmousemove below
+    mylight = createDirectionalLight(0x777fff, 2, 0, 0, 0);
+    scene.add(mylight);
+
     scene.add(createDirectionalLight(0x404040, 0.75, 5, 20, 0));
 
     scene.add(createDirectionalLight(0xffffff, 0.5, 0, -20, 15));
@@ -136,6 +140,17 @@ onMounted(() => {
       0
     );
   };
+
+  function onMouseMove(event) {
+    // mesh.position.set(0, (event.clientY || event.pageY) / -5000, 0);
+    // mesh.rotation.set(0.15, -0.15 - (event.clientX || event.pageX) / -100, 0);
+    mylight.position.set(
+      ((event.clientX || event.pageX) / container.clientWidth - 1.33) * 10, // -0.5 to center the light, gives a range from -1 to 1
+      ((event.clientY || event.pageY) / container.clientHeight - 0.6) * -20,
+      10
+    );
+  }
+  window.addEventListener("mousemove", onMouseMove, false);
 
   function createDirectionalLight(color, intensity, x, y, z) {
     const light = new THREE.DirectionalLight(color, intensity);
