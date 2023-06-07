@@ -70,6 +70,8 @@ onMounted(() => {
       }, 100);
     }, 500);
 
+    // animation loop
+
     controls.enableDamping = true;
 
     // Vertical axis locked
@@ -111,6 +113,7 @@ onMounted(() => {
     const gloader = new GLTFLoader();
     gloader.setPath("/phon/").load("Project Name.gltf", function (gltf) {
       scene.add(gltf.scene);
+      mesh = gltf.scene;
       // change the position of the phone
       gltf.scene.position.set(0, 0, 0);
       gltf.scene.rotation.set(0.15, -0.15, 0);
@@ -119,6 +122,20 @@ onMounted(() => {
     // Resize Handler
     // window.addEventListener("resize", onWindowResize, false);
   }
+  // on scroll
+  window.onscroll = function () {
+    mesh.position.set(
+      0,
+      (document.documentElement.scrollTop || document.body.scrollTop) / -5000,
+      0
+    );
+    mesh.rotation.set(
+      0.15,
+      -0.15 -
+        (document.documentElement.scrollTop || document.body.scrollTop) / -100,
+      0
+    );
+  };
 
   function createDirectionalLight(color, intensity, x, y, z) {
     const light = new THREE.DirectionalLight(color, intensity);
