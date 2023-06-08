@@ -1,8 +1,8 @@
 <template>
   <div
     v-for="contributor in contributors"
-    class="h-16 w-16 rounded-full border"
-    style="box-shadow: 0 0 1rem -0.1rem #fff8"
+    class="h-16 w-16 rounded-full border border-neutral-600 duration-300 hover:border-neutral-400"
+    style="box-shadow: 0 0 0.5rem -0.1rem #fff8"
     :style="{
       backgroundImage: `url('${contributor}')`,
       backgroundSize: 'cover',
