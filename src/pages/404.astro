@@ -1,0 +1,18 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Interactive from "../components/Interactive.vue";
+---
+
+<Layout title="VueTube | 404">
+  <div
+    class="flex h-screen w-full flex-col items-center justify-center gap-4 rounded-b-[5.5rem] bg-gradient-to-b from-black via-black to-neutral-900"
+  >
+    <div class="flex flex-col items-center gap-2">
+      <h1 class="text-6xl font-bold">404</h1>
+      <p class="text-xl">Insert funni here</p>
+    </div>
+    <Interactive url="/" class="bg-brand-green text-white hover:scale-105">
+      Return Home
+    </Interactive>
+  </div>
+</Layout>
