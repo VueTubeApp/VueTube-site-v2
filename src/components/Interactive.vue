@@ -1,7 +1,7 @@
 <template>
   <button
     v-if="!disabled && !url"
-    class="flex items-center justify-center gap-x-2 rounded-3xl"
+    class="flex items-center justify-center gap-x-2 rounded-3xl px-4 py-2 duration-300"
   >
     <slot></slot>
   </button>
@@ -14,7 +14,7 @@
   <a
     v-else
     :href="url"
-    class="flex items-center justify-center gap-x-2 rounded-3xl"
+    class="flex items-center justify-center gap-x-2 rounded-3xl px-4 py-2 duration-300"
   >
     <slot></slot>
   </a>
