@@ -4,7 +4,7 @@
     class="z-50 grid h-full w-full place-items-center overflow-hidden rounded-3xl"
   ></div>
 </template>
-<script setup>
+<script lang="ts" setup>
 import { onMounted } from "vue";
 
 import * as THREE from "three";
@@ -14,6 +14,7 @@ import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer
 import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass";
 import { GammaCorrectionShader } from "three/addons/shaders/GammaCorrectionShader.js";
 import { TAARenderPass } from "three/addons/postprocessing/TAARenderPass.js";
+import anime from "animejs";
 
 onMounted(() => {
   let camera, scene, renderer, controls;
@@ -24,7 +25,7 @@ onMounted(() => {
   render();
   //
   function init() {
-    let container = document.getElementById("container");
+    if (!container) return;
 
     // camera
     camera = new THREE.PerspectiveCamera(
@@ -42,7 +43,10 @@ onMounted(() => {
     container.appendChild(renderer.domElement);
 
     // Controls
-    controls = new OrbitControls(camera, container.parentElement.parentElement);
+    controls = new OrbitControls(
+      camera,
+      container.parentElement!.parentElement
+    );
     controls.enableZoom = false;
     controls.enablePan = false;
     controls.minDistance = 0.135;
@@ -113,16 +117,52 @@ onMounted(() => {
     // // backlight
     // scene.add(createDirectionalLight(0xffffff, 1, 0, 0, -20));
 
-    // Load 3D phone model
-    const gloader = new GLTFLoader();
-    gloader.setPath("/phon/").load("Project Name.gltf", function (gltf) {
+    // Create a new loading manager
+    const loadingManager = new THREE.LoadingManager();
+
+    // Set up a callback for when all resources are loaded
+    loadingManager.onLoad = function () {
+      // All resources are loaded, you can start rendering now
+      setPostProcessing();
+      render();
+    };
+
+    // Create a GLTF loader
+    const gltfLoader = new GLTFLoader(loadingManager);
+
+    // Load the GLTF file
+    //@ts-ignore - no types for this
+    gltfLoader.load("phon/Project Name.gltf", function (gltf) {
       scene.add(gltf.scene);
       mesh = gltf.scene;
+
+      const animationTargets: THREE.Material[] = [];
+      //@ts-ignore - no types for this
+      mesh.traverse(function (child) {
+        if (child.isMesh) {
+          child.material.transparent = true;
+          child.material.opacity = 0;
+          animationTargets.push(child.material);
+        }
+      });
+
+      // Fade-in animation
+      const fadeInDuration = 1500; // Duration of the fade-in effect in milliseconds
+      anime({
+        targets: animationTargets,
+        opacity: 1,
+        duration: fadeInDuration,
+        easing: "easeInQuad",
+        complete: function () {
+          animationTargets.forEach((target) => {
+            target.transparent = false;
+          });
+        },
+      });
       // change the position of the phone
       gltf.scene.position.set(0, 0, 0);
       gltf.scene.rotation.set(0.15, -0.15, 0);
     });
-
     // Resize Handler
     // window.addEventListener("resize", onWindowResize, false);
   }
