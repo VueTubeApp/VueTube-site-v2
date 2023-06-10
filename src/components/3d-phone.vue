@@ -4,13 +4,13 @@
     class="z-50 grid h-full w-full place-items-center overflow-hidden rounded-3xl"
   ></div>
 </template>
-<script lang="ts" setup>
+<script setup>
 import { onMounted } from "vue";
 
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
-import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer";
+import { EffectComposer } from "three/addons/postprocessing/EffectComposer.js";
 import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass";
 import { GammaCorrectionShader } from "three/addons/shaders/GammaCorrectionShader.js";
 import { TAARenderPass } from "three/addons/postprocessing/TAARenderPass.js";
@@ -43,10 +43,7 @@ onMounted(() => {
     container.appendChild(renderer.domElement);
 
     // Controls
-    controls = new OrbitControls(
-      camera,
-      container.parentElement!.parentElement
-    );
+    controls = new OrbitControls(camera, container.parentElement.parentElement);
     controls.enableZoom = false;
     controls.enablePan = false;
     controls.minDistance = 0.135;
@@ -136,7 +133,7 @@ onMounted(() => {
       scene.add(gltf.scene);
       mesh = gltf.scene;
 
-      const animationTargets: THREE.Material[] = [];
+      const animationTargets = [];
       //@ts-ignore - no types for this
       mesh.traverse(function (child) {
         if (child.isMesh) {
