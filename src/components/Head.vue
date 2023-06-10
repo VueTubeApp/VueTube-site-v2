@@ -223,6 +223,25 @@ function onUnhover() {
   resetBackground();
 }
 
+function updateNav() {
+  const navLinks = Array.from(document.querySelectorAll("nav a"));
+
+  navLinks.forEach((link) => {
+    if (!navElement.value) return;
+    const activeNavElement = (navElement.value as Element).querySelector(
+      `a[href="${window.location.pathname}"]`
+    );
+
+    if (link == activeNavElement) {
+      link.classList.remove("text-neutral-400");
+      link.classList.add("scale-90", "text-white");
+    } else {
+      link.classList.remove("scale-90", "text-white");
+      link.classList.add("text-neutral-400");
+    }
+  });
+}
+
 const navElement = ref(null);
 
 onMounted(() => {
@@ -236,18 +255,11 @@ onMounted(() => {
     moveBackground(currentBackground, true);
   });
 
-  const navLinks = Array.from(document.querySelectorAll("nav a"));
+  updateNav();
 
-  navLinks.forEach((link) => {
-    if (!navElement.value) return;
-    const activeNavElement = (navElement.value as Element).querySelector(
-      `a[href="${window.location.pathname}"]`
-    );
-
-    if (link == activeNavElement) {
-      link.classList.remove("text-neutral-400");
-      link.classList.add("scale-90", "text-white");
-    }
+  document.addEventListener("swup:contentReplaced", (e: Event) => {
+    resetBackground(true);
+    updateNav();
   });
 });
 </script>
