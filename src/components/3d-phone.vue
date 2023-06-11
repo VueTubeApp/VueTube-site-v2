@@ -59,7 +59,7 @@ onMounted(() => {
     setTimeout(() => {
       setInterval(() => {
         if (
-          controls.getAzimuthalAngle() < 1.55 &&
+          controls.getAzimuthalAngle() < 1.8 &&
           controls.getAzimuthalAngle() > -0.5
         ) {
           if (controls.autoRotateSpeed > 1) controls.autoRotateSpeed -= 5;
@@ -80,7 +80,7 @@ onMounted(() => {
     controls.maxPolarAngle = Math.PI / 2;
 
     // Resize
-    // window.addEventListener("resize", onWindowResize);
+    window.addEventListener("resize", onWindowResize);
 
     // Scene
     scene = new THREE.Scene();
@@ -210,8 +210,12 @@ onMounted(() => {
   }
 
   function onWindowResize() {
-    const width = window.innerWidth;
-    const height = window.innerHeight;
+    // const width = window.innerWidth;
+    // const height = window.innerHeight;
+
+    // use parent container instead
+    const width = container.clientWidth;
+    const height = container.clientHeight;
 
     camera.aspect = width / height;
     camera.updateProjectionMatrix();
