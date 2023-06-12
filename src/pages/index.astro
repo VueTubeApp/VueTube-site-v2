@@ -11,9 +11,11 @@ import ThreeDPhone from "../components/3d-phone.vue";
 async function getOcto() {
   if (!import.meta.env.PROD) {
     console.log("You are not in production mode. Mocking data.");
-    return Array(50).fill(
-      "https://avatars.githubusercontent.com/u/27463495?u=2d0480d746e005fba0374736dd2e8a76b54e4923&v=4"
-    );
+    return Array(50).fill({
+      login: "Frontesque",
+      avatar_url: "https://avatars.githubusercontent.com/u/27463495?v=4",
+      html_url: "https://github.com/Frontesque",
+    });
   }
   if (!import.meta.env.GITHUB_TOKEN) {
     console.error("No GitHub token provided. Please set GITHUB_TOKEN env var.");
