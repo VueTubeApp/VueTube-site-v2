@@ -64,7 +64,7 @@
         Contribute
       </a>
       <a
-        href="/docs/"
+        href="/docs"
         class="-mr-5 block cursor-pointer whitespace-nowrap px-8 py-4 transition duration-150 hover:scale-90 hover:text-white focus:scale-90 focus:text-white focus:outline-none md:-mx-3"
         @mouseenter="moveBackgroundToTarget"
         @mouseleave="onUnhover"
