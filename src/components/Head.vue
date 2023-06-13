@@ -1,5 +1,6 @@
 <template>
   <header
+    id="nav"
     :class="
       menu
         ? 'h-[23rem] rounded-b-3xl bg-neutral-800 bg-opacity-30 duration-300'

@@ -1,12 +1,11 @@
 ---
-import Layout from "../layouts/Layout.astro";
+import Layout from "../layouts/BaseLayout.astro";
 import { Icon } from "astro-iconify";
 ---
 
 <Layout title="VueTube | Docs">
   <aside
-    class="fixed left-0 top-[5.5rem] flex flex-col gap-2 overflow-y-auto px-4 py-2"
-    style="height: calc(100dvh - 5.5rem)"
+    class="fixed left-0 top-[5.5rem] flex h-screen flex-col gap-2 overflow-y-auto px-4 py-2"
   >
     <!-- TODO : replace with a Vue component that loops over a map of links -->
     <div class="m-2 text-sm font-bold">Install</div>

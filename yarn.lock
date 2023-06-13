@@ -1920,6 +1920,13 @@
   resolved "https://registry.yarnpkg.com/@swup/prettier-config/-/prettier-config-1.0.0.tgz#de34a2b9c7c31a262a3a2fa7d661b2dd7736d980"
   integrity sha512-NbbuG2zT+bQkPcUGyeLNFbiwdunc58e3A/GZpPpUDrXA4ZKN7/rNh97sfG6z5+0OfxrNmDE3N7t+60p5HKhc9w==
 
+"@swup/scripts-plugin@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@swup/scripts-plugin/-/scripts-plugin-1.1.0.tgz#7c4b5d764e82386688a41e8d00211cef4bc2750b"
+  integrity sha512-/2V5cUrmzxxZH91bBk0WjsWMJhjKhb32wZ41Sw/HXAUf2gLvqebvW6Lw98HJsagNXxVqqjmzTDIfdbHGwVsG/w==
+  dependencies:
+    "@swup/plugin" "^1.0.1"
+
 "@swup/scroll-plugin@^2.0.2":
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/@swup/scroll-plugin/-/scroll-plugin-2.0.2.tgz#ba91153a37d9a4f7c0e66ea6959fe7dd570ee3be"

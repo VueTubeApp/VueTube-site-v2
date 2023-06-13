@@ -48,9 +48,19 @@ const socials = [
     external: true,
   },
 ];
+
+export interface Props {
+  fixed: boolean;
+  classes?: string[];
+}
+
+const { fixed, classes } = Astro.props;
 ---
 
-<footer class="fixed bottom-0 w-full text-white">
+<footer
+  id="footer"
+  class:list={["w-full text-white", fixed ? "fixed bottom-0" : "", classes]}
+>
   <div
     class="m-auto flex h-full w-full max-w-screen-md justify-between gap-8 p-8"
   >
