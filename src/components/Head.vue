@@ -228,8 +228,9 @@ function updateNav() {
 
   navLinks.forEach((link) => {
     if (!navElement.value) return;
+    const pathname = window.location.pathname.replace(/\/$/, "");
     const activeNavElement = (navElement.value as Element).querySelector(
-      `a[href="${window.location.pathname}"]`
+      `a[href="${pathname}"]`
     );
 
     if (link == activeNavElement) {
