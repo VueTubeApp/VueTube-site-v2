@@ -224,23 +224,18 @@ function onUnhover() {
 }
 
 function updateNav() {
+  if (!navElement.value) return;
   const navLinks = Array.from(document.querySelectorAll("nav a"));
-
+  const pathname = window.location.pathname.replace(/\/$/, "") || "/";
+  const activeNavElement = (navElement.value as Element).querySelector(
+    `a[href="${pathname}"]`
+  );
   navLinks.forEach((link) => {
-    if (!navElement.value) return;
-    const pathname = window.location.pathname.replace(/\/$/, "");
-    const activeNavElement = (navElement.value as Element).querySelector(
-      `a[href="${pathname}"]`
-    );
-
-    if (link == activeNavElement) {
-      link.classList.remove("text-neutral-400");
-      link.classList.add("scale-90", "text-white");
-    } else {
-      link.classList.remove("scale-90", "text-white");
-      link.classList.add("text-neutral-400");
-    }
+    link.classList.remove("scale-90", "text-white");
+    link.classList.add("text-neutral-400");
   });
+  activeNavElement?.classList.add("scale-90", "text-white");
+  activeNavElement?.classList.remove("text-neutral-400");
 }
 
 const navElement = ref(null);
