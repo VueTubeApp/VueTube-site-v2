@@ -3,7 +3,7 @@ import Head from "../components/Head.vue";
 import Foot from "../components/Foot.astro";
 
 export interface Props {
-  title: string;
+  title?: string;
   stickyFooter?: boolean;
   showFooter?: boolean;
   navPadding?: boolean;
@@ -28,10 +28,10 @@ const {
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" type="image/png" href="/favicon.png" />
-    <meta name="theme-color" content="#213547">
-    <meta property="og:site_name" content="VueTube">
-    <meta property="og:url" content="https://vuetube.app">
-    <meta property="og:type" content="website">
+    <meta name="theme-color" content="#B3E5FC" />
+    <meta property="og:site_name" content="VueTube" />
+    <meta property="og:url" content="https://vuetube.app" />
+    <meta property="og:type" content="website" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -39,7 +39,7 @@ const {
       rel="stylesheet"
     />
     <meta name="generator" content={Astro.generator} />
-    <title>VueTube | {title}</title>
+    <title>{title ? `${title} | ` : ""}VueTube</title>
   </head>
   <body
     class:list={[
