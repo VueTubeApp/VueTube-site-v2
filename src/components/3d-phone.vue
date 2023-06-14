@@ -229,10 +229,5 @@ onMounted(() => {
     controls.update();
     composer.render(scene, camera);
   }
-
-  document.addEventListener("swup:willReplaceContent", function () {
-    window.removeEventListener("mousemove", onMouseMove, false);
-    window.onscroll = null;
-  });
 });
 </script>

@@ -1,5 +1,6 @@
 ---
 import Layout from "./BaseLayout.astro";
+import Foot from "../components/Foot.astro";
 
 export interface Props {
   title: string;
@@ -9,10 +10,10 @@ const { title } = Astro.props;
 ---
 
 <Layout title={title} showFooter={false}>
-  <div class="flex min-h-full w-full flex-row">
+  <div class="relative flex w-full flex-row">
     <aside
       id="nav"
-      class="flex max-w-xs flex-col gap-2 overflow-y-auto border-r border-neutral-800 px-4 py-2 pt-4 text-white backdrop-blur-xl duration-300 ease-in-out lg:border-r-0"
+      class="top-[5.5rem] flex min-w-[15rem] max-w-xs flex-col gap-2 overflow-y-auto border-r border-neutral-800 px-4 py-2 pt-4 text-white backdrop-blur-xl duration-300 ease-in-out selection:sticky lg:border-r-0"
       style="height: calc(100dvh - 5.5rem)"
     >
       <!-- TODO : replace with a Vue component that loops over a map of links -->
@@ -138,12 +139,40 @@ const { title } = Astro.props;
       </div>
       <!-- TODO : add sections for this website -->
     </aside>
-    <div class="flex-column flex flex-grow"></div>
+    <div
+      class="flex min-h-full flex-grow flex-col items-center justify-between"
+    >
+      <div class="max-w-screen-md flex-grow">
+        <slot />
+      </div>
+      <Foot fixed={false} />
+    </div>
+    <aside
+      id="nav"
+      class="top-[5.5rem] flex min-w-[15rem] max-w-xs flex-col gap-2 overflow-y-auto border-r border-neutral-800 px-4 py-2 pt-4 text-white backdrop-blur-xl duration-300 ease-in-out selection:sticky lg:border-r-0"
+      style="height: calc(100dvh - 5.5rem)"
+    >
+      <!-- TODO : replace with a Vue component that loops over a map of links -->
+      <b class="mt-2 pl-2 text-sm font-bold">On This Page</b>
+      <div
+        class="cursor-pointer rounded-lg bg-opacity-50 px-2 py-1 hover:bg-neutral-800"
+        style="text-shadow: 0 0 1rem white;"
+      >
+        VueTube Plugins
+      </div>
+      <div
+        class="cursor-pointer rounded-lg bg-opacity-50 px-2 py-1 hover:bg-neutral-800"
+        style="text-shadow: 0 0 1rem white;"
+      >
+        Capacitor Plugins
+      </div>
+      <!-- TODO : add sections for this website -->
+    </aside>
   </div>
-  <script>
+  <!-- <script>
     const menuButton = document.getElementById("menu");
     menuButton?.addEventListener("click", () => {
       document.getElementById("nav")?.classList.toggle("-translate-x-full");
     });
-  </script>
+  </script> -->
 </Layout>

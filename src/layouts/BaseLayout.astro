@@ -21,7 +21,10 @@ const {
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Astro description" />
+    <meta
+      name="description"
+      content="Supercharge your video watching experience on the go. VueTube is the fully customizable, free and open source app built by the community. Download now!"
+    />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" type="image/png" href="/favicon.png" />
@@ -32,18 +35,17 @@ const {
       rel="stylesheet"
     />
     <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
+    <title>VueTube | {title}</title>
   </head>
-  <body class:list={["flex flex-col items-center min-h-screen"]}>
+  <body
+    class:list={[
+      "flex h-fit min-h-screen flex-col items-center",
+      navPadding ? "pt-[5.5rem]" : "",
+      stickyFooter ? "pb-[25rem] md:pb-[19rem]" : "justify-between",
+    ]}
+  >
     <Head client:load />
-    <main
-      id="swup"
-      class:list={[
-        "transition-swup min-h-screen z-10 w-full bg-black text-white flex-grow",
-        navPadding ? "md:pt-[5.5rem]" : "",
-        stickyFooter ? "pb-[30rem] md:pb-[19rem]" : "justify-between",
-      ]}
-    >
+    <main class:list={["flex flex-col z-10 w-full bg-black text-white"]}>
       <!-- glow circle -->
       <div
         class="pointer-events-none fixed left-1/2 top-0 -z-10 h-[200dvh] w-full -translate-x-1/2 -translate-y-1/2 rounded-full bg-neutral-800 opacity-50 blur-[420px] portrait:h-screen portrait:w-screen"
@@ -52,36 +54,9 @@ const {
       <div class="grid w-full place-items-center">
         <slot />
       </div>
-      {showFooter && <Foot fixed={stickyFooter} />}
     </main>
+    {showFooter && <Foot fixed={stickyFooter} />}
   </body>
-  <script>
-    import Swup from "swup";
-    import SwupScrollPlugin from "@swup/scroll-plugin";
-    import SwupHeadPlugin from "@swup/head-plugin";
-    import SwupA11yPlugin from "@swup/a11y-plugin";
-    import SwupScriptsPlugin from "@swup/scripts-plugin";
-    const swup = new Swup({
-      plugins: [
-        new SwupScrollPlugin({
-          animateScroll: window.matchMedia("(prefers-reduced-motion: reduce)")
-            .matches
-            ? false
-            : {
-                betweenPages: false,
-                samePageWithHash: true,
-                samePage: true,
-              },
-          scrollFriction: 0.3,
-          scrollAcceleration: 0.01,
-          offset: 0,
-        }),
-        new SwupHeadPlugin(),
-        new SwupA11yPlugin(),
-        new SwupScriptsPlugin(),
-      ],
-    });
-  </script>
 </html>
 
 <style is:global>
@@ -104,36 +79,5 @@ const {
   }
   ::-webkit-scrollbar-thumb:hover {
     background: rgba(231, 231, 231, 0.9);
-  }
-
-  /* .transition {
-    transition: 0.4s;
-    opacity: 1;
-  }
-
-  html.is-animating .transition-fade {
-    opacity: 0;
-  } */
-
-  /* Swup animation. Everything slides down and fades  */
-  .transition-swup {
-    transition: 0.4s;
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  html.is-animating .transition-swup {
-    opacity: 0;
-    transform: translateY(1rem);
-  }
-
-  /* Swup animation. Everything slides down and fades  */
-  .transition-swup-none {
-    transition: 0s;
-    opacity: 1;
-  }
-
-  html.is-animating .transition-swup {
-    opacity: 0;
   }
 </style>
