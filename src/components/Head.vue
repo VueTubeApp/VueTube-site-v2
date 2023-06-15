@@ -202,8 +202,9 @@ function resetBackground(teleport = false) {
   const navElementValue = navElement.value as unknown as Element;
   if (!navElementValue) return;
 
+  const pathname = window.location.pathname.replace(/\/$/, "") || "/";
   const activeNavElement = navElementValue.querySelector(
-    `a[href="${window.location.pathname}"]`
+    `a[href="${pathname}"]`
   );
   if (!activeNavElement) {
     moveBackground(navElementValue.children[0]);
@@ -253,10 +254,5 @@ onMounted(() => {
   });
 
   updateNav();
-
-  document.addEventListener("swup:contentReplaced", (e: Event) => {
-    resetBackground(true);
-    updateNav();
-  });
 });
 </script>
