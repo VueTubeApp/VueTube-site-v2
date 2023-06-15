@@ -1,10 +1,10 @@
 import enDocs from "./en/docs";
 
-// type NavDictionaryKeys = (typeof enDocs)[number]["key"];
-// same as above, but includes the keys from the links array
 type NavDictionaryKeys =
   | (typeof enDocs)[number]["key"]
   | NonNullable<(typeof enDocs)[number]["links"]>[number]["key"];
+
+export type NavDictionary = keyof typeof enDocs;
 
 export type EntryDoc = EntryLink | EntryHeader;
 
