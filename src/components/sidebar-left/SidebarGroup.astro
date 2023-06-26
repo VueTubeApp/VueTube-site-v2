@@ -1,0 +1,12 @@
+---
+import SidebarItem from "./SidebarItem.astro";
+interface Props {
+  title: string;
+}
+const { title } = Astro.props;
+---
+
+<div class="m-2 rounded-2xl bg-neutral-800 bg-opacity-50 p-2">
+  <SidebarItem text={title} isHeader={true} />
+  <slot />
+</div>

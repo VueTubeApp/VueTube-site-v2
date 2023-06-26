@@ -1,0 +1,26 @@
+---
+interface Props {
+  text: string;
+  link?: string;
+  isHeader?: boolean;
+}
+
+const { text, link, isHeader } = Astro.props;
+---
+
+<div
+  class:list={[
+    isHeader && "font-bold text-sm",
+    "cursor-pointer rounded-lg bg-opacity-50 px-2 py-1 hover:bg-neutral-800",
+  ]}
+  style="text-shadow: 0 0 1rem white;"
+>
+  {
+    link && (
+      <a href={link} class="text-neutral-100 hover:text-neutral-200">
+        {text}
+      </a>
+    )
+  }
+  {!link && <span class="text-neutral-100">{text}</span>}
+</div>

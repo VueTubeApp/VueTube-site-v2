@@ -1,6 +1,7 @@
 ---
 import Layout from "./BaseLayout.astro";
 import Foot from "../components/Foot.astro";
+import LeftSidebar from "../components/sidebar-left/LeftSidebar.astro";
 
 export interface Props {
   title: string;
@@ -11,134 +12,7 @@ const { title } = Astro.props;
 
 <Layout title={title} showFooter={false}>
   <div class="relative flex w-full flex-row">
-    <aside
-      id="nav"
-      class="top-[5.5rem] flex min-w-[15rem] max-w-xs flex-col gap-2 overflow-y-auto border-r border-neutral-800 px-4 py-2 pt-4 text-white backdrop-blur-xl duration-300 ease-in-out selection:sticky lg:border-r-0"
-      style="height: calc(100dvh - 5.5rem)"
-    >
-      <!-- TODO : replace with a Vue component that loops over a map of links -->
-      <div
-        class="cursor-pointer rounded-lg bg-opacity-50 px-2 py-1 hover:bg-neutral-800"
-        style="text-shadow: 0 0 1rem white;"
-      >
-        Welcome
-      </div>
-      <div
-        class="cursor-pointer rounded-lg bg-opacity-50 px-2 py-1 hover:bg-neutral-800"
-        style="text-shadow: 0 0 1rem white;"
-      >
-        Getting Started
-      </div>
-      <div class="m-2 rounded-2xl bg-neutral-800 bg-opacity-50 p-2">
-        <div class="m-2 text-sm font-bold">The Mobile App</div>
-        <div
-          class="cursor-pointer rounded-lg bg-opacity-50 px-2 py-1 hover:bg-neutral-800"
-          style="text-shadow: 0 0 1rem white;"
-        >
-          Setup Environment
-        </div>
-        <div
-          class="cursor-pointer rounded-lg bg-opacity-50 px-2 py-1 hover:bg-neutral-800"
-          style="text-shadow: 0 0 1rem white;"
-        >
-          Xcode
-        </div>
-        <div
-          class="cursor-pointer rounded-lg bg-opacity-50 px-2 py-1 hover:bg-neutral-800"
-          style="text-shadow: 0 0 1rem white;"
-        >
-          Android Studio
-        </div>
-        <div
-          class="cursor-pointer rounded-lg bg-opacity-50 px-2 py-1 hover:bg-neutral-800"
-          style="text-shadow: 0 0 1rem white;"
-        >
-          Capacitor
-        </div>
-        <div
-          class="cursor-pointer rounded-lg bg-opacity-50 px-2 py-1 hover:bg-neutral-800"
-          style="text-shadow: 0 0 1rem white;"
-        >
-          Project Folder Structure
-        </div>
-      </div>
-      <b class="mt-2 pl-2 text-sm font-bold">The Extractor</b>
-      <div
-        class="ml-2 cursor-pointer rounded-lg bg-opacity-50 px-2 py-1 hover:bg-neutral-800"
-        style="text-shadow: 0 0 1rem white;"
-      >
-        Setup Environment
-      </div>
-      <div
-        class="ml-2 cursor-pointer rounded-lg bg-opacity-50 px-2 py-1 hover:bg-neutral-800"
-        style="text-shadow: 0 0 1rem white;"
-      >
-        /youtube-new
-      </div>
-      <div
-        class="ml-2 cursor-pointer rounded-lg bg-opacity-50 px-2 py-1 hover:bg-neutral-800"
-        style="text-shadow: 0 0 1rem white;"
-      >
-        /youtube
-      </div>
-      <div
-        class="ml-2 cursor-pointer rounded-lg bg-opacity-50 px-2 py-1 hover:bg-neutral-800"
-        style="text-shadow: 0 0 1rem white;"
-      >
-        Usage Examples
-      </div>
-      <div
-        class="ml-2 cursor-pointer rounded-lg bg-opacity-50 px-2 py-1 hover:bg-neutral-800"
-        style="text-shadow: 0 0 1rem white;"
-      >
-        Testing
-      </div>
-      <div
-        class="ml-2 cursor-pointer rounded-lg bg-opacity-50 px-2 py-1 hover:bg-neutral-800"
-        style="text-shadow: 0 0 1rem white;"
-      >
-        Helpers
-      </div>
-      <div
-        class="ml-2 cursor-pointer rounded-lg bg-opacity-50 px-2 py-1 hover:bg-neutral-800"
-        style="text-shadow: 0 0 1rem white;"
-      >
-        Types
-      </div>
-      <div
-        class="ml-2 cursor-pointer rounded-lg bg-opacity-50 px-2 py-1 hover:bg-neutral-800"
-        style="text-shadow: 0 0 1rem white;"
-      >
-        Error Handling
-      </div>
-      <b class="mt-2 pl-2 text-sm font-bold">Plugins</b>
-      <div
-        class="ml-2 cursor-pointer rounded-lg bg-opacity-50 px-2 py-1 hover:bg-neutral-800"
-        style="text-shadow: 0 0 1rem white;"
-      >
-        VueTube Plugins
-      </div>
-      <div
-        class="ml-2 cursor-pointer rounded-lg bg-opacity-50 px-2 py-1 hover:bg-neutral-800"
-        style="text-shadow: 0 0 1rem white;"
-      >
-        Capacitor Plugins
-      </div>
-      <b class="mt-2 pl-2 text-sm font-bold">Translations</b>
-      <div
-        class="ml-2 cursor-pointer rounded-lg bg-opacity-50 px-2 py-1 hover:bg-neutral-800"
-        style="text-shadow: 0 0 1rem white;"
-      >
-        JSON files
-      </div>
-      <div
-        class="ml-2 cursor-pointer rounded-lg bg-opacity-50 px-2 py-1 hover:bg-neutral-800"
-        style="text-shadow: 0 0 1rem white;"
-      >
-        Using VueTube Translator (Beta)
-      </div>
-      <!-- TODO : add sections for this website -->
-    </aside>
+    <LeftSidebar />
     <div
       class="flex min-h-full flex-grow flex-col items-center justify-between"
     >
