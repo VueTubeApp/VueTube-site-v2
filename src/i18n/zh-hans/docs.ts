@@ -1,0 +1,26 @@
+import { translateDocs } from "../translation-helpers";
+
+export default translateDocs({
+  welcome: "欢迎",
+  "mobile-app": "VueTube APP",
+  "mobile-app-getting-started": "开始",
+  "mobile-app-project-structure": "项目结构",
+  "mobile-app-compiling": "编译",
+  "vuetube-extractor": "VueTube 提取器",
+  "vuetube-extractor-getting-started": "开始",
+  "vuetube-extractor-core-concepts": "核心概念",
+  "vuetube-extractor-reverse-engineering": "逆向工程",
+  "vuetube-extractor-usage-examples": "用法示例",
+  "vuetube-extractor-testing": "测试",
+  "vuetube-extractor-function-reference": "函数参考",
+  "vuetube-extractor-type-reference": "类型参考",
+  "vuetube-extractor-api-reference": "API 参考",
+  plugins: "插件",
+  "plugins-vuetube-plugins": "VueTube 插件",
+  "plugins-capacitor-plugins": "Capacitor 插件",
+  translating: "翻译指南",
+  "translating-vuetube": "VueTube",
+  "translating-repositories": "其他仓库",
+  "translating-websites": "网站",
+  "translating-vuetube-translator": "VueTube 翻译工具 (Beta)",
+});
