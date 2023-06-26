@@ -111,9 +111,14 @@ export default [
         key: "translating-repositories",
       },
       {
-        text: "Translating Website",
+        text: "Translating The Website",
         link: "/translating/Website",
         key: "translating-website",
+      },
+      {
+        text: "VueTube Translator (Beta)",
+        link: "/translating/vuetube-translator",
+        ket: "translating-vuetube-translator",
       },
     ],
   },
