@@ -8,11 +8,81 @@ const { title } = Astro.props;
 ---
 
 <div class="my-1.5 rounded-2xl bg-opacity-50">
-  <div class="flex flex-row items-center gap-1">
+  <button
+    class="flex w-full cursor-pointer flex-row items-center gap-1 rounded-lg duration-300 hover:bg-neutral-800"
+    sidebar-group-toggle
+  >
     <SidebarItem text={title} isHeader={true} />
-    <Icon class="h-6 w-6" name="material-symbols:expand-more-rounded" />
-  </div>
-  <div class="ml-2 flex flex-col gap-1 text-sm lg:ml-3">
+    <Icon
+      class="h-6 w-6"
+      name="material-symbols:expand-more-rounded"
+      sidebar-chevron
+    />
+  </button>
+  <div
+    class="ml-2 mt-1 flex flex-col gap-1 overflow-hidden text-sm duration-300 lg:ml-3"
+    sidebar-group-contents
+  >
     <slot />
   </div>
 </div>
+<script>
+  import anime from "animejs";
+
+  const buttons = document.querySelectorAll("[sidebar-group-toggle]");
+  const duration = 150;
+
+  if (buttons)
+    buttons.forEach((button: Element) => {
+      button.addEventListener("click", () => {
+        const contents = button.nextElementSibling;
+        const chevron = button.querySelector("[sidebar-chevron]");
+        if (!contents || !chevron) return;
+        // Toggle move up/down animation with hide
+        if (contents.classList.contains("notActive")) {
+          anime({
+            targets: contents,
+            translateY: 0,
+            height: contents.scrollHeight,
+            opacity: 1,
+            easing: "easeInExpo",
+            duration: duration,
+            begin: () => {
+              contents.classList.remove("notActive");
+            },
+          });
+          anime({
+            targets: chevron,
+            rotate: 0,
+            easing: "easeInExpo",
+            duration: duration,
+          });
+          // unset children's tabindex
+          contents.querySelectorAll("a").forEach((link: Element) => {
+            link.removeAttribute("tabindex");
+          });
+        } else {
+          anime({
+            targets: contents,
+            height: 0,
+            opacity: 0,
+            easing: "easeInExpo",
+            duration: duration,
+            complete: () => {
+              contents.classList.add("notActive");
+            },
+          });
+          anime({
+            targets: chevron,
+            rotate: -90,
+            easing: "easeInExpo",
+            duration: duration,
+          });
+          // programatically make children non-focusable
+          contents.querySelectorAll("a").forEach((link: Element) => {
+            link.setAttribute("tabindex", "-1");
+          });
+        }
+      });
+    });
+</script>

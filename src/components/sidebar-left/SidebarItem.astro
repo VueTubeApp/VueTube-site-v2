@@ -16,7 +16,7 @@ if (link == Astro.url.pathname) {
   class:list={[
     isHeader && "font-semibold pl-2",
     !isHeader && "hover:bg-neutral-800 cursor-pointer px-2",
-    "rounded-lg bg-opacity-50 py-1 group",
+    "rounded-lg bg-opacity-50 py-1 group duration-300",
   ]}
   style="text-shadow: 0 0 0.5rem white;"
 >
@@ -33,5 +33,11 @@ if (link == Astro.url.pathname) {
       </a>
     )
   }
-  {!link && <span class="text-neutral-100">{text}</span>}
+  {
+    !link && (
+      <span class="transition-300 text-neutral-100 group-hover:text-neutral-200">
+        {text}
+      </span>
+    )
+  }
 </div>

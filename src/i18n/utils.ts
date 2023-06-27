@@ -1,4 +1,5 @@
 import type { DocsDict } from "./types";
+import path from "path";
 
 function mapExports<T>(modules: Record<string, { default: T }>) {
   const exports: Record<string, T> = {};
@@ -12,3 +13,17 @@ function mapExports<T>(modules: Record<string, { default: T }>) {
 export const docsTranslations = mapExports<DocsDict>(
   import.meta.glob("./*/docs.ts", { eager: true })
 );
+
+export function wrapNavUrls<T extends object>(slug: string, nav: Array<T>) {
+  // find all link keys on every level of the nav and add the slug to the front
+  nav = structuredClone(nav);
+  return nav.map((item) => {
+    if ("links" in item && Array.isArray(item.links)) {
+      item.links = wrapNavUrls(slug, item.links);
+    }
+    if ("link" in item && typeof item.link === "string") {
+      item.link = path.join(slug, item.link);
+    }
+    return item;
+  });
+}

@@ -1,5 +1,5 @@
 import type { AstroGlobal } from "astro";
-import { docsTranslations } from "./utils";
+import { docsTranslations, wrapNavUrls } from "./utils";
 import languages from "./languages";
 import type { DocsDict } from "./types";
 
@@ -10,5 +10,5 @@ function getLangFromPath(path: string): string {
 
 export function getDocs(Astro: AstroGlobal): DocsDict {
   const lang = getLangFromPath(Astro.url.pathname);
-  return docsTranslations[lang] || docsTranslations.en;
+  return wrapNavUrls("docs", docsTranslations[lang] || docsTranslations.en);
 }
