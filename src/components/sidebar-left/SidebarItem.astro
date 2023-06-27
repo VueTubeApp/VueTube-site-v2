@@ -14,11 +14,11 @@ if (link == Astro.url.pathname) {
 
 <div
   class:list={[
-    isHeader && "font-semibold",
-    !isHeader && "hover:bg-neutral-800 cursor-pointer",
-    "rounded-lg bg-opacity-50 px-2 py-1 group",
+    isHeader && "font-semibold pl-2",
+    !isHeader && "hover:bg-neutral-800 cursor-pointer px-2",
+    "rounded-lg bg-opacity-50 py-1 group",
   ]}
-  style="text-shadow: 0 0 1rem white;"
+  style="text-shadow: 0 0 0.5rem white;"
 >
   {
     link && (

@@ -1,5 +1,6 @@
 ---
 import SidebarItem from "./SidebarItem.astro";
+import { Icon } from "astro-iconify";
 interface Props {
   title: string;
 }
@@ -7,8 +8,11 @@ const { title } = Astro.props;
 ---
 
 <div class="my-1.5 rounded-2xl bg-opacity-50">
-  <SidebarItem text={title} isHeader={true} />
-  <div class="ml-2 flex flex-col gap-1 text-sm">
+  <div class="flex flex-row items-center gap-1">
+    <SidebarItem text={title} isHeader={true} />
+    <Icon class="h-6 w-6" name="material-symbols:expand-more-rounded" />
+  </div>
+  <div class="ml-2 flex flex-col gap-1 text-sm lg:ml-3">
     <slot />
   </div>
 </div>
