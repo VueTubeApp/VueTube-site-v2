@@ -1,10 +1,8 @@
 import enDocs from "./en/docs";
 
 type NavDictionaryKeys =
-  | (typeof enDocs)[number]["key"]
+  | NonNullable<(typeof enDocs)[number]["key"]>
   | NonNullable<(typeof enDocs)[number]["links"]>[number]["key"];
-
-export type NavDictionary = keyof typeof enDocs;
 
 export type EntryDoc = EntryLink | EntryHeader;
 
@@ -16,6 +14,7 @@ type EntryHeader = {
   text: string;
   key: string;
 };
+
 /**
  * @description Function to create translations based on the docs.ts file, falling back to the english version if the translation is not found.
  * @param {object} translations - The translations object to use.
