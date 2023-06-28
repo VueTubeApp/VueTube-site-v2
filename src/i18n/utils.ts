@@ -27,3 +27,12 @@ export function wrapNavUrls<T extends object>(slug: string, nav: Array<T>) {
     return item;
   });
 }
+
+export function getLangFromPath(path: string) {
+  const [lang] = path.split("/");
+  return lang;
+}
+export function stripLangFromPath(path: string) {
+  const [, ...rest] = path.split("/");
+  return rest.join("/");
+}

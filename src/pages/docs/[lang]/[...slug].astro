@@ -1,0 +1,23 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { getLangFromPath, stripLangFromPath } from "~/i18n/utils.ts";
+import DocsMainLayout from "~/layouts/DocsMainLayout.astro";
+import { allDocs } from "~/content";
+
+export async function getStaticPaths() {
+  return allDocs.map((page) => {
+    const lang = getLangFromPath(page.slug);
+    const slug = stripLangFromPath(page.slug);
+    return { params: { lang, slug }, props: page };
+  });
+}
+
+export type Props = CollectionEntry<"docs">;
+const { data, render } = Astro.props;
+const { Content, headings } = await render();
+console.log(data, Content, headings);
+---
+
+<DocsMainLayout content={data} pageTitle={headings} }>
+  <Content slot="after-title" />
+</DocsMainLayout>

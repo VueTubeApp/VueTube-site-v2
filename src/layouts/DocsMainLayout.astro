@@ -1,0 +1,22 @@
+---
+import SideNav from "./SideNav.astro";
+import type { MarkdownHeading } from "astro";
+import type { CollectionEntry } from "astro:content";
+
+export interface Props {
+  content: CollectionEntry<"docs">["data"];
+  pageTitle?: MarkdownHeading[];
+}
+
+const { content, pageTitle } = Astro.props;
+---
+
+<SideNav title={content.title}>
+  <section>
+    <slot name="before-title" />
+  </section>
+  <h1 class="mb-4 text-5xl font-bold">{content.title || pageTitle}</h1>
+  <section>
+    <slot name="after-title" />
+  </section>
+</SideNav>

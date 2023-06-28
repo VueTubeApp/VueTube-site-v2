@@ -12,32 +12,35 @@ if (link == Astro.url.pathname) {
 }
 ---
 
-<div
-  class:list={[
-    isHeader && "font-semibold pl-2",
-    !isHeader && "hover:bg-neutral-800 cursor-pointer px-2",
-    "rounded-lg bg-opacity-50 py-1 group duration-300",
-  ]}
-  style="text-shadow: 0 0 0.5rem white;"
->
-  {
-    link && (
-      <a
-        href={link}
-        class:list={[
-          "text-neutral-100 group-hover:text-neutral-200",
-          isActive && "text-neutral-200",
-        ]}
-      >
-        {text}
-      </a>
-    )
-  }
-  {
-    !link && (
-      <span class="transition-300 text-neutral-100 group-hover:text-neutral-200">
-        {text}
-      </span>
-    )
-  }
-</div>
+{
+  link && (
+    <a
+      href={link}
+      class:list={[
+        isHeader && "font-semibold pl-2",
+        !isHeader && "hover:bg-neutral-800 cursor-pointer px-2",
+        "rounded-lg bg-opacity-50 py-1 group duration-300",
+        "text-neutral-100 group-hover:text-neutral-200",
+        isActive && "text-neutral-200",
+      ]}
+      style="text-shadow: 0 0 0.5rem white;"
+    >
+      {text}
+    </a>
+  )
+}
+{
+  !link && (
+    <div
+      class:list={[
+        isHeader && "font-semibold pl-2",
+        !isHeader && "hover:bg-neutral-800 cursor-pointer px-2",
+        "rounded-lg bg-opacity-50 py-1 group duration-300",
+        "transition-300 text-neutral-100 group-hover:text-neutral-200",
+      ]}
+      style="text-shadow: 0 0 0.5rem white;"
+    >
+      {text}
+    </div>
+  )
+}

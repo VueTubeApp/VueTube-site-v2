@@ -1,3 +1,10 @@
 {
-  "conventionalCommits.scopes": ["home", "navbar", "assets", "footer", "wip"]
+  "conventionalCommits.scopes": [
+    "home",
+    "navbar",
+    "assets",
+    "footer",
+    "wip",
+    "docs"
+  ]
 }
