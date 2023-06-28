@@ -10,5 +10,9 @@ function getLangFromPath(path: string): string {
 
 export function getDocs(Astro: AstroGlobal): DocsDict {
   const lang = getLangFromPath(Astro.url.pathname);
-  return wrapNavUrls("docs", docsTranslations[lang] || docsTranslations.en);
+  return wrapNavUrls(
+    `docs/${lang}`,
+    docsTranslations[lang] || docsTranslations.en,
+    Astro
+  );
 }
