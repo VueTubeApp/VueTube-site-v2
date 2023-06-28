@@ -7,6 +7,7 @@ import { Octokit } from "@octokit/core";
 import RYD from "../components/icons/ryd.vue";
 import Sponsorblock from "../components/icons/sponsorblock.vue";
 import ThreeDPhone from "../components/3d-phone.vue";
+import DownloadChip from "../components/download-chip.astro";
 
 async function getOcto() {
   if (!import.meta.env.PROD) {
@@ -90,205 +91,215 @@ const avatars = await getOcto();
     style="height: calc(50dvh - 5.5rem)"
   >
   </div>
-  <section
-    class="top-[5.5rem] flex w-full flex-col items-center"
+  <div
+    class="[&>*]:px-auto == top-[5.5rem] flex w-full flex-col items-center [&>*]:py-5 [&>*]:md:py-11"
     style="margin-top: calc(-50dvh + 10.5rem);"
   >
-    <h2 class="mb-8 text-center text-4xl font-bold capitalize md:mb-4">
-      You Are In Control
-    </h2>
-    <h3 class="max-w-prose px-4 text-neutral-400 md:text-lg">
-      &emsp; Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam
-      minima modi sunt eius laborum adipisci exercitationem? Nam rem aut vel
-      adipisci doloribus consequuntur ipsum! Ipsa facere ducimus eaque provident
-      ipsum.
-    </h3>
-
-    <!-- Grid -->
-    <section
-      class="grid w-full max-w-screen-md grid-cols-1 grid-rows-[repeat(4,_minmax(400px,_1fr))] gap-4 p-4 md:grid-cols-6 md:grid-rows-[minmax(350px,_1.7fr)_minmax(240px,_1.25fr)]"
-    >
-      <a
-        href="/features"
-        class="cursor-pointer rounded-3xl bg-[url('https://images.unsplash.com/photo-1534996858221-380b92700493?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3431&q=80')] bg-cover p-5 duration-300 hover:scale-[1.03] hover:p-6 hover:text-blue-300 active:scale-95 md:col-span-2"
-      >
-        <span class="text-xs font-light text-blue-300">
-          Community Translations
-        </span>
-        <h3 class="text-base font-bold capitalize leading-5">
-          Videos for everyone, <br /> in every language
-        </h3>
-      </a>
-      <div
-        class="flex flex-col gap-2 rounded-3xl bg-neutral-700 p-4 pb-0 duration-300 hover:scale-[1.03] md:col-span-4 md:row-span-1"
-      >
-        <div class="p-4 md:p-0 md:pb-0 md:text-center">
-          <h3 class="text-xs font-light text-brand-purple">
-            Built-in extensions
-          </h3>
-          <h3 class="text-lg font-bold leading-5">
-            Streamline Your <br /> Watching Experience
-          </h3>
-        </div>
-        <div class="grid h-full w-full grid-cols-2 gap-4 md:px-6">
-          <div class="relative mx-auto w-full overflow-hidden">
-            <!-- This will be a fancy animation. Image for effect -->
-            <img
-              src="/extension-mock.png"
-              alt=""
-              class="absolute mx-auto w-full drop-shadow-lg"
-            />
-          </div>
-          <div
-            class="flex flex-col content-center items-center justify-around gap-4 p-4 text-center text-xs"
-          >
-            <!-- Pretend this one is active for now -->
-            <div
-              class="group flex w-full flex-grow basis-0 flex-col items-center justify-center gap-2 rounded-2xl bg-white drop-shadow-lg duration-300 hover:bg-purple-100 md:p-4"
-            >
-              <Sponsorblock
-                class="h-11 text-gray-300 duration-300 group-hover:text-[#413663]"
-              />
-            </div>
-
-            <div
-              class="group flex w-full flex-grow basis-0 flex-col items-center justify-center gap-2 rounded-2xl bg-white drop-shadow-lg duration-300 hover:bg-purple-100 md:p-4"
-            >
-              <RYD
-                class="h-11 text-gray-300 duration-300 group-hover:text-[#413663]"
-              />
-            </div>
-            <div
-              class="group flex w-full flex-grow basis-0 flex-col items-center justify-center gap-2 rounded-2xl bg-white drop-shadow-lg duration-300 hover:bg-purple-100 hover:outline-2 md:p-4"
-            >
-              <Icon
-                name="fa-solid:plug"
-                class="h-11 text-gray-300 duration-300 group-hover:text-[#413663]"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-      <div
-        class="flex flex-col rounded-3xl bg-neutral-700 p-4 pb-0 duration-300 hover:scale-[1.03] md:col-span-4 md:row-span-1 md:flex-row"
-      >
-        <div class="p-4 pr-0 md:w-1/2 md:p-8">
-          <span class="text-light text-xs text-emerald-100">
-            Customizations
-          </span>
-          <h3 class="mb-2 font-bold leading-5">Tailor-made For You</h3>
-          <p class="text-xs text-neutral-300">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti
-            consectetur laboriosam modi fuga doloribus ut!
-          </p>
-        </div>
-        <div class="relative flex-grow overflow-hidden">
-          <img
-            src="/customise-mock.png"
-            class="absolute mx-auto h-auto w-auto pt-4 drop-shadow-lg"
-          />
-        </div>
-      </div>
-      <a
-        href="/features"
-        class="flex cursor-pointer flex-col justify-end rounded-3xl bg-neutral-700 bg-cover p-4 duration-300 hover:scale-[1.03] hover:p-5 hover:text-brand-yellow active:scale-95 md:col-span-2"
-        style="background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.7) 100%),url('https://images.unsplash.com/photo-1510535043828-3d1edc68071e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2370&q=80')"
-      >
-        <span
-          class="text-xs font-light text-brand-yellow"
-          style="text-shadow: 0 0 0.5rem #000;">Fast & Private</span
-        >
-        <h3 class="text-base font-bold leading-5">
-          Privacy At Lightning Speeds
-        </h3>
-      </a>
-    </section>
-
-    <h2 class="mb-12 mt-24 text-center text-4xl font-bold capitalize md:mb-2">
-      Discover what's new
-    </h2>
-    <section
-      class="flex w-full flex-col items-center bg-gradient-to-b from-transparent to-black p-4 pb-10"
-    >
-      <div
-        class="relative flex w-full max-w-screen-md flex-col flex-wrap items-baseline gap-y-2 p-4 md:flex-row"
-      >
-        <a class="group mb-8 flex flex-col p-4 md:w-3/5" href="/about">
-          <div class="overflow-hidden rounded-3xl duration-300">
-            <img
-              src="https://media.discordapp.net/attachments/970793575153561640/970794418896502804/vueee.png"
-              class="aspect-video w-full object-cover duration-300 group-hover:scale-110"
-            />
-          </div>
-          <div
-            class="mb-1 mt-3 text-sm font-light text-neutral-300 duration-300 group-hover:translate-x-2"
-          >
-            Update
-          </div>
-          <h4
-            class="text-lg underline-offset-4 duration-300 group-hover:translate-x-2"
-          >
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur,
-            beatae!
-          </h4>
-        </a>
-        <a class="group mb-8 flex flex-col p-4 md:w-2/5" href="/about">
-          <div class="overflow-hidden rounded-3xl duration-300">
-            <img
-              src="https://images.unsplash.com/photo-1630514969818-94aefc42ec47?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80"
-              class="aspect-video w-full object-cover duration-300 group-hover:scale-110"
-            />
-          </div>
-          <div
-            class="mb-1 mt-3 text-sm font-light text-neutral-300 duration-300 group-hover:translate-x-2"
-          >
-            Community
-          </div>
-          <h4
-            class="text-lg underline-offset-4 duration-300 group-hover:translate-x-2"
-          >
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          </h4>
-        </a>
-        <div class="flex w-full justify-end">
-          <Interactive
-            url="/about"
-            class="flex items-center gap-2 rounded-2xl border border-neutral-600 px-3 py-2 duration-200 hover:scale-110 hover:rounded-3xl hover:bg-neutral-100 hover:text-black"
-          >
-            Newsroom
-            <Icon name="mdi:arrow-right" class="h-4 w-4" />
-          </Interactive>
-        </div>
-      </div>
-    </section>
-    <section class="flex w-full flex-col items-center bg-black p-4">
+    <section class="m-auto flex w-full max-w-screen-lg flex-col items-center">
       <h2
-        class="max-w-screen-mdl mb-12 mt-24 text-center text-4xl font-bold capitalize md:mb-8"
+        class="mb-4 text-center text-3xl font-bold capitalize md:mb-8 md:text-5xl"
+      >
+        You Are In Control
+      </h2>
+      <h3
+        class="mb-8 max-w-[40rem] px-4 text-center text-lg text-neutral-400 md:text-xl"
+      >
+        Unleash the full potential of on-the-go Video Streaming with a Seamless
+        and Personalized Open-Source and Customizable Platform, Free from
+        Annoying Ads.
+      </h3>
+
+      <!-- Grid -->
+      <div
+        class="grid w-full max-w-screen-md grid-cols-1 grid-rows-[repeat(4,_minmax(400px,_1fr))] gap-4 p-4 sm:grid-cols-6 sm:grid-rows-[minmax(350px,_1.7fr)_minmax(240px,_1.25fr)]"
+      >
+        <a
+          href="/features"
+          class="cursor-pointer rounded-3xl bg-[url('https://images.unsplash.com/photo-1534996858221-380b92700493?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3431&q=80')] bg-cover p-5 duration-300 hover:scale-[1.03] hover:p-6 hover:text-blue-300 active:scale-95 sm:col-span-2"
+        >
+          <span class="text-xs font-light text-blue-300">
+            Community Translations
+          </span>
+          <h3 class="text-base font-bold capitalize leading-5">
+            Videos for everyone, <br /> in every language
+          </h3>
+        </a>
+        <div
+          class="flex flex-col gap-4 rounded-3xl bg-neutral-700 p-4 pb-0 duration-300 hover:scale-[1.03] sm:col-span-4 sm:row-span-1"
+        >
+          <div class="p-4 md:p-0 md:pb-0 md:text-center">
+            <span class="text-xs font-light text-brand-purple">
+              Built-in extensions
+            </span>
+            <h3 class="text-lg font-bold leading-5">
+              Streamline Your <br /> Watching Experience
+            </h3>
+          </div>
+          <div class="grid h-full w-full grid-cols-2 gap-4 md:px-6">
+            <div class="relative mx-auto w-full overflow-hidden">
+              <!-- This will be a fancy animation. Image for effect -->
+              <img
+                src="/extension-mock.png"
+                alt=""
+                class="absolute mx-auto w-full drop-shadow-lg"
+              />
+            </div>
+            <div
+              class="flex flex-col content-center items-center justify-around gap-4 p-4 text-center text-xs"
+            >
+              <!-- Pretend this one is active for now -->
+              <div
+                class="group flex w-full flex-grow basis-0 flex-col items-center justify-center gap-2 rounded-2xl bg-white drop-shadow-lg duration-300 hover:bg-purple-100 md:p-4"
+              >
+                <Sponsorblock
+                  class="h-11 text-gray-300 duration-300 group-hover:text-[#413663]"
+                />
+              </div>
+
+              <div
+                class="group flex w-full flex-grow basis-0 flex-col items-center justify-center gap-2 rounded-2xl bg-white drop-shadow-lg duration-300 hover:bg-purple-100 md:p-4"
+              >
+                <RYD
+                  class="h-11 text-gray-300 duration-300 group-hover:text-[#413663]"
+                />
+              </div>
+              <div
+                class="group flex w-full flex-grow basis-0 flex-col items-center justify-center gap-2 rounded-2xl bg-white drop-shadow-lg duration-300 hover:bg-purple-100 hover:outline-2 md:p-4"
+              >
+                <Icon
+                  name="fa-solid:plug"
+                  class="h-11 text-gray-300 duration-300 group-hover:text-[#413663]"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="flex flex-col rounded-3xl bg-neutral-700 p-4 pb-0 duration-300 hover:scale-[1.03] sm:col-span-4 sm:row-span-1 md:flex-row"
+        >
+          <div class="p-4 pr-0 md:w-1/2 md:p-8">
+            <span class="text-light text-xs text-emerald-100">
+              Customizations
+            </span>
+            <h3 class="mb-2 font-bold leading-5">Tailor-made For You</h3>
+            <p class="text-xs text-neutral-300">
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti
+              consectetur laboriosam modi fuga doloribus ut!
+            </p>
+          </div>
+          <div class="relative flex flex-grow justify-center overflow-hidden">
+            <img
+              src="/customise-mock.png"
+              class="absolute mx-auto h-auto w-auto pt-4 drop-shadow-lg"
+            />
+          </div>
+        </div>
+        <a
+          href="/features"
+          class="flex cursor-pointer flex-col justify-end rounded-3xl bg-neutral-700 bg-cover p-4 duration-300 hover:scale-[1.03] hover:p-5 hover:text-brand-yellow active:scale-95 sm:col-span-2"
+          style="background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.7) 100%),url('https://images.unsplash.com/photo-1510535043828-3d1edc68071e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2370&q=80')"
+        >
+          <span
+            class="text-xs font-light text-brand-yellow"
+            style="text-shadow: 0 0 0.5rem #000;">Fast & Private</span
+          >
+          <h3 class="text-base font-bold leading-5">
+            Privacy At Lightning Speeds
+          </h3>
+        </a>
+      </div>
+    </section>
+
+    <section
+      class="flex w-full flex-col items-center bg-gradient-to-b from-transparent to-black px-4"
+    >
+      <h2
+        class="m-auto mb-4 max-w-screen-lg text-center text-3xl font-bold capitalize md:mb-8 md:text-5xl"
+      >
+        Discover what's new
+      </h2>
+      <div class="m-auto flex w-full max-w-screen-lg flex-col items-center">
+        <div
+          class="relative flex w-full max-w-screen-md flex-col flex-wrap items-baseline gap-y-2 p-4 md:flex-row"
+        >
+          <a class="group mb-8 flex flex-col md:w-3/5 md:pr-4" href="/about">
+            <div class="overflow-hidden rounded-3xl duration-300">
+              <img
+                src="https://media.discordapp.net/attachments/970793575153561640/970794418896502804/vueee.png"
+                class="aspect-video w-full object-cover duration-300 group-hover:scale-110"
+              />
+            </div>
+            <div
+              class="mb-1 mt-3 text-sm font-light text-neutral-300 duration-300 group-hover:translate-x-2"
+            >
+              Update
+            </div>
+            <h4
+              class="text-lg underline-offset-4 duration-300 group-hover:translate-x-2"
+            >
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur,
+              beatae!
+            </h4>
+          </a>
+          <a class="group mb-8 flex flex-col md:w-2/5 md:pl-4" href="/about">
+            <div class="overflow-hidden rounded-3xl duration-300">
+              <img
+                src="https://images.unsplash.com/photo-1630514969818-94aefc42ec47?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80"
+                class="aspect-video w-full object-cover duration-300 group-hover:scale-110"
+              />
+            </div>
+            <div
+              class="mb-1 mt-3 text-sm font-light text-neutral-300 duration-300 group-hover:translate-x-2"
+            >
+              Community
+            </div>
+            <h4
+              class="text-lg underline-offset-4 duration-300 group-hover:translate-x-2"
+            >
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            </h4>
+          </a>
+          <div class="flex w-full justify-end">
+            <Interactive
+              url="/about"
+              class="flex items-center gap-2 rounded-2xl border border-neutral-600 px-3 py-2 duration-200 hover:scale-110 hover:rounded-3xl hover:bg-neutral-100 hover:text-black"
+            >
+              Newsroom
+              <Icon name="mdi:arrow-right" class="h-4 w-4" />
+            </Interactive>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="m-auto flex w-full flex-col items-center bg-black px-4">
+      <h2
+        class="mb-4 max-w-screen-md text-center text-3xl font-bold capitalize md:mb-6 md:text-5xl"
       >
         Free & Open Source, Forever
       </h2>
-      <h3 class="max-w-screen-md px-4 text-neutral-400 md:text-lg">
-        &emsp; Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam
-        minima modi sunt eius laborum adipisci exercitationem? Nam rem aut vel
-        adipisci doloribus consequuntur ipsum! Ipsa facere ducimus eaque
-        provident ipsum.
-      </h3>
-      <div class="mt-4 flex w-full max-w-screen-md flex-col gap-4 md:flex-row">
-        <div class="flex w-full justify-center gap-4">
-          <Interactive
-            url="/contribute"
-            class="flex items-center gap-2 rounded-full bg-white text-black duration-200 hover:bg-brand-red hover:text-white"
-          >
-            Contribute
-          </Interactive>
-          <Interactive
-            url="/docs"
-            class="flex items-center gap-2 px-3 py-2 underline decoration-orange-700 decoration-wavy underline-offset-2 duration-200 hover:decoration-emerald-400 hover:underline-offset-8"
-          >
-            Documentation
-            <Icon name="mdi:arrow-right" class="h-4 w-4" />
-          </Interactive>
-        </div>
+      <span
+        class="mb-4 max-w-[40rem] px-4 text-center text-lg text-neutral-400 md:text-xl"
+      >
+        VueTube is brought to you by these wonderful people of the Open Source
+        community.
+      </span>
+      <div
+        class="flex w-full max-w-screen-md flex-col justify-center gap-4 sm:flex-row"
+      >
+        <Interactive
+          url="/contribute"
+          class="flex items-center gap-2 rounded-full bg-white px-8 text-black duration-200 hover:bg-brand-red hover:text-white"
+        >
+          Contribute
+        </Interactive>
+        <Interactive
+          url="/docs"
+          class="flex items-center gap-2 px-3 py-2 duration-200"
+        >
+          Documentation
+          <Icon name="mdi:arrow-right" class="h-4 w-4" />
+        </Interactive>
       </div>
       <div
         class="mt-6 flex w-full max-w-screen-md flex-wrap justify-center gap-2"
@@ -296,14 +307,14 @@ const avatars = await getOcto();
         <Contributors contributors={avatars} />
       </div>
     </section>
-    <div
+    <section
       id="download"
-      class="grid w-full place-content-center rounded-b-3xl bg-gradient-to-b from-black via-black to-neutral-900 px-4 py-36 lg:rounded-b-[5.5rem]"
+      class="w-full place-content-center rounded-b-3xl bg-gradient-to-b from-black via-black to-neutral-900 px-4 lg:rounded-b-[5.5rem]"
     >
       <div
-        class="flex w-full max-w-screen-md flex-col justify-between md:flex-row"
+        class="m-auto flex w-full max-w-screen-md flex-col justify-between gap-8 px-4 md:flex-row"
       >
-        <div class="mb-8 flex flex-col items-start">
+        <div class="mb-8 flex flex-grow flex-col items-start">
           <div
             class="h-20 w-20 bg-[url('/logomark.svg')] bg-contain bg-center bg-no-repeat"
           >
@@ -313,13 +324,15 @@ const avatars = await getOcto();
           >
             Get VueTube
           </h2>
-          <div class="my-8 max-w-[40ch] text-neutral-500">
+          <div class="my-2 max-w-[40ch] text-neutral-500 md:my-4">
             Download the latest stable version of VueTube | VueTube Version
             0.5.1 For Android | Released 2023.01.6 (2.22 MB)
           </div>
-          <div class="flex flex-col gap-2 font-semibold">
+          <!-- <DownloadChip releaseType="release" /> -->
+          <div class="flex w-full flex-col gap-2 font-semibold md:w-fit">
             <Interactive
-              class="flex items-center gap-2 rounded-full bg-brand-green px-6 py-2 duration-200 hover:bg-green-700"
+              url="https://github.com/VueTubeApp/VueTube/releases/latest/"
+              class="items-center gap-2 rounded-full bg-brand-green px-6 py-2 duration-200 hover:bg-green-700"
             >
               Download Latest
             </Interactive>
@@ -332,47 +345,33 @@ const avatars = await getOcto();
             </Interactive>
           </div>
         </div>
-        <div class="flex flex-col gap-2">
-          <div class="flex">
+        <div class="flex flex-col gap-2 md:w-[60%]">
+          <div class="flex flex-col sm:flex-row">
             <Interactive
-              class="pointer-events-none flex flex-grow items-center gap-2 rounded-full bg-brand-blue px-6 py-2 font-semibold text-black duration-200"
+              class="group flex items-center gap-2 rounded-full bg-brand-blue px-6 py-2 font-semibold text-black duration-200"
             >
-              Past Versions
-            </Interactive>
-            <Interactive
-              class="group flex items-center justify-center gap-2 rounded-full px-6 py-2 duration-200"
-            >
-              Later Versions
+              Past Releases
               <Icon
                 name="mdi:arrow-right"
-                class="h-4 w-4 duration-300 group-hover:translate-x-1"
+                class="h-4 duration-300 group-hover:w-4 group-hover:opacity-100 md:w-0 md:opacity-0"
               />
             </Interactive>
           </div>
           <div class="w-full rounded-2xl bg-neutral-800 p-8"></div>
-          <div class="w-full rounded-2xl bg-neutral-800 p-8"></div>
-          <div class="w-full rounded-2xl bg-neutral-800 p-8"></div>
-          <div class="mt-12 flex">
+          <div class="mt-12 flex flex-col sm:flex-row">
             <Interactive
-              class="pointer-events-none flex flex-grow items-center gap-2 rounded-full bg-brand-red px-6 py-2 font-semibold duration-200"
+              class="group flex items-center gap-2 rounded-full bg-brand-red px-6 py-2 font-semibold duration-200"
             >
               Canary
-            </Interactive>
-            <Interactive
-              class="group flex items-center justify-center gap-2 rounded-full px-6 py-2 duration-200"
-            >
-              Later Versions
               <Icon
                 name="mdi:arrow-right"
-                class="h-4 w-4 duration-300 group-hover:translate-x-1"
+                class="h-4 duration-300 group-hover:w-4 group-hover:opacity-100 md:w-0 md:opacity-0"
               />
             </Interactive>
           </div>
-          <div class="w-full rounded-2xl bg-neutral-800 p-8"></div>
-          <div class="w-full rounded-2xl bg-neutral-800 p-8"></div>
           <div class="w-full rounded-2xl bg-neutral-800 p-8"></div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </div>
 </Layout>

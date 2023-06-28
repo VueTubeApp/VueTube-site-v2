@@ -1,7 +1,7 @@
 <template>
   <a
     v-for="contributor in contributors"
-    class="h-16 w-16 rounded-full border border-neutral-600 duration-300 hover:border-neutral-400"
+    class="h-12 w-12 rounded-full border border-neutral-600 duration-300 hover:border-neutral-400 md:h-16 md:w-16"
     style="box-shadow: 0 0 0.5rem -0.1rem #fff8"
     :href="contributor.html_url"
     :aria-label="contributor.login"
