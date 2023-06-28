@@ -3,8 +3,8 @@
     id="nav"
     :class="
       menu
-        ? 'h-[23rem] rounded-b-3xl bg-neutral-800 bg-opacity-30 duration-300'
-        : 'h-[5.5rem] overflow-hidden rounded-b-none bg-transparent duration-300'
+        ? 'max-h-[20rem] rounded-b-3xl bg-neutral-800 bg-opacity-30 duration-300'
+        : 'max-h-[5.5rem] overflow-hidden rounded-b-none bg-transparent duration-300'
     "
     class="fixed top-0 z-50 flex w-full flex-wrap items-center justify-between p-4 backdrop-blur-xl lg:px-6"
   >
@@ -12,7 +12,7 @@
       <a
         :style="
           menu
-            ? 'scale: 2.5; rotate: 120deg; translate: 5rem 10rem; opacity: 0.5'
+            ? 'scale: 2.5; rotate: 120deg; translate: 5rem 6rem; opacity: 0.5'
             : 'scale: 1; translate: 0 0;'
         "
         :class="
@@ -45,7 +45,7 @@
       >
         Home
       </a>
-      <a
+      <!-- <a
         href="/features"
         class="-mr-5 block cursor-pointer whitespace-nowrap px-8 py-4 transition duration-150 hover:scale-90 hover:text-white focus:scale-90 focus:text-white focus:outline-none md:-mx-3"
         @mouseenter="moveBackgroundToTarget"
@@ -54,7 +54,17 @@
         @focusout="onUnhover"
       >
         Features
-      </a>
+      </a> -->
+      <!-- <a
+        href="/contribute"
+        class="-mr-5 block cursor-pointer whitespace-nowrap px-8 py-4 transition duration-150 hover:scale-90 hover:text-white focus:scale-90 focus:text-white focus:outline-none md:-mx-3"
+        @mouseenter="moveBackgroundToTarget"
+        @mouseleave="onUnhover"
+        @focusin="moveBackgroundToTarget"
+        @focusout="onUnhover"
+      >
+        Contribute
+      </a> -->
       <a
         href="/docs"
         class="-mr-5 block cursor-pointer whitespace-nowrap px-8 py-4 transition duration-150 hover:scale-90 hover:text-white focus:scale-90 focus:text-white focus:outline-none md:-mx-3"
@@ -65,7 +75,7 @@
       >
         Docs
       </a>
-      <a
+      <!-- <a
         href="/about"
         class="-mr-5 block cursor-pointer whitespace-nowrap px-8 py-4 transition duration-150 hover:scale-90 hover:text-white focus:scale-90 focus:text-white focus:outline-none md:-mx-3"
         @mouseenter="moveBackgroundToTarget"
@@ -74,7 +84,7 @@
         @focusout="onUnhover"
       >
         About Us
-      </a>
+      </a> -->
     </nav>
 
     <div
@@ -94,7 +104,7 @@
       >
         <Icon class="h-6 w-6" icon="fa-brands:github" />
       </a>
-      <Interactive
+      <a
         id="dl"
         class="flex items-center justify-center gap-x-2 overflow-hidden rounded-3xl px-1 py-1 font-semibold capitalize text-white transition duration-75 hover:scale-105 hover:border-neutral-600 hover:bg-transparent hover:text-white focus:scale-105 focus:border-neutral-600 focus:bg-transparent focus:text-white focus:outline-none focus:ring focus:ring-neutral-300 active:scale-110 active:rounded-2xl active:duration-150 sm:px-2 sm:py-2 md:border md:border-white md:bg-white md:text-black xl:pl-3 xl:pr-4"
         @mouseenter="hoverAnimate"
@@ -105,7 +115,7 @@
       >
         <Icon class="h-6 w-6" icon="mdi:download" />
         <span class="hidden xl:block">Download</span>
-      </Interactive>
+      </a>
       <button
         @click="menu = !menu"
         class="-mr-4 rounded-l-full bg-neutral-600 bg-opacity-30 p-2 pl-3 md:hidden"
