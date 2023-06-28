@@ -1,0 +1,94 @@
+---
+import { Octokit } from "@octokit/core";
+import { Icon } from "astro-iconify";
+
+interface Props {
+  releaseType: "canary" | "release";
+  release: number;
+}
+
+const { releaseType = "release", release = 0 } = Astro.props;
+
+interface Release {
+  publishedAt: string;
+  name: string;
+  url: string;
+}
+
+interface graphqlResponse {
+  repository: {
+    releases: {
+      edges: {
+        node: Release;
+      }[];
+    };
+  };
+}
+
+async function getDownload() {
+  const octokit = new Octokit({ auth: import.meta.env.GITHUB_TOKEN });
+  if (releaseType === "canary") {
+    const { data } = await octokit.request(
+      "GET /repos/{owner}/{repo}/actions/artifacts",
+      {
+        owner: "VueTubeApp",
+        repo: "VueTube",
+      }
+    );
+    let iter = 0;
+    let latestArtifact;
+    for (const artifact of data.artifacts) {
+      if (artifact.name.includes("android")) {
+        latestArtifact = artifact;
+        if (iter === release) {
+          return latestArtifact;
+        }
+      }
+      iter++;
+    }
+    if (!latestArtifact) {
+      return;
+    }
+    return [
+      latestArtifact.archive_download_url,
+      latestArtifact.created_at,
+      latestArtifact.workflow_run?.head_sha || "",
+    ];
+  } else {
+    // we can actually use the new GraphQL API for this
+    const response = await octokit.graphql(
+      `
+        query GetReleases($name: String!, $owner: String!, $first: Int!) {
+            repository(name: $name, owner: $owner) {
+                releases(first: $first) {
+                    edges {
+                        node {
+                        publishedAt
+                        name
+                        url
+                        }
+                    }
+                }
+            }
+        }
+        `,
+      {
+        name: "VueTube",
+        owner: "VueTubeApp",
+        first: release + 1,
+      }
+    );
+    // check if the response is valid and is a type of graphqlResponse
+    if (response && response.hasOwnProperty("repository")) {
+      const { repository } = response as graphqlResponse;
+      const { releases } = repository;
+      const { edges } = releases;
+      const { node } = edges[release];
+      return [node.url, node.publishedAt, node.name];
+    } else {
+      return;
+    }
+  }
+}
+console.log(await getDownload());
+---
