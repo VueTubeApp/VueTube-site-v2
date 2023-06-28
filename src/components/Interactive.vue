@@ -14,6 +14,7 @@
   <a
     v-else
     :href="url"
+    :target="isExternal ? '_blank' : '_self'"
     class="flex items-center justify-center gap-x-2 rounded-3xl px-4 py-2 duration-300"
   >
     <slot></slot>
@@ -30,6 +31,10 @@ export default {
     url: {
       type: String,
       default: undefined,
+    },
+    isExternal: {
+      type: Boolean,
+      default: false,
     },
   },
 };

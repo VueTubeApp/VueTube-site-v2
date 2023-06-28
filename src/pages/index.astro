@@ -72,16 +72,16 @@ const avatars = await getOcto();
       >
         <Interactive
           url="#download"
-          class="border border-white bg-white px-6 py-2 font-semibold text-black duration-150 hover:border-neutral-600 hover:bg-black hover:px-10 hover:text-white focus:bg-black focus:px-10 focus:text-white focus:outline-none focus:ring focus:ring-neutral-300 active:scale-95 active:py-6 active:duration-75 landscape:rounded-r-md"
+          class="border border-white bg-white px-6 py-2 font-semibold text-black duration-150 hover:border-neutral-600 hover:bg-black hover:px-10 hover:text-white focus:bg-black focus:px-10 focus:text-white focus:outline-none focus:ring focus:ring-neutral-300 active:scale-90 active:duration-75 landscape:rounded-r-md"
         >
           <Icon class="h-6 w-6" name="mdi:download" />
           Download
         </Interactive>
         <a
-          href="/"
-          class="rounded-3xl border border-neutral-600 px-6 py-2 font-semibold capitalize text-white duration-150 hover:bg-neutral-600 focus:bg-neutral-800 focus:outline-none focus:ring focus:ring-neutral-300 landscape:rounded-l-md"
+          href="/docs"
+          class="rounded-3xl border border-neutral-600 px-6 py-2 font-semibold capitalize text-white duration-150 hover:bg-neutral-600 focus:bg-neutral-800 focus:outline-none focus:ring focus:ring-neutral-300 active:scale-90 active:duration-75 landscape:rounded-l-md"
         >
-          or don't ¯\_(ツ)_/¯
+          Documentation
         </a>
       </div>
     </div>
@@ -177,15 +177,19 @@ const avatars = await getOcto();
         <div
           class="flex flex-col rounded-3xl bg-neutral-700 p-4 pb-0 duration-300 hover:scale-[1.03] sm:col-span-4 sm:row-span-1 md:flex-row"
         >
-          <div class="p-4 pr-0 md:w-1/2 md:p-8">
-            <span class="text-light text-xs text-emerald-100">
+          <div
+            class="align-center flex flex-col justify-center gap-1 p-4 pr-0 md:w-1/2 md:p-4"
+          >
+            <span class="text-light w-full text-center text-emerald-100">
               Customizations
             </span>
-            <h3 class="mb-2 font-bold leading-5">Tailor-made For You</h3>
-            <p class="text-xs text-neutral-300">
+            <h3 class="mb-2 text-center text-2xl font-bold leading-6">
+              Tailor-made For You
+            </h3>
+            <!-- <p class="text-xs text-neutral-300">
               Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti
               consectetur laboriosam modi fuga doloribus ut!
-            </p>
+            </p> -->
           </div>
           <div class="relative flex flex-grow justify-center overflow-hidden">
             <img
@@ -226,7 +230,7 @@ const avatars = await getOcto();
             <div class="overflow-hidden rounded-3xl duration-300">
               <img
                 src="https://media.discordapp.net/attachments/970793575153561640/970794418896502804/vueee.png"
-                class="aspect-video w-full object-cover duration-300 group-hover:scale-110"
+                class="group-hover:scale-1 aspect-video w-full object-cover duration-300"
               />
             </div>
             <div
@@ -289,16 +293,19 @@ const avatars = await getOcto();
       >
         <Interactive
           url="/contribute"
-          class="flex items-center gap-2 rounded-full bg-white px-8 text-black duration-200 hover:bg-brand-red hover:text-white"
+          class="flex items-center gap-2 rounded-full bg-white px-8 text-black duration-200 hover:scale-105 hover:bg-brand-red hover:text-white"
         >
           Contribute
         </Interactive>
         <Interactive
           url="/docs"
-          class="flex items-center gap-2 px-3 py-2 duration-200"
+          class="group flex items-center gap-2 px-3 py-2 duration-200"
         >
           Documentation
-          <Icon name="mdi:arrow-right" class="h-4 w-4" />
+          <Icon
+            name="mdi:arrow-right"
+            class="h-4 w-4 -translate-x-1 duration-150 group-hover:translate-x-0"
+          />
         </Interactive>
       </div>
       <div
@@ -332,12 +339,14 @@ const avatars = await getOcto();
           <div class="flex w-full flex-col gap-2 font-semibold md:w-fit">
             <Interactive
               url="https://github.com/VueTubeApp/VueTube/releases/latest/"
-              class="items-center gap-2 rounded-full bg-brand-green px-6 py-2 duration-200 hover:bg-green-700"
+              isExternal={true}
+              class="items-center gap-2 rounded-full bg-brand-green px-6 py-2 duration-200 hover:scale-105 hover:bg-green-700"
             >
               Download Latest
             </Interactive>
             <Interactive
-              class="flex items-center justify-center gap-2 rounded-full bg-white px-4 py-2 text-black duration-200 hover:bg-neutral-200"
+              isExternal={true}
+              class="flex items-center justify-center gap-2 rounded-full bg-white px-4 py-2 text-black duration-200 hover:scale-105 hover:bg-neutral-200"
               url="https://github.com/VueTubeApp"
             >
               GitHub
