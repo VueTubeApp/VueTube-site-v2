@@ -96,12 +96,12 @@
       </a>
       <Interactive
         id="dl"
+        url="/#download"
         class="flex items-center justify-center gap-x-2 overflow-hidden rounded-3xl px-1 py-1 font-semibold capitalize text-white transition duration-75 hover:scale-105 hover:border-neutral-600 hover:bg-transparent hover:text-white focus:scale-105 focus:border-neutral-600 focus:bg-transparent focus:text-white focus:outline-none focus:ring focus:ring-neutral-300 active:scale-110 active:rounded-2xl active:duration-150 sm:px-2 sm:py-2 md:border md:border-white md:bg-white md:text-black xl:pl-3 xl:pr-4"
         @mouseenter="hoverAnimate"
         @mouseleave="cancelAnimate"
         @focusin="hoverAnimate"
         @focusout="cancelAnimate"
-        url="/#download"
       >
         <Icon class="h-6 w-6" icon="mdi:download" />
         <span class="hidden xl:block">Download</span>
