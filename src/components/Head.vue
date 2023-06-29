@@ -3,7 +3,7 @@
     id="nav"
     :class="
       menu
-        ? 'max-h-[20rem] rounded-b-3xl bg-neutral-800 bg-opacity-30 duration-300'
+        ? 'max-h-[23rem] rounded-b-3xl bg-neutral-800 bg-opacity-30 duration-300'
         : 'max-h-[5.5rem] overflow-hidden rounded-b-none bg-transparent duration-300'
     "
     class="fixed top-0 z-50 flex w-full flex-wrap items-center justify-between p-4 backdrop-blur-xl lg:px-6"
@@ -12,7 +12,7 @@
       <a
         :style="
           menu
-            ? 'scale: 2.5; rotate: 120deg; translate: 5rem 6rem; opacity: 0.5'
+            ? 'scale: 2.5; rotate: 120deg; translate: 5rem 10rem; opacity: 0.5'
             : 'scale: 1; translate: 0 0;'
         "
         :class="
@@ -45,7 +45,7 @@
       >
         Home
       </a>
-      <!-- <a
+      <a
         href="/features"
         class="-mr-5 block cursor-pointer whitespace-nowrap px-8 py-4 transition duration-150 hover:scale-90 hover:text-white focus:scale-90 focus:text-white focus:outline-none md:-mx-3"
         @mouseenter="moveBackgroundToTarget"
@@ -54,8 +54,8 @@
         @focusout="onUnhover"
       >
         Features
-      </a> -->
-      <!-- <a
+      </a>
+      <a
         href="/contribute"
         class="-mr-5 block cursor-pointer whitespace-nowrap px-8 py-4 transition duration-150 hover:scale-90 hover:text-white focus:scale-90 focus:text-white focus:outline-none md:-mx-3"
         @mouseenter="moveBackgroundToTarget"
@@ -64,7 +64,7 @@
         @focusout="onUnhover"
       >
         Contribute
-      </a> -->
+      </a>
       <a
         href="/docs"
         class="-mr-5 block cursor-pointer whitespace-nowrap px-8 py-4 transition duration-150 hover:scale-90 hover:text-white focus:scale-90 focus:text-white focus:outline-none md:-mx-3"
@@ -75,7 +75,7 @@
       >
         Docs
       </a>
-      <!-- <a
+      <a
         href="/about"
         class="-mr-5 block cursor-pointer whitespace-nowrap px-8 py-4 transition duration-150 hover:scale-90 hover:text-white focus:scale-90 focus:text-white focus:outline-none md:-mx-3"
         @mouseenter="moveBackgroundToTarget"
@@ -84,7 +84,7 @@
         @focusout="onUnhover"
       >
         About Us
-      </a> -->
+      </a>
     </nav>
 
     <div
