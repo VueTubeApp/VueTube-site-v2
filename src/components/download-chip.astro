@@ -3,8 +3,8 @@ import { Octokit } from "@octokit/core";
 import { Icon } from "astro-iconify";
 
 interface Props {
-  releaseType: "canary" | "release";
-  release: number;
+  releaseType?: "canary" | "release";
+  release?: number;
 }
 
 const { releaseType = "release", release = 0 } = Astro.props;
@@ -25,7 +25,11 @@ interface graphqlResponse {
   };
 }
 
-async function getDownload() {
+async function getDownload(): Promise<[string, string, string] | undefined> {
+  if (!import.meta.env.IS_PROD) {
+    console.log("Development mode, returning mocked array");
+    return ["https://github.com/VueTubeApp", "2023-01-01T00:00:00Z", "v1.1.1"];
+  }
   const octokit = new Octokit({ auth: import.meta.env.GITHUB_TOKEN });
   if (releaseType === "canary") {
     const { data } = await octokit.request(
@@ -90,5 +94,33 @@ async function getDownload() {
     }
   }
 }
-console.log(await getDownload());
+
+const response = await getDownload();
+if (!response) {
+  return;
+}
+let [downloadUrl, publishedAt, name] = response;
+publishedAt = new Date(publishedAt).toLocaleDateString("en-US", {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+});
 ---
+
+<a
+  class="w-full rounded-2xl bg-neutral-800 p-8 duration-300 hover:scale-105 focus:scale-105 active:scale-90"
+  href={downloadUrl}
+>
+  <div class="flex flex-col items-center">
+    <Icon name="mdi:android" class="h-24 w-24" />
+    <h3 class="mt-4 text-2xl font-bold">Download</h3>
+    <p class="mt-2 text-center text-neutral-400">
+      Download the latest {releaseType} build of VueTube for Android
+    </p>
+  </div>
+  <div class="mt-4 flex flex-col items-center">
+    <p class="mt-2 text-neutral-400">
+      {name} ({publishedAt})
+    </p>
+  </div>
+</a>

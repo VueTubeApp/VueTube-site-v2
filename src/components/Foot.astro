@@ -2,18 +2,23 @@
 const sitemap = [
   {
     label: "Team",
+    external: true,
+    href: "https://github.com/orgs/VueTubeApp/people",
   },
   {
     label: "Branding",
+    external: true,
+    href: "https://github.com/VueTubeApp/VueTube-Branding",
   },
   {
     label: "Support",
+    href: "/discord",
+    external: true,
   },
   {
     label: "Donate",
-  },
-  {
-    label: "Connect",
+    external: true,
+    href: "https://ko-fi.com/vuetube",
   },
 ];
 const socials = [
@@ -91,7 +96,7 @@ const { fixed, classes } = Astro.props;
         {
           sitemap.map((item, index) => (
             <a
-              class="cursor-pointer pb-1 duration-300 hover:translate-x-1 hover:text-white md:pb-2 md:text-xl"
+              class="cursor-pointer pb-2 duration-300 hover:translate-x-1 hover:text-white md:pb-3 md:text-xl"
               href={item.href}
               target={item.external ? "_blank" : ""}
               rel={item.external ? "noopener" : ""}
